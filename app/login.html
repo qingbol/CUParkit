@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Login | CUParkit</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" media="screen" href="styles/login_register.css">
+    </head>
+    <body>
+        <header>
+            <span><a href="home_page.html">CUParkit</a></span>
+            <span><a href="lot_view.html">Lot View</a></span>
+            <span><a href="register.html">Register</a></span>
+        </header>
+        <!-- The login should be the same for all users. -->
+        <!-- The back-end code should be able to detect what kind of user it is and handle the login accordingly -->
+        <!-- In SQL, there are only 2 types of users: Owner and Manager -->
+        <form action="" method="post">
+            <fieldset>
+                <legend>Login</legend>
+                <div>
+                    <label for="id">ID</label>
+                    <input type="text" id="id" name="id">
+                </div>
+                <!-- Use Sessions for logging in. Don't store passwords as plain text. Salt and hash them. -->
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="user_password">
+                </div>
+                <span><button type="button" id="loginButton">Login</button></span>
+            </fieldset>
+        </form>
+    </body>
+</html>

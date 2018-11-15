@@ -1,0 +1,52 @@
+:root {
+    --main-bg-color: black;
+    --text-color: white;
+    --light-grey-color: rgba(255,255,255,0.1);
+    --med-grey-color: rgba(255,255,255,0.4);
+    --dark-grey-color: rgba(255, 255, 255, .6);
+}
+
+body {
+    /* text-align: center; */
+    font-size: 2rem;
+    color: var(--text-color);
+    background: var(--main-bg-color);
+    font-family: 'Roboto', sans-serif;
+
+    max-width: 90%;
+    margin: auto;
+}
+
+header {
+    background-color: var(--med-grey-color);
+    display: flex;
+    flex-direction: row;
+    /* font-size: 2rem; */
+}
+
+header span {
+    margin: auto;
+}
+
+a:link {
+    color: var(--text-color);
+}
+
+a:visited {
+    color: var(--med-grey-color);
+}
+
+a:active {
+    /* font-size: 1.25em; */
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    font-size: 0.8em;
+    color: var(--text-color);
+    background-color: var(--light-grey-color);
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Register | CUParkit</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" media="screen" href="styles/login_register.css">
+        <script type="text/javascript" src="scripts/registration.js"></script>
+        <!-- <script type="text/javascript" src="zxcvbn.js"></script> -->
+        <script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <span><a href="home_page.html">CUParkit</a></span>
+            <span><a href="lot_view.html">Lot View</a></span>
+            <span><a href="login.html">Login</a></span>
+        </header>
+        <form id="newOwnerForm">
+            <fieldset>
+                <legend>Register New User</legend>
+                <div>
+                    <label for="oid">ID</label>
+                    <input type="text" id="ownerId" name="oid">
+                </div>
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" id="ownerName" name="name">
+                </div>
+                <div>
+                    <label for="tel">Telephone Number</label>
+                    <input type="text" id="ownerTel" name="tel">
+                </div>
+                <label for="type">Type of User</label>
+                <div>
+                    <input type="radio" id="employee" value="Employee" name="type"><label for="employee">Employee</label><br>
+                    <input type="radio" id="student" value="Student" name="type"><label for="student">Student</label><br>
+                    <input type="radio" id="visitor" value="Visitor" name="type" checked><label for="visitor">Visitor</label><br>
+                </div>
+                <!-- Use Sessions for logging in. Don't store passwords as plain text. Salt and hash them. -->
+                <div>
+                    <label for="pass">Password</label>
+                    <input type="password" id="ownerPassword" name="pass">
+                </div>
+                <span><button type="button" id="registerOwnerButton">Register</button></span>
+            </fieldset>
+        </form>
+        <form id="newManagerForm">
+            <fieldset>
+                <legend>Register New Administrator</legend>
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" id="adminName" name="name">
+                </div>
+                <div>
+                    <label for="tel">Telephone Number</label>
+                    <input type="text" id="adminTel" name="tel">
+                </div>
+                <!-- Use Sessions for logging in. Don't store passwords as plain text. Salt and hash them. -->
+                <div>
+                    <label for="uname">Username</label>
+                    <input type="text" id="uname" name="uname">
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" id="adminassword" name="user_password">
+                </div>
+                <span><button type="button" id="registerAdminButton">Register</button></span>
+            </fieldset>
+        </form>
+    </body>
+</html>

@@ -13,16 +13,16 @@ class Scorer implements ScorerInterface
     {
         $seconds = $this->calcCrackTime($entropy);
 
-        if ($seconds < (10 ** 2)) {
+        if ($seconds < pow(10, 2)) {
             return 0;
         }
-        if ($seconds < (10 ** 4)) {
+        if ($seconds < pow(10, 4)) {
             return 1;
         }
-        if ($seconds < (10 ** 6)) {
+        if ($seconds < pow(10, 6)) {
             return 2;
         }
-        if ($seconds < (10 ** 8)) {
+        if ($seconds < pow(10, 8)) {
             return 3;
         }
 
@@ -45,7 +45,7 @@ class Scorer implements ScorerInterface
      */
     protected function calcCrackTime($entropy)
     {
-        $this->crackTime = (0.5 * (2 ** $entropy)) * (self::SINGLE_GUESS / self::NUM_ATTACKERS);
+        $this->crackTime = (0.5 * pow(2, $entropy)) * (self::SINGLE_GUESS / self::NUM_ATTACKERS);
 
         return $this->crackTime;
     }

@@ -19,6 +19,7 @@
             "name"  => "",
             "tel"   => "",
             "type"  => "",
+            "pass"  => "",
         );
 
         // Construct Owner with a connection to a database
@@ -29,9 +30,10 @@
         /* Create an entry in the table for this Owner
             This function makes one tuple in the table */
         public function create() {
+            // print ("befor query");
             // Create query
             $query = "INSERT INTO " . $this->table . 
-                " SET OID = :oid, Name = :name, Tel = :tel, Type = :type";
+                " SET OID = :oid, Name = :name, Tel = :tel, Type = :type, Password = :pass";
 
             // Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -119,7 +121,7 @@
 
             // Create query
             $query = "UPDATE " . $this->table .
-                " SET Name = :name, Tel = :tel, Type = :type " .
+                " SET Name = :name, Tel = :tel, Type = :type, Password = :pass" .
                 " WHERE OID = :oid";
 
             // Prepare statement
@@ -172,8 +174,11 @@
             $index_keys = array_keys($attr_arr);
             $i = 0;
             foreach ($this->attr as $key => $value) {
-		        $this->attr[$key] = $attr_arr[$index_keys[$i]];
-                $i++;
+                $attr_to_add = $attr_arr[$index_keys[$i]];
+                if ($attr_to_add) {
+                    $this->attr[$key] = $attr_to_add;
+                    $i++;
+                }
             }
         }
 

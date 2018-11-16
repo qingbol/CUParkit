@@ -29,13 +29,19 @@
 
     // Set OID to the one specified from the front-end
     $owner->setAttr("oid", $data->oid);
-    $oidRec = $data->oid;
 
-    // Delete this owner using the data model's function
-    if($owner->delete()) {
-        echo json_encode(array('message' => 'Owner Successfully Deleted',
-                                'OID RECEIVED: ' => $oidRec
-        ));
+    /* NEW: Authorization step */
+    // Make it so that an owner can only delete his own entry.
+    //   and a manager can delete any entry.
+    if ( ($_SESSION['type'] === "owner" && $_SESSION['id'] === $data->oid)
+            || $_SESSION['type'] === "manager") {
+        // Delete this owner using the data model's function
+        if($owner->delete()) {
+            echo json_encode(array('message' => 'Owner Successfully Deleted'));
+        } else {
+            echo json_encode(array('message' => 'Owner Not Deleted'));
+        }
     } else {
-        echo json_encode(array('message' => 'Owner Not Deleted'));
+        // Return error message about not being logged in / not having proper access
     }
+    

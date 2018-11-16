@@ -31,6 +31,7 @@
             This function makes one tuple in the table */
         public function create() {
             // print ("befor query");
+
             // Create query
             $query = "INSERT INTO " . $this->table . 
                 " SET OID = :oid, Name = :name, Tel = :tel, Type = :type, Password = :pass";
@@ -42,6 +43,9 @@
             foreach ($this->attr as $key => $value) {
                 $this->attr[$key] = htmlspecialchars(strip_tags($value));
             }
+
+            // Salt and Hash the password using PHP's built-in functions and recommendations
+            $this->attr['pass'] = password_hash($this->attr['pass'], PASSWORD_DEFAULT);
             
             // Bind the data to a variable for an SQL attribute
             foreach ($this->attr as $key => $value) {

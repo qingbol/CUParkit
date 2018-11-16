@@ -60,7 +60,9 @@
                 // Don't continue to register the user until the password is strong enough
                 if ($strength['score'] <= 2) {
                     // If the password is too weak, respond with a message telling the user how to make it stronger
-                    $this->msg = $strength['feedback'];
+                    // $this->msg = $strength['feedback'];
+                    // TODO: Use another zxcvbn library that has built-in feedback messages
+                    $this->msg = "Password too weak. Don't use common words. Use capital letters, numbers, and special characters.";
                     return false;
                 }
 

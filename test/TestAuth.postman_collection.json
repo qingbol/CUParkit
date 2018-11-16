@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "f66a4daf-20bc-4f29-83ea-ad9b79bed4e0",
+		"_postman_id": "f5a34681-0a84-45ff-8c81-b01ce1530a59",
 		"name": "TestAuth",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -48,7 +48,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"oid\": \"JT32\", \"name\": \"Jeremiah\", \"tel\": \"111-111-1111\", \"type\": \"Student\", \"pass\": \"TestPass42\"}"
+					"raw": "{\"oid\": \"JT30\", \"name\": \"Jeremiah\", \"tel\": \"111-111-1111\", \"type\": \"Student\", \"pass\": \"TestPass_42*\"}"
 				},
 				"url": {
 					"raw": "{{url}}/api/Owner/create.php",
@@ -101,7 +101,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"oid\": \"JT33\", \"pass\": \"TestPass42\"}"
+					"raw": "{\"oid\": \"JT36\", \"pass\": \"TestPass_42*\"}"
 				},
 				"url": {
 					"raw": "{{url}}/api/Authentication/login.php",
@@ -137,7 +137,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"oid\": \"JT34\", \"pass\": \"TestPass42\"}"
+					"raw": "{\"oid\": \"JT32\", \"pass\": \"TestPass42\"}"
 				},
 				"url": {
 					"raw": "{{url}}/api/Owner/delete.php",

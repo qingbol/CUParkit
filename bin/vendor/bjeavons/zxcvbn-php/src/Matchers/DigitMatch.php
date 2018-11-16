@@ -43,7 +43,7 @@ class DigitMatch extends Match
     public function getEntropy()
     {
         if (null === $this->entropy) {
-            $this->entropy = $this->log(10 ** strlen($this->token));
+            $this->entropy = $this->log(pow(10, strlen($this->token)));
         }
 
         return $this->entropy;

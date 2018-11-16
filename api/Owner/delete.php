@@ -33,8 +33,8 @@
     /* NEW: Authorization step */
     // Make it so that an owner can only delete his own entry.
     //   and a manager can delete any entry.
-    if ( ($_SESSION['type'] === "owner" && $_SESSION['id'] === $data->oid)
-            || $_SESSION['type'] === "manager") {
+    if ( ($_SESSION['id'] === $data->oid)
+            || ($_SESSION['type'] === "manager")) {
         // Delete this owner using the data model's function
         if($owner->delete()) {
             echo json_encode(array('message' => 'Owner Successfully Deleted'));

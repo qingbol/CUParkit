@@ -33,7 +33,9 @@
 
     // If there wasn't any result from the database
     // Meaning the user needs to register or probably didn't spell his username correctly
-    if (count($res) === 0) {
+    // echo json_encode( array("message" => "Printing result:") );
+    // print_r(json_encode($res));
+    if (!$res) {
         die(json_encode(array("message" => "ERROR: Owner Not Found") ));
     }
 
@@ -48,7 +50,10 @@
         // This is a verfied user. Store the relevant info into the session 
         // that now exists between him and the server
         $_SESSION['id'] = $owner->getAttr('oid');
-        $_SESSION['type'] = $owner->getAttr('type');
+        // Get type of user from database
+        $owner_info = $owner->read_single();
+        // Store type of user in session
+        $_SESSION['type'] = $owner_info['Type'];
         echo json_encode(array("message" => "Password is valid"));
     } else {
         session_destroy();

@@ -5,8 +5,10 @@
 
     // Import the interface that each model implements
     include_once 'model_interface.php';
-
-    use ZxcvbnPhp\Zxcvbn; // Library for checking strength of passwords
+    // Import Composer
+    require_once '../bin/vendor/autoload.php';
+    // Use the library for checking strength of passwords
+    use ZxcvbnPhp\Zxcvbn;
 
     // Owner needs to be able to register as a user
     // Owner needs to be able to register a vehicle

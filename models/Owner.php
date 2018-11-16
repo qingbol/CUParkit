@@ -6,7 +6,7 @@
     // Import the interface that each model implements
     include_once 'model_interface.php';
     // Import Composer
-    require_once '../bin/vendor/autoload.php';
+    // require_once '../bin/vendor/autoload.php';
     // Use the library for checking strength of passwords
     use ZxcvbnPhp\Zxcvbn;
 

@@ -112,7 +112,7 @@ class SpatialMatch extends Match
             $possibleTurns = min($this->turns, $i - 1);
 
             for ($j = 1; $j <= $possibleTurns; ++$j) {
-                $possibilities += $this->binom($i - 1, $j - 1) * $startingPos * ($avgDegree ** $j);
+                $possibilities += $this->binom($i - 1, $j - 1) * $startingPos * pow($avgDegree, $j);
             }
         }
         $entropy = $this->log($possibilities);

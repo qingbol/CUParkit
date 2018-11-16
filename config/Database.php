@@ -1,20 +1,20 @@
 <?php
     class Database {
         // Database Parameters
-        // private $host = "mysql1.cs.clemson.edu";
-        // private $db_name = "CPSC_4620_c0ei";
-        // private $charset = "utf8";
-        // private $username = "CPSC_4620_a31t";
-        // private $password = "SoQoolLearning1";
-        // private $conn       
-       
-        // localhost Database Parameters
-        private $host = "localhost";
-        private $db_name = "cpsc6620";
+        private $host = "mysql1.cs.clemson.edu";
+        private $db_name = "CPSC_4620_c0ei";
         private $charset = "utf8";
-        private $username = "root";
-        private $password = "0000";
-        private $conn; // Connection to the databas; // Connection to the database
+        private $username = "CPSC_4620_a31t";
+        private $password = "SoQoolLearning1";
+        private $conn;
+       
+        // // localhost Database Parameters
+        // private $host = "localhost";
+        // private $db_name = "cpsc6620";
+        // private $charset = "utf8";
+        // private $username = "root";
+        // private $password = "0000";
+        // private $conn; // Connection to the database
         
         // Connect to Database
         public function connect() {

@@ -32,3 +32,6 @@ These functions use and build off of the functionality that is contained in the 
 
 The app folder is where the frontend code goes. It communicates to the api via  
 POST, GET, PUT, etc. with JSON.
+
+## Testing
+Postman is helpful for testing the api. The 'test' folder containst the production environment variables and collection of tests.

@@ -35,5 +35,6 @@
         echo json_encode(array('message' => 'Owner Successfully Created'));
     } else {
         echo json_encode(array('message' => 'Owner Not Created'));
+        echo json_encode($owner->getMsg());
     }
 

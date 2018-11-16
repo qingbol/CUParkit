@@ -6,10 +6,14 @@
     // Import the interface that each model implements
     include_once 'model_interface.php';
 
+    use ZxcvbnPhp\Zxcvbn; // Library for checking strength of passwords
+
     // Owner needs to be able to register as a user
     // Owner needs to be able to register a vehicle
     // Owner owns vehicles -- need to assign a registered vehicle to a registered user
     class Owner implements model_interface {
+        private $msg; // Message to communicate to API
+
         private $conn; // The connection to the database
         private $table = "owner"; // The name of the table in the mySQL database
 
@@ -44,9 +48,23 @@
                 $this->attr[$key] = htmlspecialchars(strip_tags($value));
             }
 
-            // Salt and Hash the password using PHP's built-in functions and recommendations
-            $this->attr['pass'] = password_hash($this->attr['pass'], PASSWORD_DEFAULT);
-            
+            // Password Handling
+            /////////////////////////////////////////////////////////////////////
+                // Check strength of password
+                $zxcvbn = new Zxcvbn();
+                $strength = $zxcvbn->passwordStrength($this->attr['pass']);
+
+                // Don't continue to register the user until the password is strong enough
+                if ($strength['score'] <= 2) {
+                    // If the password is too weak, respond with a message telling the user how to make it stronger
+                    $this->msg = $strength['feedback'];
+                    return false;
+                }
+
+                // Salt and Hash the password using PHP's built-in functions and recommendations
+                $this->attr['pass'] = password_hash($this->attr['pass'], PASSWORD_DEFAULT);
+            //////////////////////////////////////////////////////////////
+
             // Bind the data to a variable for an SQL attribute
             foreach ($this->attr as $key => $value) {
                 $stmt->bindValue((":" . $key), $value);
@@ -200,6 +218,11 @@
             print_r($err_arr);
 
             return false;
+        }
+
+        /* Get the any message the model outputs */
+        public function getMsg() {
+            return $this->msg;
         }
 
         /* Get the name of the table in the database that this class is modeling */

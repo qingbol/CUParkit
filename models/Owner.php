@@ -5,11 +5,18 @@
 
     // Import the interface that each model implements
     include_once 'model_interface.php';
+    // Import Composer
+    // require_once '../bin/vendor/autoload.php';
+    require_once __DIR__ . '/../bin/vendor/autoload.php';
+    // Use the library for checking strength of passwords
+    use ZxcvbnPhp\Zxcvbn;
 
     // Owner needs to be able to register as a user
     // Owner needs to be able to register a vehicle
     // Owner owns vehicles -- need to assign a registered vehicle to a registered user
     class Owner implements model_interface {
+        private $msg; // Message to communicate to API
+
         private $conn; // The connection to the database
         private $table = "owner"; // The name of the table in the mySQL database
 
@@ -31,6 +38,7 @@
             This function makes one tuple in the table */
         public function create() {
             // print ("befor query");
+
             // Create query
             $query = "INSERT INTO " . $this->table . 
                 " SET OID = :oid, Name = :name, Tel = :tel, Type = :type, Password = :pass";
@@ -42,7 +50,26 @@
             foreach ($this->attr as $key => $value) {
                 $this->attr[$key] = htmlspecialchars(strip_tags($value));
             }
-            
+
+            // Password Handling
+            /////////////////////////////////////////////////////////////////////
+                // Check strength of password
+                $zxcvbn = new Zxcvbn();
+                $strength = $zxcvbn->passwordStrength($this->attr['pass']);
+
+                // Don't continue to register the user until the password is strong enough
+                if ($strength['score'] <= 2) {
+                    // If the password is too weak, respond with a message telling the user how to make it stronger
+                    // $this->msg = $strength['feedback'];
+                    // TODO: Use another zxcvbn library that has built-in feedback messages
+                    $this->msg = "Password too weak. Don't use common words. Use capital letters, numbers, and special characters.";
+                    return false;
+                }
+
+                // Salt and Hash the password using PHP's built-in functions and recommendations
+                $this->attr['pass'] = password_hash($this->attr['pass'], PASSWORD_DEFAULT);
+            //////////////////////////////////////////////////////////////
+
             // Bind the data to a variable for an SQL attribute
             foreach ($this->attr as $key => $value) {
                 $stmt->bindValue((":" . $key), $value);
@@ -172,13 +199,16 @@
             // If $attr_arr is an associative array, convert it to numerically indexed
             // If it's a numerically indexed array, treat it the same
             $index_keys = array_keys($attr_arr);
-            $i = 0;
-            foreach ($this->attr as $key => $value) {
-                $attr_to_add = $attr_arr[$index_keys[$i]];
-                if ($attr_to_add) {
+            foreach ($index_keys as $num => $val) {
+              $attr_to_add = $attr_arr[$val];
+              /* echo "index_keys is $val \n"; */
+              foreach ($this->attr as $key => $value) {
+                /* echo "this->key is $key and index_keys is $val \n"; */
+                if ($attr_to_add and $key === $val) {
                     $this->attr[$key] = $attr_to_add;
-                    $i++;
+                    break 1;
                 }
+              }    
             }
         }
 
@@ -196,6 +226,11 @@
             print_r($err_arr);
 
             return false;
+        }
+
+        /* Get the any message the model outputs */
+        public function getMsg() {
+            return $this->msg;
         }
 
         /* Get the name of the table in the database that this class is modeling */

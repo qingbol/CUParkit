@@ -171,10 +171,16 @@
             // If $attr_arr is an associative array, convert it to numerically indexed
             // If it's a numerically indexed array, treat it the same
             $index_keys = array_keys($attr_arr);
-            $i = 0;
-            foreach ($this->attr as $key => $value) {
-		        $this->attr[$key] = $attr_arr[$index_keys[$i]];
-                $i++;
+            foreach ($index_keys as $num => $val) {
+              $attr_to_add = $attr_arr[$val];
+              /* echo "index_keys is $val \n"; */
+              foreach ($this->attr as $key => $value) {
+                /* echo "this->key is $key and index_keys is $val \n"; */
+                if ($attr_to_add and $key === $val) {
+                    $this->attr[$key] = $attr_to_add;
+                    break 1;
+                }
+              }    
             }
         }
 

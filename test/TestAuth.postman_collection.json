@@ -1,0 +1,1318 @@
+{
+	"info": {
+		"_postman_id": "d1921e72-df91-4728-9372-6ebda6643437",
+		"name": "TestAuth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Owner",
+			"item": [
+				{
+					"name": "ReadSingleOwner",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/Owner/read_single.php?oid=C10000001",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Owner",
+								"read_single.php"
+							],
+							"query": [
+								{
+									"key": "oid",
+									"value": "C10000001"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RegisterNewOwner",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"oid\": \"JT30\", \"name\": \"Jeremiah\", \"tel\": \"111-111-1111\", \"type\": \"Student\", \"pass\": \"TestPass_42*\"}"
+						},
+						"url": {
+							"raw": "{{url}}/api/Owner/create.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Owner",
+								"create.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ReadAllOwners",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/Owner/read.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Owner",
+								"read.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoginAnOwner",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"oid\": \"JT36\", \"pass\": \"TestPass_42*\"}"
+						},
+						"url": {
+							"raw": "{{url}}/api/Authentication/login.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Authentication",
+								"login.php"
+							]
+						},
+						"description": "This creates a session that remembers the login information for future API requests."
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteAuthorizedOwner",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-HTTP-Method-Override",
+								"value": "DELETE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"oid\": \"JT32\"}"
+						},
+						"url": {
+							"raw": "{{url}}/api/Owner/delete.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Owner",
+								"delete.php"
+							]
+						},
+						"description": "The Owner has to be logged in from a previous API call to login.php so that he has a session (shows as cookie in browser tools). Then, he can use different parts of the API, including delete his entry (but not others' entries)."
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateOwner",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"oid\": \"C10000002\", \"type\": \"student\", \"name\": \"Mike\" }"
+						},
+						"url": {
+							"raw": "{{url}}/api/Owner/update.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Owner",
+								"update.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vehicle",
+			"item": [
+				{
+					"name": "ReadVehicle",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/Vehicle/read.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Vehicle",
+								"read.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateVehicle",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"plate\": \"ABC111\", \"make\": \"Nissan\", \"model\": \"versa\", \"year\": \"2015\", \"color\": \"red\"}"
+						},
+						"url": {
+							"raw": "{{url}}/api/Vehicle/create.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Vehicle",
+								"create.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ReadSingleVehicle",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/Vehicle/read_single.php?plate=ABC111",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Vehicle",
+								"read_single.php"
+							],
+							"query": [
+								{
+									"key": "plate",
+									"value": "ABC111"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteVehicle",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-HTTP-Method-Override",
+								"type": "text",
+								"value": "DELETE"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"oid\": \"ABC111\"}"
+						},
+						"url": {
+							"raw": "{{url}}/api/Vehicle/delete.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Vehicle",
+								"delete.php"
+							]
+						},
+						"description": "The Owner has to be logged in from a previous API call to login.php so that he has a session (shows as cookie in browser tools). Then, he can use different parts of the API, including delete his entry (but not others' entries)."
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateVehicle",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"plate\": \"ABC111\", \"color\":\"Orange\", \"make\": \"Nissan\"}"
+						},
+						"url": {
+							"raw": "{{url}}/api/Vehicle/update.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Vehicle",
+								"update.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Own",
+			"item": [
+				{
+					"name": "ReadOwn",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/Own/read.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Own",
+								"read.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ReadSingleOwn",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/Vehicle/read_single.php?plate=PYY438&oid=C10000002",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Vehicle",
+								"read_single.php"
+							],
+							"query": [
+								{
+									"key": "plate",
+									"value": "PYY438"
+								},
+								{
+									"key": "oid",
+									"value": "C10000002"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateOwn",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"oid\": \"JT30\", \"plate\": \"ABC111\"}"
+						},
+						"url": {
+							"raw": "{{url}}/api/Own/create.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Own",
+								"create.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteOwn",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-HTTP-Method-Override",
+								"type": "text",
+								"value": "DELETE"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"oid\": \"JT30\", \"plate\": \"ABC111\"}"
+						},
+						"url": {
+							"raw": "{{url}}/api/Own/delete.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Own",
+								"delete.php"
+							]
+						},
+						"description": "The Owner has to be logged in from a previous API call to login.php so that he has a session (shows as cookie in browser tools). Then, he can use different parts of the API, including delete his entry (but not others' entries)."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ParkingSpot",
+			"item": [
+				{
+					"name": "ReadSpot",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/ParkingSpot/read.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ParkingSpot",
+								"read.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ReadSingleSpot",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/ParkingSpot/read_single.php?spot=E01_001",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ParkingSpot",
+								"read_single.php"
+							],
+							"query": [
+								{
+									"key": "spot",
+									"value": "E01_001"
+								},
+								{
+									"key": "oid",
+									"value": "C10000002",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateSpot",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"spot\": \"S01_002\", \"lot\": \"student\", \"status\": \"Vacant\", \"rate\": \"0.0\"}"
+						},
+						"url": {
+							"raw": "{{url}}/api/ParkingSpot/create.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ParkingSpot",
+								"create.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteSpot",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-HTTP-Method-Override",
+								"type": "text",
+								"value": "DELETE"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"spot\": \"S01_002\"}"
+						},
+						"url": {
+							"raw": "{{url}}/api/ParkingSpot/delete.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ParkingSpot",
+								"delete.php"
+							]
+						},
+						"description": "The Owner has to be logged in from a previous API call to login.php so that he has a session (shows as cookie in browser tools). Then, he can use different parts of the API, including delete his entry (but not others' entries)."
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateSpot",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"spot\": \"S01_002\", \"rate\":\"1.11\", \"lot\": \"employee:\"}"
+						},
+						"url": {
+							"raw": "{{url}}/api/ParkingSpot/update.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ParkingSpot",
+								"update.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ParkOn",
+			"item": [
+				{
+					"name": "ReadParkOn",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/ParkOn/read.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ParkOn",
+								"read.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ReadSingleParkOn",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/ParkOn/read_single.php?plate=PYY438&spot=V01_110",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ParkOn",
+								"read_single.php"
+							],
+							"query": [
+								{
+									"key": "plate",
+									"value": "PYY438"
+								},
+								{
+									"key": "spot",
+									"value": "V01_110"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateParkOn",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"plate\": \"ABC111\", \"spot\": \"S01_002\"}"
+						},
+						"url": {
+							"raw": "{{url}}/api/ParkOn/create.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ParkOn",
+								"create.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteParkOn",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-HTTP-Method-Override",
+								"type": "text",
+								"value": "DELETE"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"spot\": \"S01_002\", \"plate\": \"ABC111\"}"
+						},
+						"url": {
+							"raw": "{{url}}/api/ParkOn/delete.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ParkOn",
+								"delete.php"
+							]
+						},
+						"description": "The Owner has to be logged in from a previous API call to login.php so that he has a session (shows as cookie in browser tools). Then, he can use different parts of the API, including delete his entry (but not others' entries)."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ParkingRecord",
+			"item": [
+				{
+					"name": "ReadParkRecord",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/ParkingRecord/read.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ParkingRecord",
+								"read.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ReadSingleParkRecord",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/ParkingRecord/read_single.php?rcd_index=r000004",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ParkingRecord",
+								"read_single.php"
+							],
+							"query": [
+								{
+									"key": "rcd_index",
+									"value": "r000004"
+								},
+								{
+									"key": "oid",
+									"value": "C10000002",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateParkRecord",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"rcd_index\": \"r000013\", \"plate\": \"ABC111\", \"enter_date_time\": \"2018-02-03 02:03:32\", \"fee\": \"3.5\", \"leave_date_time\": \"2018-02-03 05:03:32\"}"
+						},
+						"url": {
+							"raw": "{{url}}/api/ParkingRecord/create.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ParkingRecord",
+								"create.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteParkRecord",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-HTTP-Method-Override",
+								"type": "text",
+								"value": "DELETE"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"rcd_index\": \"r000012\"}"
+						},
+						"url": {
+							"raw": "{{url}}/api/ParkingRecord/delete.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ParkingRecord",
+								"delete.php"
+							]
+						},
+						"description": "The Owner has to be logged in from a previous API call to login.php so that he has a session (shows as cookie in browser tools). Then, he can use different parts of the API, including delete his entry (but not others' entries)."
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateParkRecord",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"rcd_index\": \"r000011\", \"fee\":\"4.50\", \"enter_date_time\": \"2018-02-03 01:03:50\"}"
+						},
+						"url": {
+							"raw": "{{url}}/api/ParkingRecord/update.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ParkingRecord",
+								"update.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Manager",
+			"item": [
+				{
+					"name": "ReadAllManager",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/Owner/read.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Owner",
+								"read.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ReadSingleManager",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/Manager/read_single.php?mid=M002",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Manager",
+								"read_single.php"
+							],
+							"query": [
+								{
+									"key": "mid",
+									"value": "M002"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateManager",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"mid\": \"M001\", \"name\": \"Norman\", \"tel\": \"864-321-4523\", \"password\": \"2015\"}"
+						},
+						"url": {
+							"raw": "{{url}}/api/Manager/create.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Manager",
+								"create.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteManager",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-HTTP-Method-Override",
+								"type": "text",
+								"value": "DELETE"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"mid\": \"M001\"}"
+						},
+						"url": {
+							"raw": "{{url}}/api/Manager/delete.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Manager",
+								"delete.php"
+							]
+						},
+						"description": "The Owner has to be logged in from a previous API call to login.php so that he has a session (shows as cookie in browser tools). Then, he can use different parts of the API, including delete his entry (but not others' entries)."
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateManager",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"mid\": \"M001\", \"name\":\"Richard\", \"password\": \"2016\", \"tel\": \"864-123-4567\"}"
+						},
+						"url": {
+							"raw": "{{url}}/api/Manager/update.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Manager",
+								"update.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ManageParking",
+			"item": [
+				{
+					"name": "ReadManageSpot",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/ManageSpot/read.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ManageSpot",
+								"read.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ReadSingleManageSpot",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/ManageSpot/read_single.php?spot=S01_002&mid=M001",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ManageSpot",
+								"read_single.php"
+							],
+							"query": [
+								{
+									"key": "spot",
+									"value": "S01_002"
+								},
+								{
+									"key": "mid",
+									"value": "M001"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateManageSpot",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"mid\": \"M001\", \"spot\": \"S01_002\"}"
+						},
+						"url": {
+							"raw": "{{url}}/api/ManageSpot/create.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ManageSpot",
+								"create.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteManageSpot",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-HTTP-Method-Override",
+								"type": "text",
+								"value": "DELETE"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"mid\": \"M001\", \"spot\": \"S01_002\"}"
+						},
+						"url": {
+							"raw": "{{url}}/api/ManageSpot/delete.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ManageSpot",
+								"delete.php"
+							]
+						},
+						"description": "The Owner has to be logged in from a previous API call to login.php so that he has a session (shows as cookie in browser tools). Then, he can use different parts of the API, including delete his entry (but not others' entries)."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ManageRecord",
+			"item": [
+				{
+					"name": "ReadManageRecord",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/ManageRecord/read.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ManageRecord",
+								"read.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ReadSingleManageRecord",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/ManageRecord/read_single.php?rcd_index=r000003&mid=M003",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ManageRecord",
+								"read_single.php"
+							],
+							"query": [
+								{
+									"key": "rcd_index",
+									"value": "r000003"
+								},
+								{
+									"key": "mid",
+									"value": "M003"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateManageRecord",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"mid\": \"M001\", \"rcd_index\": \"r000008\"}"
+						},
+						"url": {
+							"raw": "{{url}}/api/ManageRecord/create.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ManageRecord",
+								"create.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteManageRecord",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-HTTP-Method-Override",
+								"type": "text",
+								"value": "DELETE"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"mid\": \"M001\", \"rcd_index\": \"r000008\"}"
+						},
+						"url": {
+							"raw": "{{url}}/api/ManageRecord/delete.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ManageRecord",
+								"delete.php"
+							]
+						},
+						"description": "The Owner has to be logged in from a previous API call to login.php so that he has a session (shows as cookie in browser tools). Then, he can use different parts of the API, including delete his entry (but not others' entries)."
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

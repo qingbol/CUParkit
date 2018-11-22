@@ -156,8 +156,8 @@
             $stmt = $this->conn->prepare($query);
 
             // Clean the query
-            $this->attr["plate"] = htmlspecialchars(strip_tags($this->attr["plate"]));
             $this->attr["oid"] = htmlspecialchars(strip_tags($this->attr["oid"]));
+            $this->attr["plate"] = htmlspecialchars(strip_tags($this->attr["plate"]));
 
             // Bind the data
             $stmt->bindValue(":plate", $this->attr["plate"]);
@@ -175,15 +175,16 @@
             // If $attr_arr is an associative array, convert it to numerically indexed
             // If it's a numerically indexed array, treat it the same
             $index_keys = array_keys($attr_arr);
-            // var_dump ($index_keys);
-            $i = 0;
-            foreach ($this->attr as $key => $value) {
-                // var_dump ($index_keys[$i]);
-                // var_dump ($attr_arr[$index_keys[$i]]);
-                $this->attr[$key] = $attr_arr[$index_keys[$i]];
-                // var_dump ($key);
-                // var_dump ($this->attr[$key]);
-                $i++;
+            foreach ($index_keys as $num => $val) {
+              $attr_to_add = $attr_arr[$val];
+              /* echo "index_keys is $val \n"; */
+              foreach ($this->attr as $key => $value) {
+                /* echo "this->key is $key and index_keys is $val \n"; */
+                if ($attr_to_add and $key === $val) {
+                    $this->attr[$key] = $attr_to_add;
+                    break 1;
+                }
+              }    
             }
         }
 

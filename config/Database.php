@@ -6,7 +6,7 @@
         // private $charset = "utf8";
         // private $username = "CPSC_4620_a31t";
         // private $password = "SoQoolLearning1";
-        // private $conn       
+        // private $conn;
        
         // localhost Database Parameters
         private $host = "localhost";
@@ -14,7 +14,7 @@
         private $charset = "utf8";
         private $username = "root";
         private $password = "0000";
-        private $conn; // Connection to the databas; // Connection to the database
+        private $conn; // Connection to the database
         
         // Connect to Database
         public function connect() {

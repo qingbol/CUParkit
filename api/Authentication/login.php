@@ -54,6 +54,8 @@
         $owner_info = $owner->read_single();
         // Store type of user in session
         $_SESSION['type'] = $owner_info['Type'];
+        // TODO: Make above use $res instead of calling read_single again.
+        
         echo json_encode(array("message" => "Password is valid"));
     } else {
         session_destroy();

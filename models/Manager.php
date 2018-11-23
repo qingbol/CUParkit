@@ -4,7 +4,7 @@
     */
 
     // Import the interface that each model implements
-    include_once 'models/model_interface.php';
+    include_once 'model_interface.php';
 
     // Owner needs to be able to register as a user
     // Owner needs to be able to register a vehicle
@@ -18,6 +18,7 @@
             "mid"   => "",
             "name"  => "",
             "tel"   => "",
+            "password"   => "",
         );
 
         // Construct Owner with a connection to a database
@@ -30,7 +31,7 @@
         public function create() {
             // Create query
             $query = "INSERT INTO " . $this->table . 
-                " SET MID = :mid, Name = :name, Tel = :tel ";
+                " SET MID = :mid, Name = :name, Tel = :tel, Password = :password";
 
             // Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -118,7 +119,7 @@
 
             // Create query
             $query = "UPDATE " . $this->table .
-                " SET Name = :name, Tel = :tel " .
+                " SET Name = :name, Tel = :tel, Password = :password " .
                 " WHERE MID = :mid";
 
             // Prepare statement
@@ -169,10 +170,16 @@
             // If $attr_arr is an associative array, convert it to numerically indexed
             // If it's a numerically indexed array, treat it the same
             $index_keys = array_keys($attr_arr);
-            $i = 0;
-            foreach ($this->attr as $key => $value) {
-		        $this->attr[$key] = $attr_arr[$index_keys[$i]];
-                $i++;
+            foreach ($index_keys as $num => $val) {
+              $attr_to_add = $attr_arr[$val];
+              /* echo "index_keys is $val \n"; */
+              foreach ($this->attr as $key => $value) {
+                /* echo "this->key is $key and index_keys is $val \n"; */
+                if ($attr_to_add and $key === $val) {
+                    $this->attr[$key] = $attr_to_add;
+                    break 1;
+                }
+              }    
             }
         }
 

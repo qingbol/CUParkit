@@ -1,4 +1,8 @@
 # Ignore everything in this directory
+<<<<<<< HEAD
+#*
+=======
 *
+>>>>>>> 40df8b0dd840b46d0406ede0aea9619c2ecca773
 # Except this file
 !.gitignore

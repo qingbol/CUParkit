@@ -1,4 +1,5 @@
 <?php
+    date_default_timezone_set('America/New_York'); 
     // Parking spot should be able to change:
     // the number of lots,
     // the number of spots in lots,
@@ -51,44 +52,6 @@
             
             // Bind the data to a variable for an SQL attribute
             foreach ($this->attr as $key => $value) {
-                
-                if ($key == 'fee') {
-                  $value = (float)$value;
-                  // $this->attr[$key] = (floddat)$attr_arr[$index_keys[$i]];
-                } elseif ($key == 'enter_date_time') {
-                  // $value = strtotime($value);
-                  // $value = now();
-                  // $value = new DateTime();
-                  $datime = new DateTime();
-                  $value = $datime->getTimestamp();
-                  // $value = date();
-                  // $value = $datime
-                  // $value =FROM_UNIXTIME(strtotime($value));
-                  $value = date("Y-m-d H:i:s",strtotime($value));
-                  var_dump ($value);
-                //   var_dump (date("Y-m-d H:i:s", strtotime("now")));
-                //   // echo date("Y-m-d H:i:s", strtotime("now"));
-                //   $this->attr[$key] = strtotime($attr_arr[$index_keys[$i]]);
-                //   // $this->attr[$key] = date("Y-m-d H:i:s",strtotime($attr_arr[$index_keys[$i]]));
-                //   // $this->attr[$key] = date("Y-m-d H:i:s", strtotime("now"));
-                //   // $this->attr[$key] = FROM_UNIXTIME(strtotime($attr_arr[$index_keys[$i]]));
-                } elseif ($key == 'leave_date_time') {
-                  $value = date("Y-m-d H:i:s",strtotime($value));
-                  var_dump ($value);
-                  // $value = strtotime($value);
-                  // $value = now();
-                  // $value = date();
-                  // $datime = new DateTime();
-                  // $value = $datime->getTimestamp();
-                //   $this->attr[$key] = strtotime($attr_arr[$index_keys[$i]]);
-                // } else {
-                //   $this->attr[$key] = $attr_arr[$index_keys[$i]];
-                }
-                                
-                print ("key in create");
-                var_dump ($key);
-                print ("value in create");
-                var_dump ($value);
                 $stmt->bindValue((":" . $key), $value);
             }
 
@@ -216,8 +179,19 @@
             // If $attr_arr is an associative array, convert it to numerically indexed
             // If it's a numerically indexed array, treat it the same
             $index_keys = array_keys($attr_arr);
-            $i = 0;
-            foreach ($this->attr as $key => $value) {
+            foreach ($index_keys as $num => $val) {
+              $attr_to_add = $attr_arr[$val];
+              /* echo "index_keys is $val \n"; */
+              foreach ($this->attr as $key => $value) {
+                /* echo "this->key is $key and index_keys is $val \n"; */
+                if ($attr_to_add and $key === $val) {
+                    $this->attr[$key] = $attr_to_add;
+                    break 1;
+                }
+              }    
+            }
+            /* $i = 0; */
+            /* foreach ($this->attr as $key => $value) { */
                 // var_dump ($index_keys[$i]);
                 // var_dump ($attr_arr[$index_keys[$i]]);
                 // if ($key == 'fee') {
@@ -234,11 +208,11 @@
                 // } else {
                 //   $this->attr[$key] = $attr_arr[$index_keys[$i]];
                 // }
-                $this->attr[$key] = $attr_arr[$index_keys[$i]];
+                /* $this->attr[$key] = $attr_arr[$index_keys[$i]]; */
                 // var_dump ($key);
                 // var_dump ($this->attr[$key]);
-                $i++;
-            }
+                /* $i++; */
+            /* } */
         }
 
         /* Execute the prepared statement and return any errors 

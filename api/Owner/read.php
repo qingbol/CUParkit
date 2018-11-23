@@ -16,7 +16,12 @@
 
     // Instantiate DB & connect to it
     $database = new Database();
-    $db = $database->connect();
+    try {
+        $db = $database->connect();
+    } catch (PDOException $e) {
+        echo json_encode( array("message" => $e->getMessage(),
+                                "code" => (int)$e->getCode()) );
+    }
 
     // Instantiate an Owner object
     $owner = new Owner($db);

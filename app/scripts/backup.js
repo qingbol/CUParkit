@@ -7,7 +7,7 @@ const apiDir = "../api";
 // let brFunc = ((apiEndPoint) => {
 let brFunc = ((apiEndPoint) => {
     // Post data to API with Axios
-    console.log("backup..");
+    console.log("backup or restore...");
     // axios.post(apiDir+apiEndPoint, 
         // formData)
     axios.get(apiDir+apiEndPoint)
@@ -35,7 +35,7 @@ let restoreSql = (backupFunc => {
     console.log("restoreSql");
     // let formData = formDataToJSON(document.getElementById("newAdminForm"));
     // POST the data to the server to register a new user in the database
-    backupFunc("/backup/restore.php", formData);
+    backupFunc("/backup/restore.php");
 });
 
 // When the script is done being loaded onto the client's machine

@@ -1,0 +1,17 @@
+TODO:
+1. Make frontend work with authentication and authorization.
+2. Modify all of it to work with not just Owner, but also Manager.
+3. Use a better zxcvbn and return more-helfpul error messages.
+4. Add status codes to the API for the front-end to work off of.
+5. Figure out how to format the errors that come from PHP.
+	For ex, when including zxcvbn, I provided the wrong directory.
+	PHP returned an error that was not formatted in json, so I had to view it in the raw body view 
+		from Postman, even though there was also another message in the pretty view.
+6. Update README
+7. Write out features needed by webapp. Implement them in api and model.
+8. Grant api rights properly for different functions.
+9. Review project requirements.
+10. Add MySQL assertions (constraints and triggers)
+11. Add MySQL "batches" -- forgot the actual term
+12. Add MySQL Enum for "type" so the people are forced to choose one from Visitor, Student, Employee, etc.
+13. Write program to make simulation data for testing a large dataset.

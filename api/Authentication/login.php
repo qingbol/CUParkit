@@ -29,13 +29,13 @@
     $owner->setAttr("oid", $data->oid);
 
     // Get the single entry from the database, using the OID as a key
-    $res = $owner->read_single();
+    $owner_info = $owner->read_single();
 
     // If there wasn't any result from the database
     // Meaning the user needs to register or probably didn't spell his username correctly
     // echo json_encode( array("message" => "Printing result:") );
     // print_r(json_encode($res));
-    if (!$res) {
+    if (!$owner_info) {
         die(json_encode(array("message" => "ERROR: Owner Not Found") ));
     }
 
@@ -46,14 +46,13 @@
     // Verify / Authenticate the user using PHP's built-in hash checker
     //  and the password supplied by the user and the password hash from the database
     // password_verify("password1234", hashedPasswordFromDB);
-    if (password_verify($data->pass, $res['Password'])) {
+    if (password_verify($data->pass, $owner_info['Password'])) {
         // This is a verfied user. Store the relevant info into the session 
         // that now exists between him and the server
         $_SESSION['id'] = $owner->getAttr('oid');
-        // Get type of user from database
-        $owner_info = $owner->read_single();
-        // Store type of user in session
+        // Store type of user from database into the session
         $_SESSION['type'] = $owner_info['Type'];
+        
         echo json_encode(array("message" => "Password is valid"));
     } else {
         session_destroy();

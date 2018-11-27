@@ -4,13 +4,13 @@
 
 const apiDir = "../api";
 
-let getRadioVal = ((radios) => {
-    for (let i=0; i<radios.length; i++) {
-        if (radios[i].checked) {
-            return radios[i].value;
-        }
-    }
-});
+// let getRadioVal = ((radios) => {
+//     for (let i=0; i<radios.length; i++) {
+//         if (radios[i].checked) {
+//             return radios[i].value;
+//         }
+//     }
+// });
 
 /* Get HTML FormData object from HTML form element. 
    Then, convert the FormData object to JSON.

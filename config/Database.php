@@ -1,7 +1,6 @@
 <?php
     class Database {
-<<<<<<< HEAD
-        // Production Database Parameters
+        // Database Parameters
         // private $host = "mysql1.cs.clemson.edu";
         // private $db_name = "CPSC_4620_c0ei";
         // private $charset = "utf8";
@@ -9,7 +8,15 @@
         // private $password = "SoQoolLearning1";
         // private $conn;
        
-        // // Jack localhost DB Params
+        // Qingbo localhost Database Parameters
+        // private $host = "localhost";
+        // private $db_name = "cpsc6620";
+        // private $charset = "utf8";
+        // private $username = "root";
+        // private $password = "0000";
+        // private $conn; // Connection to the database
+
+        // Jack localhost DB Params
         // private $host = "192.168.122.173";
         private $host = "localhost";
         private $db_name = "CUParkit";
@@ -17,27 +24,6 @@
         private $username = "parkingMgr";
         private $password = "abc123";
         private $conn;
-
-        // // localhost Database Parameters
-        // private $host = "localhost";
-        // private $db_name = "cpsc6620";
-=======
-        // Database Parameters
-        // private $host = "mysql1.cs.clemson.edu";
-        // private $db_name = "CPSC_4620_c0ei";
->>>>>>> 686e8589302105dc7b80d7103d01cf7e70aa9611
-        // private $charset = "utf8";
-        // private $username = "CPSC_4620_a31t";
-        // private $password = "SoQoolLearning1";
-        // private $conn;
-       
-        // localhost Database Parameters
-        private $host = "localhost";
-        private $db_name = "cpsc6620";
-        private $charset = "utf8";
-        private $username = "root";
-        private $password = "0000";
-        private $conn; // Connection to the database
         
         // Connect to Database
         public function connect() {

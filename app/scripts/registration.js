@@ -4,14 +4,6 @@
 
 const apiDir = "../api";
 
-// let getRadioVal = ((radios) => {
-//     for (let i=0; i<radios.length; i++) {
-//         if (radios[i].checked) {
-//             return radios[i].value;
-//         }
-//     }
-// });
-
 /* Get HTML FormData object from HTML form element. 
    Then, convert the FormData object to JSON.
    Note: Each element in the HTML form needs to have a "name"
@@ -31,12 +23,11 @@ let register = ((apiEndPoint, formData) => {
     axios.post(apiDir+apiEndPoint, 
         formData)
     .then(res => {
-        // console.log("ddggg");
-        console.log(res);
+        //console.log(res);
+        document.getElementById("messageBox").innerHTML = res;
     }).catch(err => {
-        // console.log("hahah");
-        console.log(err.response);
-        // console.log(err);
+        // console.log(err.response);
+        document.getElementById("messageBox").innerHTML = err.response;
     });
 });
 
@@ -63,14 +54,3 @@ window.addEventListener("load",function(){
     document.getElementById("registerOwnerButton").onclick = () => registerOwner(register);
     document.getElementById("registerAdminButton").onclick = () => registerAdmin(register);
 });
-
-// NOTE:
-// In registerOwner,
-    // Instead of using FormData, you can construct data to send:
-    // (This is how GET requests and other queries can be formed, too)
-    // let formData = {};
-    // formData.oid = document.getElementById("id").value;
-    // formData.name = document.getElementById("name").value;
-    // formData.tel = document.getElementById("tel").value;
-    // formData.type = getRadioVal(document.getElementsByName("user_type"));
-    // formData = JSON.stringify(formData));

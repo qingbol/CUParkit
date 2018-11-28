@@ -38,7 +38,7 @@ let usernameCheck = (username, userType) => {
     }
     axios.get(apiDir+"/"+userType+"/read_single.php", {
         params: {
-            oid: username,
+            id: username,
         }
     }).then(res => {
         // If the username does exist

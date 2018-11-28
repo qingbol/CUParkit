@@ -23,7 +23,7 @@
 
     // Get OID from front-end
     $owner->setAttr("oid", 
-        isset($_GET["oid"]) ? $_GET["oid"] : die()
+        isset($_GET["id"]) ? $_GET["id"] : die()
     );
 
     // Get the single entry from the database, using the OID as a key

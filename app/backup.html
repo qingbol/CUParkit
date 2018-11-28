@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Backup | Recovery</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" media="screen" href="styles/login_register.css">
+        <script type="text/javascript" src="scripts/backup.js"></script>
+        <!-- <script type="text/javascript" src="zxcvbn.js"></script> -->
+        <script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <span><a href="home_page.html">CUParkit</a></span>
+            <span><a href="lot_view.html">Lot View</a></span>
+            <span><a href="login.html">Login</a></span>
+        </header>
+        <form id="backupForm">
+            <fieldset>
+                <legend>Backup the database</legend>
+                 <span><button type="button" id="backupButton">Backup</button></span>
+            </fieldset>
+        </form>
+        <form id="restoreForm">
+            <fieldset>
+                <legend>Recovery the database</legend>
+                <span><button type="button" id="restoreButton">Restore</button></span>
+            </fieldset>
+        </form>
+    </body>
+</html>

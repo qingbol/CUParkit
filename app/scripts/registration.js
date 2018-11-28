@@ -61,12 +61,9 @@ let confirmPassword = (pass, pass_confirm) => {
     }
 };
 
-let register = (apiEndPoint, formData) => {
-    // Check if user's passwords match
-    let pass_node = document.getElementById("ownerPassword");
-    let pass_confirm_node = document.getElementById("ownerPasswordConfirm");
+let register = (apiEndPoint, formData, pass_node, pass_confirm_node) => {
     // If the passwords don't match
-    if ( confirmPassword(pass_node, pass_confirm_node) === false ) {
+    if ( confirmPassword(pass_node, pass_confirm_node) === false || pass_node.value === "") {
         document.getElementById("messageBox").innerHTML = "Registration failed: Your passwords don't match!";
         return;
     }
@@ -89,14 +86,14 @@ let registerOwner = (registerFunc) => {
     let formData = formDataToJSON(document.getElementById("newOwnerForm"));
     // console.log(formData);
     // POST the data to the server to register a new user in the database
-    registerFunc("/Owner/create.php", formData);
+    registerFunc("/Owner/create.php", formData, "ownerPassword", "ownerPasswordConfirm");
 };
 
 let registerAdmin = (registerFunc) => {
     // Get data from HTML Form
     let formData = formDataToJSON(document.getElementById("newManagerForm"));
     // POST the data to the server to register a new user in the database
-    registerFunc("/Manager/create.php", formData);
+    registerFunc("/Manager/create.php", formData, "adminPassword", "adminPasswordConfirm");
 };
 
 // When the script is done being loaded onto the client's machine

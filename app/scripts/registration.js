@@ -26,11 +26,15 @@ let register = ((apiEndPoint, formData) => {
         //console.log(res);
         // document.getElementById("messageBox").innerHTML = JSON.stringify(res);
         document.getElementById("messageBox").innerHTML = res.data.message;
-        document.getElementById("messageBox").innerHTML += "\n" + res.data.passwordMsg;
+        if (res.data.passwordMsg)
+            document.getElementById("messageBox").innerHTML += "<br>" + res.data.passwordMsg;
     }).catch(err => {
         // console.log(err.response);
         // document.getElementById("messageBox").innerHTML = JSON.stringify(err.response);
         document.getElementById("messageBox").innerHTML = err.response.data.message;
+        if (res.data.code)
+            document.getElementById("messageBox").innerHTML = err.response.data.code;
+
     });
 });
 

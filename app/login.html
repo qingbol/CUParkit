@@ -70,6 +70,7 @@
       </div>
 <!-- ==============Navigation bar end here.================================================ -->
 
+<<<<<<< HEAD
         <!-- The login should be the same for all users. -->
         <!-- The back-end code should be able to detect what kind of user it is and handle the login accordingly -->
         <!-- In SQL, there are only 2 types of users: Owner and Manager -->
@@ -110,4 +111,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   </body>
+=======
+        <script type="text/javascript" src="scripts/login.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" media="screen" href="styles/login_register.css">
+    </head>
+    <body>
+        <header>
+            <span><a href="home_page.html">CUParkit</a></span>
+            <span><a href="lot_view.html">Lot View</a></span>
+            <span><a href="register.html">Register</a></span>
+        </header>
+        <!-- The login should be the same for all users. -->
+        <!-- The back-end code should be able to detect what kind of user it is and handle the login accordingly -->
+        <!-- In SQL, there are only 2 types of users: Owner and Manager -->
+        <form id="loginForm">
+            <fieldset>
+                <legend>Login</legend>
+                <div>
+                    <label for="id">ID</label>
+                    <input type="text" id="id" name="id">
+                </div>
+                <!-- Use Sessions for logging in. Don't store passwords as plain text. Salt and hash them. -->
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="user_password">
+                </div>
+                <span><button type="button" id="loginButton">Login</button></span>
+            </fieldset>
+        </form>
+        <label for="messageBox">Info:</label>
+        <div id="messageBox"></div>
+    </body>
+>>>>>>> 0e10c0aa7ca0cc10bde17a95ce959f524fa43dbb
 </html>

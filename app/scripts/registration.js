@@ -27,7 +27,7 @@ let handleError = (err) => {
 
 /* Check if username already exists in database */
 let usernameCheck = (username) => {
-    console.log("Checking: " + username);
+    // console.log("Checking: " + username);
     axios.get(apiDir+"/Owner/read_single.php", {
         params: {
             oid: username,
@@ -43,7 +43,26 @@ let usernameCheck = (username) => {
     }).catch((err) => handleError);
 };
 
+let confirmPassword = (pass, pass_confirm) => {
+    if (pass.value !== pass_confirm.value) {
+        pass_confirm.setCustomValidity("Passwords Must Match");
+        return false;
+    } else {
+        pass_confirm.setCustomValidity("");
+        return true;
+    }
+};
+
 let register = (apiEndPoint, formData) => {
+    // Check if user's passwords match
+    let pass_node = document.getElementById("ownerPassword");
+    let pass_confirm_node = document.getElementById("ownerPasswordConfirm");
+    // If the passwords don't match
+    if ( confirmPassword(pass_node, pass_confirm_node) === false ) {
+        document.getElementById("messageBox").innerHTML = "Registration failed: Your passwords don't match!";
+        return;
+    }
+
     // Post data to API with Axios
     console.log("register..");
     axios.post(apiDir+apiEndPoint, formData)
@@ -65,17 +84,16 @@ let registerOwner = (registerFunc) => {
     registerFunc("/Owner/create.php", formData);
 };
 
-let registerAdmin = (registerFunc => {
+let registerAdmin = (registerFunc) => {
     // Get data from HTML Form
     let formData = formDataToJSON(document.getElementById("newAdminForm"));
     // POST the data to the server to register a new user in the database
     registerFunc("/Manager/create.php", formData);
-});
+};
 
 // When the script is done being loaded onto the client's machine
 window.addEventListener("load",function(){
     // Set what happens when user clicks the register button
-    // document.getElementById("registerOwnerButton").onclick = () => {console.log("click owner"); registerOwner(register);}
     document.getElementById("registerOwnerButton").onclick = () => registerOwner(register);
     document.getElementById("registerAdminButton").onclick = () => registerAdmin(register);
 
@@ -86,5 +104,15 @@ window.addEventListener("load",function(){
 	usernameNode.addEventListener('keyup', () => usernameCheck(usernameNode.value));
 	usernameNode.addEventListener('cut', () => usernameCheck(usernameNode.value));
 	usernameNode.addEventListener('paste', () => usernameCheck(usernameNode.value));
-	usernameNode.addEventListener('blur', () => usernameCheck(usernameNode.value));
+    usernameNode.addEventListener('blur', () => usernameCheck(usernameNode.value));
+    
+    // Test for matching passwords
+    let pass_node = document.getElementById("ownerPassword");
+    let pass_confirm_node = document.getElementById("ownerPasswordConfirm");
+    pass_confirm_node.addEventListener('keydown', () => confirmPassword(pass_node, pass_confirm_node));
+    pass_confirm_node.addEventListener('keyup', () => confirmPassword(pass_node, pass_confirm_node));
+	pass_confirm_node.addEventListener('cut', () => confirmPassword(pass_node, pass_confirm_node));
+	pass_confirm_node.addEventListener('paste', () => confirmPassword(pass_node, pass_confirm_node));
+    pass_confirm_node.addEventListener('blur', () => confirmPassword(pass_node, pass_confirm_node));
+
 });

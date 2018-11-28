@@ -24,16 +24,16 @@
                 <legend>Register New User</legend>
                 <div>
                     <label for="oid">ID</label>
-                    <input type="text" id="ownerId" name="oid">
+                    <input type="text" id="ownerId" name="oid" required>
                     <i id="usernameStatus" class="material-icons">done</i>
                 </div>
                 <div>
                     <label for="name">Name</label>
-                    <input type="text" id="ownerName" name="name">
+                    <input type="text" id="ownerName" name="name" required>
                 </div>
                 <div>
                     <label for="tel">Telephone Number</label>
-                    <input type="text" id="ownerTel" name="tel">
+                    <input type="text" id="ownerTel" name="tel" required>
                 </div>
                 <label for="type">Type of User</label>
                 <div>
@@ -43,7 +43,11 @@
                 </div>
                 <div>
                     <label for="pass">Password</label>
-                    <input type="password" id="ownerPassword" name="pass">
+                    <input type="password" id="ownerPassword" name="pass" required>
+                </div>
+                <div>
+                    <label for="checkPass">Confirm Password</label>
+                    <input type="password" id="ownerPasswordConfirm" name="checkPass" required>
                 </div>
                 <span><button type="button" id="registerOwnerButton">Register</button></span>
             </fieldset>

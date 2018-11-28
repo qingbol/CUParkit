@@ -32,9 +32,9 @@ let login = () => {
     axios.post(apiDir+apiEndPoint, 
         formData)
     .then(res => {
-        console.log(res);
+        document.getElementById("messageBox").innerHTML = res.data.message;
     }).catch(err => {
-        console.log(err.response);
+        document.getElementById("messageBox").innerHTML = err.response.data.message;
     });
 };
 

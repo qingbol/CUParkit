@@ -29,7 +29,13 @@ let handleError = (err) => {
 
 /* Check if username already exists in database */
 let usernameCheck = (username, userType) => {
-    // console.log("Checking: " + username);
+    console.log("Checking: " + username);
+    let id;
+    if (userType === "Owner") {
+        id = "oid";
+    } else {
+        id = "mid";
+    }
     axios.get(apiDir+"/"+userType+"/read_single.php", {
         params: {
             oid: username,
@@ -38,9 +44,9 @@ let usernameCheck = (username, userType) => {
         // If the username does exist
         if (res.data) {
             // console.log("User exists -- Choose another username");
-            document.getElementById("oidStatus").innerHTML = "error";
+            document.getElementById(id+"Status").innerHTML = "error";
         } else { // If the username does not exist
-            document.getElementById('oidStatus').innerHTML = "done";
+            document.getElementById(id+'Status').innerHTML = "done";
         }
     }).catch((err) => handleError);
 };
@@ -120,19 +126,19 @@ window.addEventListener("load",function(){
     // listen for all types of changes to username field
 	// so we can update the icon to help the user know if the id is already taken
 	let usernameNode2 = document.getElementById('managerID');
-	usernameNode.addEventListener('keydown', () => usernameCheck(usernameNode2.value, "Manager"));
-	usernameNode.addEventListener('keyup', () => usernameCheck(usernameNode2.value, "Manager"));
-	usernameNode.addEventListener('cut', () => usernameCheck(usernameNode2.value, "Manager"));
-	usernameNode.addEventListener('paste', () => usernameCheck(usernameNode2.value, "Manager"));
-    usernameNode.addEventListener('blur', () => usernameCheck(usernameNode2.value, "Manager"));
+	usernameNode2.addEventListener('keydown', () => usernameCheck(usernameNode2.value, "Manager"));
+	usernameNode2.addEventListener('keyup', () => usernameCheck(usernameNode2.value, "Manager"));
+	usernameNode2.addEventListener('cut', () => usernameCheck(usernameNode2.value, "Manager"));
+	usernameNode2.addEventListener('paste', () => usernameCheck(usernameNode2.value, "Manager"));
+    usernameNode2.addEventListener('blur', () => usernameCheck(usernameNode2.value, "Manager"));
     
     // Test for matching passwords
     let pass_node2 = document.getElementById("adminPassword");
-    pass_confirm_node = document.getElementById("adminPasswordConfirm");
-    pass_confirm_node.addEventListener('keydown', () => confirmPassword(pass_node2, pass_confirm_node));
-    pass_confirm_node.addEventListener('keyup', () => confirmPassword(pass_node2, pass_confirm_node));
-	pass_confirm_node.addEventListener('cut', () => confirmPassword(pass_node2, pass_confirm_node));
-	pass_confirm_node.addEventListener('paste', () => confirmPassword(pass_node2, pass_confirm_node));
-    pass_confirm_node.addEventListener('blur', () => confirmPassword(pass_node2, pass_confirm_node));
+    let pass_confirm_node2 = document.getElementById("adminPasswordConfirm");
+    pass_confirm_node2.addEventListener('keydown', () => confirmPassword(pass_node2, pass_confirm_node2));
+    pass_confirm_node2.addEventListener('keyup', () => confirmPassword(pass_node2, pass_confirm_node2));
+	pass_confirm_node2.addEventListener('cut', () => confirmPassword(pass_node2, pass_confirm_node2));
+	pass_confirm_node2.addEventListener('paste', () => confirmPassword(pass_node2, pass_confirm_node2));
+    pass_confirm_node2.addEventListener('blur', () => confirmPassword(pass_node2, pass_confirm_node2));
 
 });

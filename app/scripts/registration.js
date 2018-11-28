@@ -20,6 +20,8 @@ let formDataToJSON = (formElement) => {
 let handleError = (err) => {
     // console.log(err.response);
     // document.getElementById("messageBox").innerHTML = JSON.stringify(err.response);
+    console.log("Got here");
+    document.getElementById("messageBox").innerHTML = "GOT HERE";
     document.getElementById("messageBox").innerHTML = err.response.data.message;
     if (res.data.code)
         document.getElementById("messageBox").innerHTML = err.response.data.code;
@@ -117,20 +119,20 @@ window.addEventListener("load",function(){
 
     // listen for all types of changes to username field
 	// so we can update the icon to help the user know if the id is already taken
-	usernameNode = document.getElementById('managerID');
-	usernameNode.addEventListener('keydown', () => usernameCheck(usernameNode.value, "Manager"));
-	usernameNode.addEventListener('keyup', () => usernameCheck(usernameNode.value, "Manager"));
-	usernameNode.addEventListener('cut', () => usernameCheck(usernameNode.value, "Manager"));
-	usernameNode.addEventListener('paste', () => usernameCheck(usernameNode.value, "Manager"));
-    usernameNode.addEventListener('blur', () => usernameCheck(usernameNode.value, "Manager"));
+	let usernameNode2 = document.getElementById('managerID');
+	usernameNode.addEventListener('keydown', () => usernameCheck(usernameNode2.value, "Manager"));
+	usernameNode.addEventListener('keyup', () => usernameCheck(usernameNode2.value, "Manager"));
+	usernameNode.addEventListener('cut', () => usernameCheck(usernameNode2.value, "Manager"));
+	usernameNode.addEventListener('paste', () => usernameCheck(usernameNode2.value, "Manager"));
+    usernameNode.addEventListener('blur', () => usernameCheck(usernameNode2.value, "Manager"));
     
     // Test for matching passwords
-    pass_node = document.getElementById("adminPassword");
+    let pass_node2 = document.getElementById("adminPassword");
     pass_confirm_node = document.getElementById("adminPasswordConfirm");
-    pass_confirm_node.addEventListener('keydown', () => confirmPassword(pass_node, pass_confirm_node));
-    pass_confirm_node.addEventListener('keyup', () => confirmPassword(pass_node, pass_confirm_node));
-	pass_confirm_node.addEventListener('cut', () => confirmPassword(pass_node, pass_confirm_node));
-	pass_confirm_node.addEventListener('paste', () => confirmPassword(pass_node, pass_confirm_node));
-    pass_confirm_node.addEventListener('blur', () => confirmPassword(pass_node, pass_confirm_node));
+    pass_confirm_node.addEventListener('keydown', () => confirmPassword(pass_node2, pass_confirm_node));
+    pass_confirm_node.addEventListener('keyup', () => confirmPassword(pass_node2, pass_confirm_node));
+	pass_confirm_node.addEventListener('cut', () => confirmPassword(pass_node2, pass_confirm_node));
+	pass_confirm_node.addEventListener('paste', () => confirmPassword(pass_node2, pass_confirm_node));
+    pass_confirm_node.addEventListener('blur', () => confirmPassword(pass_node2, pass_confirm_node));
 
 });

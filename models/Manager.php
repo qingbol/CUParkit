@@ -5,6 +5,11 @@
 
     // Import the interface that each model implements
     include_once 'model_interface.php';
+    // Import Composer
+    // require_once '../bin/vendor/autoload.php';
+    require_once __DIR__ . '/../bin/vendor/autoload.php';
+    // Use the library for checking strength of passwords
+    use ZxcvbnPhp\Zxcvbn;
 
     // Owner needs to be able to register as a user
     // Owner needs to be able to register a vehicle
@@ -41,6 +46,25 @@
                 $this->attr[$key] = htmlspecialchars(strip_tags($value));
             }
             
+            // Password Handling
+            /////////////////////////////////////////////////////////////////////
+                // Check strength of password
+                $zxcvbn = new Zxcvbn();
+                $strength = $zxcvbn->passwordStrength($this->attr['password']);
+
+                // Don't continue to register the user until the password is strong enough
+                if ($strength['score'] <= 2) {
+                    // If the password is too weak, respond with a message telling the user how to make it stronger
+                    // $this->msg = $strength['feedback'];
+                    // TODO: Use another zxcvbn library that has built-in feedback messages
+                    $this->msg = "Password too weak. Don't use common words. Use capital letters, numbers, and special characters.";
+                    return false;
+                }
+
+                // Salt and Hash the password using PHP's built-in functions and recommendations
+                $this->attr['password'] = password_hash($this->attr['password'], PASSWORD_DEFAULT);
+            //////////////////////////////////////////////////////////////
+
             // Bind the data to a variable for an SQL attribute
             foreach ($this->attr as $key => $value) {
                 $stmt->bindValue((":" . $key), $value);

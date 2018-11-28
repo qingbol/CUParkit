@@ -25,7 +25,7 @@ let handleError = (err) => {
         document.getElementById("messageBox").innerHTML = err.response.data.code;
 };
 
-let register = (apiEndPoint, formData) => {
+let usernameCheck = (username) => {
     // Check if username already exists in database
     axios.get(apiDir+"/Owner/read_single.php", {
         params: {
@@ -35,18 +35,23 @@ let register = (apiEndPoint, formData) => {
         // If the username does exist
         if (res.data) {
             console.log("User exists -- Choose another username");
+            document.getElementById('usernameStatus').innerHTML = "error";
         } else { // If the username does not exist
-            // Post data to API with Axios
-            console.log("register..");
-            axios.post(apiDir+apiEndPoint, formData)
-            .then(res => {
-                //console.log(res);
-                // document.getElementById("messageBox").innerHTML = JSON.stringify(res);
-                document.getElementById("messageBox").innerHTML = res.data.message;
-                if (res.data.passwordMsg)
-                    document.getElementById("messageBox").innerHTML += "<br>" + res.data.passwordMsg;
-            }).catch((err) => handleError);
+            document.getElementById('usernameStatus').innerHTML = "done";
         }
+    }).catch((err) => handleError);
+};
+
+let register = (apiEndPoint, formData) => {
+    // Post data to API with Axios
+    console.log("register..");
+    axios.post(apiDir+apiEndPoint, formData)
+    .then(res => {
+        //console.log(res);
+        // document.getElementById("messageBox").innerHTML = JSON.stringify(res);
+        document.getElementById("messageBox").innerHTML = res.data.message;
+        if (res.data.passwordMsg)
+            document.getElementById("messageBox").innerHTML += "<br>" + res.data.passwordMsg;
     }).catch((err) => handleError);
 };
 
@@ -72,4 +77,13 @@ window.addEventListener("load",function(){
     // document.getElementById("registerOwnerButton").onclick = () => {console.log("click owner"); registerOwner(register);}
     document.getElementById("registerOwnerButton").onclick = () => registerOwner(register);
     document.getElementById("registerAdminButton").onclick = () => registerAdmin(register);
+
+    //listen for all types of changes to username field
+	//so we can update the icon and exists boolean
+	let usernameNode = document.getElementById('ownerId');
+	usernameNode.addEventListener('keydown',usernameCheck);
+	usernameNode.addEventListener('keyup',usernameCheck);
+	usernameNode.addEventListener('cut',usernameCheck);
+	usernameNode.addEventListener('paste',usernameCheck);
+	usernameNode.addEventListener('blur',usernameCheck);
 });

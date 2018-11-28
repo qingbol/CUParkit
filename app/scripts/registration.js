@@ -26,9 +26,9 @@ let handleError = (err) => {
 };
 
 /* Check if username already exists in database */
-let usernameCheck = (username) => {
+let usernameCheck = (username, userType) => {
     // console.log("Checking: " + username);
-    axios.get(apiDir+"/Owner/read_single.php", {
+    axios.get(apiDir+"/"+userType+"/read_single.php", {
         params: {
             oid: username,
         }
@@ -86,7 +86,7 @@ let registerOwner = (registerFunc) => {
 
 let registerAdmin = (registerFunc) => {
     // Get data from HTML Form
-    let formData = formDataToJSON(document.getElementById("newAdminForm"));
+    let formData = formDataToJSON(document.getElementById("newManagerForm"));
     // POST the data to the server to register a new user in the database
     registerFunc("/Manager/create.php", formData);
 };
@@ -100,15 +100,33 @@ window.addEventListener("load",function(){
     // listen for all types of changes to username field
 	// so we can update the icon to help the user know if the id is already taken
 	let usernameNode = document.getElementById('ownerId');
-	usernameNode.addEventListener('keydown', () => usernameCheck(usernameNode.value));
-	usernameNode.addEventListener('keyup', () => usernameCheck(usernameNode.value));
-	usernameNode.addEventListener('cut', () => usernameCheck(usernameNode.value));
-	usernameNode.addEventListener('paste', () => usernameCheck(usernameNode.value));
-    usernameNode.addEventListener('blur', () => usernameCheck(usernameNode.value));
+	usernameNode.addEventListener('keydown', () => usernameCheck(usernameNode.value, "Owner"));
+	usernameNode.addEventListener('keyup', () => usernameCheck(usernameNode.value, "Owner"));
+	usernameNode.addEventListener('cut', () => usernameCheck(usernameNode.value, "Owner"));
+	usernameNode.addEventListener('paste', () => usernameCheck(usernameNode.value, "Owner"));
+    usernameNode.addEventListener('blur', () => usernameCheck(usernameNode.value, "Owner"));
     
     // Test for matching passwords
     let pass_node = document.getElementById("ownerPassword");
     let pass_confirm_node = document.getElementById("ownerPasswordConfirm");
+    pass_confirm_node.addEventListener('keydown', () => confirmPassword(pass_node, pass_confirm_node));
+    pass_confirm_node.addEventListener('keyup', () => confirmPassword(pass_node, pass_confirm_node));
+	pass_confirm_node.addEventListener('cut', () => confirmPassword(pass_node, pass_confirm_node));
+	pass_confirm_node.addEventListener('paste', () => confirmPassword(pass_node, pass_confirm_node));
+    pass_confirm_node.addEventListener('blur', () => confirmPassword(pass_node, pass_confirm_node));
+
+    // listen for all types of changes to username field
+	// so we can update the icon to help the user know if the id is already taken
+	usernameNode = document.getElementById('managerID');
+	usernameNode.addEventListener('keydown', () => usernameCheck(usernameNode.value, "Manager"));
+	usernameNode.addEventListener('keyup', () => usernameCheck(usernameNode.value, "Manager"));
+	usernameNode.addEventListener('cut', () => usernameCheck(usernameNode.value, "Manager"));
+	usernameNode.addEventListener('paste', () => usernameCheck(usernameNode.value, "Manager"));
+    usernameNode.addEventListener('blur', () => usernameCheck(usernameNode.value, "Manager"));
+    
+    // Test for matching passwords
+    pass_node = document.getElementById("adminPassword");
+    pass_confirm_node = document.getElementById("adminPasswordConfirm");
     pass_confirm_node.addEventListener('keydown', () => confirmPassword(pass_node, pass_confirm_node));
     pass_confirm_node.addEventListener('keyup', () => confirmPassword(pass_node, pass_confirm_node));
 	pass_confirm_node.addEventListener('cut', () => confirmPassword(pass_node, pass_confirm_node));

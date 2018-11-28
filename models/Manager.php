@@ -15,6 +15,8 @@
     // Owner needs to be able to register a vehicle
     // Owner owns vehicles -- need to assign a registered vehicle to a registered user
     class Manager implements model_interface {
+        private $msg; // Message to communicate to API
+        
         private $conn; // The connection to the database
         private $table = "manager"; // The name of the table in the mySQL database
 

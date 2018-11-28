@@ -223,6 +223,11 @@
             return false;
         }
 
+        /* Get the any message the model outputs */
+        public function getMsg() {
+            return $this->msg;
+        }
+
         /* Get the name of the table in the database that this class is modeling */
         public function getTableName() {
             return $this->table;

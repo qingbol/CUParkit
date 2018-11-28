@@ -1,84 +1,540 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Lot View | CUParkit</title>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> 
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+    <!-- <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="styles/lot_view.css" /> -->
+    <link rel="stylesheet" href="styles/bootstrap.css">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="styles/home_page.css" /> -->
 
-        <link rel="stylesheet" type="text/css" media="screen" href="styles/lot_view.css" />
-    </head>
-    <body>
-        <header>
-            <span><a href="home_page.html">CUParkit</a></span>
-            <span><a href="lot_view.html">Lot View</a></span>
-            <!-- <span><a href="login_register.html">Login / Register</a></span> -->
-        </header>
-        <!-- Note: I will use javascript to make these elements and conditionally style them. For now, they are hardcoded. -->
-        <div class="lot">
-            <span>Lot 1</span>
-            <div id="s001">
-                <span>001</span>
-                <img src="images/Sports-Car-Free-Icon.jpg" alt="X">
-                <button type="submit" disabled="disabled">Occupy</button>
-                <button type="submit">Leave</button>
-            </div>
-            <div id="s002">
-                <span>002</span>
-                <img src="images/Sports-Car-Free-Icon.jpg" alt="X">
-                <button type="submit" disabled="disabled">Occupy</button>
-                <button type="submit">Leave</button>
-            </div>
-            <div id="s003">
-                <span>003</span>
-                <img src="images/Sports-Car-Free-Icon.jpg" alt="X">
-                <button type="submit">Occupy</button>
-                <button type="submit" disabled="disabled">Leave</button>
-            </div>
-            <div id="s004">
-                <span>004</span>
-                <img src="images/Sports-Car-Free-Icon.jpg" alt="X">
-                <button type="submit">Occupy</button>
-                <button type="submit" disabled="disabled">Leave</button>
-            </div>
-            <div id="s005">
-                <span>005</span>
-                <img src="images/Sports-Car-Free-Icon.jpg" alt="X">
-                <button type="submit">Occupy</button>
-                <button type="submit" disabled="disabled">Leave</button>
-            </div>
-            <div id="s006">
-                <span>006</span>
-                <img src="images/Sports-Car-Free-Icon.jpg" alt="X">
-                <button type="submit" disabled="disabled">Occupy</button>
-                <button type="submit">Leave</button>
-            </div>
-            <div id="s007">
-                <span>007</span>
-                <img src="images/Sports-Car-Free-Icon.jpg" alt="X">
-                <button type="submit">Occupy</button>
-                <button type="submit" disabled="disabled">Leave</button>
-            </div>
-            <div id="s008">
-                <span>008</span>
-                <img src="images/Sports-Car-Free-Icon.jpg" alt="X">
-                <button type="submit" disabled="disabled">Occupy</button>
-                <button type="submit">Leave</button>
-            </div>
-            <!-- <div id="s009">
-                <span>009</span>
-                <img src="images/Sports-Car-Free-Icon.jpg" alt="X">
-                <button type="submit">Occupy</button>
-                <button type="submit" disabled="disabled">Leave</button>
-            </div>
-            <div id="s010">
-                <span>010</span>
-                <img src="images/Sports-Car-Free-Icon.jpg" alt="X">
-                <button type="submit" disabled="disabled">Occupy</button>
-                <button type="submit">Leave</button>
-            </div> -->
+    <title>CUParkit</title>
+  </head>
+  <body>
+      <!-- <div class="container">
+        <div class="h4 pb-2 mt-4 mb-1 border-bottom">
+            CU Parking Manage System
         </div>
+      </div> -->
+      <div class="container border">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <a class="navbar-brand" href="#"> </a>
+          <span style="font-size: 2em; color: Mediumslateblue;">
+              <i class="fas fa-parking"></i>
+          </span>
+        
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav ml-3 ml-auto mt-0 mt-lg-0">
+              <li class="nav-item active">
+                <h4><a class="nav-link" href="home_page.html#">Home <span class="sr-only">(current)</span></a></h4>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link h4" href="lot_view.html#">LotView</a>
+              </li>
+              <li class="nav-item">
+                    <a class="nav-link h4" href="register.html#">Register</a>
+                  </li>
+              <li class="nav-item">
+                <a class="nav-link h4" href="login.html#">Login</a>
+              </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle h4" href="#" id="navbarDropdown" data-toggle="dropdown">
+                      Query </a>
+                  <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Query 1</a>
+                      <a class="dropdown-item" href="#">Query 2</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Another Query</a>
+                  </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link h4" href="backup.html#">Backup</a>
+              </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </div>
+        </nav>
+      </div>
+<!-- ==============Navigation bar end here.================================================ -->
+        
+        <!-- Note: I will use javascript to make these elements and conditionally style them. For now, they are hardcoded. -->
+        <div class="container">
+                <div class="row justify-content-center border bg-info">
+                    <div class="col-122 text-center"><h3>Lot 1</h3></div> 
+                </div>
+                <div class="row mb-1">
+                    <!-- <span>Lot 1</span> -->
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" id="s001">
+                        <div class="row justify-content-center border bg-warning">
+                            <div class="col text-center">Spot 001</div> 
+                        </div>
+                        <div class="row justify-content-center border ">
+                            <div class="col">
+                            <img class="img-thumbnail" width=158 src="images/Sports-Car-Free-Icon.jpg" alt="X">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center border">
+                            <div class="col">
+                            <button type="submit" disabled="disabled">Occupy</button>
+                            </div>
+                            <div class="col">
+                            <button type="submit">Leave</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" id="s002">
+                        <div class="row justify-content-center border bg-warning">
+                            <div class="col text-center">Spot 002</div> 
+                        </div>
+                        <div class="row justify-content-center border ">
+                            <div class="col" id="s002">
+                            <img class="img-thumbnail" width=158 src="images/Sports-Car-Free-Icon.jpg" alt="X">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center border">
+                            <div class="col">
+                            <button type="submit" >Occupy</button>
+                            </div>
+                            <div class="col">
+                            <button type="submit" disabled="disabled">Leave</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" id="s003">
+                        <div class="row justify-content-center border bg-warning">
+                            <div class="col text-center">Spot 003</div> 
+                        </div>
+                        <div class="row justify-content-center border ">
+                            <div class="col">
+                            <img class="img-thumbnail" width=158 src="images/Sports-Car-Free-Icon.jpg" alt="X">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center border">
+                            <div class="col">
+                            <button type="submit" disabled="disabled">Occupy</button>
+                            </div>
+                            <div class="col">
+                            <button type="submit">Leave</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" id="s004">
+                        <div class="row justify-content-center border bg-warning">
+                            <div class="col text-center">Spot 004</div> 
+                        </div>
+                        <div class="row justify-content-center border ">
+                            <div class="col">
+                            <img class="img-thumbnail" width=158 src="images/Sports-Car-Free-Icon.jpg" alt="X">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center border">
+                            <div class="col">
+                            <button type="submit" >Occupy</button>
+                            </div>
+                            <div class="col">
+                            <button type="submit" disabled="disabled">Leave</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" id="s005">
+                        <div class="row justify-content-center border bg-warning">
+                            <div class="col text-center">Spot 005</div> 
+                        </div>
+                        <div class="row justify-content-center border ">
+                            <div class="col">
+                            <img class="img-thumbnail" width=158 src="images/Sports-Car-Free-Icon.jpg" alt="X">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center border">
+                            <div class="col">
+                            <button type="submit" disabled="disabled">Occupy</button>
+                            </div>
+                            <div class="col">
+                            <button type="submit">Leave</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" id="s006">
+                        <div class="row justify-content-center border bg-warning">
+                            <div class="col text-center">Spot 006</div> 
+                        </div>
+                        <div class="row justify-content-center border ">
+                            <div class="col">
+                            <img class="img-thumbnail" width=158 src="images/Sports-Car-Free-Icon.jpg" alt="X">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center border">
+                            <div class="col">
+                            <button type="submit" >Occupy</button>
+                            </div>
+                            <div class="col">
+                            <button type="submit" disabled="disabled">Leave</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" id="s007">
+                        <div class="row justify-content-center border bg-warning">
+                            <div class="col text-center">Spot 007</div> 
+                        </div>
+                        <div class="row justify-content-center border ">
+                            <div class="col">
+                            <img class="img-thumbnail" width=158 src="images/Sports-Car-Free-Icon.jpg" alt="X">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center border">
+                            <div class="col">
+                            <button type="submit" disabled="disabled">Occupy</button>
+                            </div>
+                            <div class="col">
+                            <button type="submit">Leave</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" id="s008">
+                        <div class="row justify-content-center border bg-warning">
+                            <div class="col text-center">Spot 008</div> 
+                        </div>
+                        <div class="row justify-content-center border ">
+                            <div class="col" id="s002">
+                            <img class="img-thumbnail" width=158 src="images/Sports-Car-Free-Icon.jpg" alt="X">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center border">
+                            <div class="col">
+                            <button type="submit" >Occupy</button>
+                            </div>
+                            <div class="col">
+                            <button type="submit" disabled="disabled">Leave</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" id="s009">
+                        <div class="row justify-content-center border bg-warning">
+                            <div class="col text-center">Spot 009</div> 
+                        </div>
+                        <div class="row justify-content-center border ">
+                            <div class="col">
+                            <img class="img-thumbnail" width=158 src="images/Sports-Car-Free-Icon.jpg" alt="X">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center border">
+                            <div class="col">
+                            <button type="submit" disabled="disabled">Occupy</button>
+                            </div>
+                            <div class="col">
+                            <button type="submit">Leave</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" id="s010">
+                        <div class="row justify-content-center border bg-warning">
+                            <div class="col t4xt-center">Spot 010</div> 
+                        </div>
+                        <div class="row justify-content-center border ">
+                            <div class="col">
+                            <img class="img-thumbnail" width=158 src="images/Sports-Car-Free-Icon.jpg" alt="X">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center border">
+                            <div class="col">
+                            <button type="submit" >Occupy</button>
+                            </div>
+                            <div class="col">
+                            <button type="submit" disabled="disabled">Leave</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" id="s011">
+                        <div class="row justify-content-center border bg-warning">
+                            <div class="col text-center">Spot 011</div> 
+                        </div>
+                        <div class="row justify-content-center border ">
+                            <div class="col">
+                            <img class="img-thumbnail" width=158 src="images/Sports-Car-Free-Icon.jpg" alt="X">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center border">
+                            <div class="col">
+                            <button type="submit" disabled="disabled">Occupy</button>
+                            </div>
+                            <div class="col">
+                            <button type="submit">Leave</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" id="s012">
+                        <div class="row justify-content-center border bg-warning">
+                            <div class="col text-center">Spot 012</div> 
+                        </div>
+                        <div class="row justify-content-center border ">
+                            <div class="col">
+                            <img class="img-thumbnail" width=158 src="images/Sports-Car-Free-Icon.jpg" alt="X">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center border">
+                            <div class="col">
+                            <button type="submit" >Occupy</button>
+                            </div>
+                            <div class="col">
+                            <button type="submit" disabled="disabled">Leave</button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+        <!-- Note: I will use javascript to make these elements and conditionally style them. For now, they are hardcoded. -->
+        <div class="container">
+                <div class="row justify-content-center border bg-info">
+                    <div class="col-6 text-center"><h3>Lot 2</h3></div> 
+                </div>
+                <div class="row">
+                    <!-- <span>Lot 1</span> -->
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" id="s001">
+                        <div class="row justify-content-center border bg-warning">
+                            <div class="col text-center">Spot 001</div> 
+                        </div>
+                        <div class="row justify-content-center border ">
+                            <div class="col">
+                            <img class="img-thumbnail" width=158 src="images/Sports-Car-Free-Icon.jpg" alt="X">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center border">
+                            <div class="col">
+                            <button type="submit" disabled="disabled">Occupy</button>
+                            </div>
+                            <div class="col">
+                            <button type="submit">Leave</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" id="s002">
+                        <div class="row justify-content-center border bg-warning">
+                            <div class="col text-center">Spot 002</div> 
+                        </div>
+                        <div class="row justify-content-center border ">
+                            <div class="col" id="s002">
+                            <img class="img-thumbnail" width=158 src="images/Sports-Car-Free-Icon.jpg" alt="X">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center border">
+                            <div class="col">
+                            <button type="submit" >Occupy</button>
+                            </div>
+                            <div class="col">
+                            <button type="submit" disabled="disabled">Leave</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" id="s003">
+                        <div class="row justify-content-center border bg-warning">
+                            <div class="col text-center">Spot 003</div> 
+                        </div>
+                        <div class="row justify-content-center border ">
+                            <div class="col">
+                            <img class="img-thumbnail" width=158 src="images/Sports-Car-Free-Icon.jpg" alt="X">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center border">
+                            <div class="col">
+                            <button type="submit" disabled="disabled">Occupy</button>
+                            </div>
+                            <div class="col">
+                            <button type="submit">Leave</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" id="s004">
+                        <div class="row justify-content-center border bg-warning">
+                            <div class="col text-center">Spot 004</div> 
+                        </div>
+                        <div class="row justify-content-center border ">
+                            <div class="col">
+                            <img class="img-thumbnail" width=158 src="images/Sports-Car-Free-Icon.jpg" alt="X">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center border">
+                            <div class="col">
+                            <button type="submit" >Occupy</button>
+                            </div>
+                            <div class="col">
+                            <button type="submit" disabled="disabled">Leave</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" id="s005">
+                        <div class="row justify-content-center border bg-warning">
+                            <div class="col text-center">Spot 005</div> 
+                        </div>
+                        <div class="row justify-content-center border ">
+                            <div class="col">
+                            <img class="img-thumbnail" width=158 src="images/Sports-Car-Free-Icon.jpg" alt="X">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center border">
+                            <div class="col">
+                            <button type="submit" disabled="disabled">Occupy</button>
+                            </div>
+                            <div class="col">
+                            <button type="submit">Leave</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" id="s006">
+                        <div class="row justify-content-center border bg-warning">
+                            <div class="col text-center">Spot 006</div> 
+                        </div>
+                        <div class="row justify-content-center border ">
+                            <div class="col">
+                            <img class="img-thumbnail" width=158 src="images/Sports-Car-Free-Icon.jpg" alt="X">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center border">
+                            <div class="col">
+                            <button type="submit" >Occupy</button>
+                            </div>
+                            <div class="col">
+                            <button type="submit" disabled="disabled">Leave</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" id="s007">
+                        <div class="row justify-content-center border bg-warning">
+                            <div class="col text-center">Spot 007</div> 
+                        </div>
+                        <div class="row justify-content-center border ">
+                            <div class="col">
+                            <img class="img-thumbnail" width=158 src="images/Sports-Car-Free-Icon.jpg" alt="X">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center border">
+                            <div class="col">
+                            <button type="submit" disabled="disabled">Occupy</button>
+                            </div>
+                            <div class="col">
+                            <button type="submit">Leave</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" id="s008">
+                        <div class="row justify-content-center border bg-warning">
+                            <div class="col text-center">Spot 008</div> 
+                        </div>
+                        <div class="row justify-content-center border ">
+                            <div class="col" id="s002">
+                            <img class="img-thumbnail" width=158 src="images/Sports-Car-Free-Icon.jpg" alt="X">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center border">
+                            <div class="col">
+                            <button type="submit" >Occupy</button>
+                            </div>
+                            <div class="col">
+                            <button type="submit" disabled="disabled">Leave</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" id="s009">
+                        <div class="row justify-content-center border bg-warning">
+                            <div class="col text-center">Spot 009</div> 
+                        </div>
+                        <div class="row justify-content-center border ">
+                            <div class="col">
+                            <img class="img-thumbnail" width=158 src="images/Sports-Car-Free-Icon.jpg" alt="X">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center border">
+                            <div class="col">
+                            <button type="submit" disabled="disabled">Occupy</button>
+                            </div>
+                            <div class="col">
+                            <button type="submit">Leave</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" id="s010">
+                        <div class="row justify-content-center border bg-warning">
+                            <div class="col t4xt-center">Spot 010</div> 
+                        </div>
+                        <div class="row justify-content-center border ">
+                            <div class="col">
+                            <img class="img-thumbnail" width=158 src="images/Sports-Car-Free-Icon.jpg" alt="X">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center border">
+                            <div class="col">
+                            <button type="submit" >Occupy</button>
+                            </div>
+                            <div class="col">
+                            <button type="submit" disabled="disabled">Leave</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" id="s011">
+                        <div class="row justify-content-center border bg-warning">
+                            <div class="col text-center">Spot 011</div> 
+                        </div>
+                        <div class="row justify-content-center border ">
+                            <div class="col">
+                            <img class="img-thumbnail" width=158 src="images/Sports-Car-Free-Icon.jpg" alt="X">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center border">
+                            <div class="col">
+                            <button type="submit" disabled="disabled">Occupy</button>
+                            </div>
+                            <div class="col">
+                            <button type="submit">Leave</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" id="s012">
+                        <div class="row justify-content-center border bg-warning">
+                            <div class="col text-center">Spot 012</div> 
+                        </div>
+                        <div class="row justify-content-center border ">
+                            <div class="col">
+                            <img class="img-thumbnail" width=158 src="images/Sports-Car-Free-Icon.jpg" alt="X">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center border">
+                            <div class="col">
+                            <button type="submit" >Occupy</button>
+                            </div>
+                            <div class="col">
+                            <button type="submit" disabled="disabled">Leave</button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+<!-- ===========Footer part start from here===================================== -->
+      <div class="container">
+        <div class="footer text-right">
+            <p>&copy <a href="#" targe="_blank">CUParkit.com</a> | <a href="#" target="_blank">Imprint</a></p>
+          </div>
+        </div>
+      </div>  
+  
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     </body>
-</html>
+  </html>

@@ -61,7 +61,9 @@ let confirmPassword = (pass, pass_confirm) => {
     }
 };
 
-let register = (apiEndPoint, formData, pass_node, pass_confirm_node) => {
+let register = (apiEndPoint, formData, pass_node_name, pass_confirm_node_name) => {
+    pass_node = document.getElementById(pass_node_name);
+    pass_confirm_node = document.getElementById(pass_confirm_node_name);
     // If the passwords don't match
     if ( confirmPassword(pass_node, pass_confirm_node) === false || pass_node.value === "") {
         document.getElementById("messageBox").innerHTML = "Registration failed: Your passwords don't match!";

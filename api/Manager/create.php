@@ -36,7 +36,7 @@
             echo json_encode(array('message' => 'Manager Successfully Created'));
         } else {
             echo json_encode(array('message' => 'Manager Not Created',
-                                    'PasswordMsg' => $manager->getMsg()
+                                    'passwordMsg' => $manager->getMsg()
             ));
         }
     } catch (PDOException $e) {

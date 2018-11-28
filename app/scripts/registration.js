@@ -36,9 +36,9 @@ let usernameCheck = (username) => {
         // If the username does exist
         if (res.data) {
             console.log("User exists -- Choose another username");
-            document.getElementById('usernameStatus').innerHTML = "error";
+            document.getElementById("oidStatus").innerHTML = "error";
         } else { // If the username does not exist
-            document.getElementById('usernameStatus').innerHTML = "done";
+            document.getElementById('oidStatus').innerHTML = "done";
         }
     }).catch((err) => handleError);
 };

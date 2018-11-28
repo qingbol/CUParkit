@@ -24,16 +24,16 @@
                 <legend>Register New User</legend>
                 <div>
                     <label for="oid">ID</label>
-                    <input type="text" id="ownerId" name="oid" required>
-                    <i id="usernameStatus" class="material-icons">done</i>
+                    <input type="text" id="ownerId" name="oid" placeholder="Bob123" required>
+                    <i id="oidStatus" class="material-icons">done</i>
                 </div>
                 <div>
                     <label for="name">Name</label>
-                    <input type="text" id="ownerName" name="name" required>
+                    <input type="text" id="ownerName" name="name" placeholder="Robert" required>
                 </div>
                 <div>
                     <label for="tel">Telephone Number</label>
-                    <input type="text" id="ownerTel" name="tel" required>
+                    <input type="text" id="ownerTel" name="tel" placeholder="123-123-1234" required>
                 </div>
                 <label for="type">Type of User</label>
                 <div>
@@ -43,11 +43,11 @@
                 </div>
                 <div>
                     <label for="pass">Password</label>
-                    <input type="password" id="ownerPassword" name="pass" required>
+                    <input type="password" id="ownerPassword" name="pass" placeholder="Password" required>
                 </div>
                 <div>
                     <label for="checkPass">Confirm Password</label>
-                    <input type="password" id="ownerPasswordConfirm" name="checkPass" required>
+                    <input type="password" id="ownerPasswordConfirm" name="checkPass" placeholder="Confirm Password" required>
                 </div>
                 <span><button type="button" id="registerOwnerButton">Register</button></span>
             </fieldset>
@@ -56,20 +56,25 @@
             <fieldset>
                 <legend>Register New Administrator</legend>
                 <div>
+                    <label for="mid">ID</label>
+                    <input type="text" id="managerID" name="mid" placeholder="Bob123" required>
+                    <i id="midStatus" class="material-icons">done</i>
+                </div>
+                <div>
                     <label for="name">Name</label>
-                    <input type="text" id="adminName" name="name">
+                    <input type="text" id="adminName" name="name" placeholder="Robert" required>
                 </div>
                 <div>
                     <label for="tel">Telephone Number</label>
-                    <input type="text" id="adminTel" name="tel">
-                </div>
-                <div>
-                    <label for="uname">Username</label>
-                    <input type="text" id="uname" name="uname">
+                    <input type="text" id="adminTel" name="tel" placeholder="123-123-1234" required>
                 </div>
                 <div>
                     <label for="password">Password</label>
-                    <input type="password" id="adminassword" name="user_password">
+                    <input type="password" id="adminPassword" name="pass" placeholder="Password" required>
+                </div>
+                <div>
+                    <label for="checkPass">Confirm Password</label>
+                    <input type="password" id="adminPasswordConfirm" name="checkPass" placeholder="Confirm Password" required>
                 </div>
                 <span><button type="button" id="registerAdminButton">Register</button></span>
             </fieldset>

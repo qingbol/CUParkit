@@ -25,11 +25,12 @@ let handleError = (err) => {
         document.getElementById("messageBox").innerHTML = err.response.data.code;
 };
 
+/* Check if username already exists in database */
 let usernameCheck = (username) => {
-    // Check if username already exists in database
+    console.log("Checking: " + username);
     axios.get(apiDir+"/Owner/read_single.php", {
         params: {
-            oid: formData.oid,
+            oid: username,
         }
     }).then(res => {
         // If the username does exist
@@ -78,12 +79,12 @@ window.addEventListener("load",function(){
     document.getElementById("registerOwnerButton").onclick = () => registerOwner(register);
     document.getElementById("registerAdminButton").onclick = () => registerAdmin(register);
 
-    //listen for all types of changes to username field
-	//so we can update the icon and exists boolean
+    // listen for all types of changes to username field
+	// so we can update the icon to help the user know if the id is already taken
 	let usernameNode = document.getElementById('ownerId');
-	usernameNode.addEventListener('keydown',usernameCheck);
-	usernameNode.addEventListener('keyup',usernameCheck);
-	usernameNode.addEventListener('cut',usernameCheck);
-	usernameNode.addEventListener('paste',usernameCheck);
-	usernameNode.addEventListener('blur',usernameCheck);
+	usernameNode.addEventListener('keydown', () => usernameCheck(usernameNode.value));
+	usernameNode.addEventListener('keyup', () => usernameCheck(usernameNode.value));
+	usernameNode.addEventListener('cut', () => usernameCheck(usernameNode.value));
+	usernameNode.addEventListener('paste', () => usernameCheck(usernameNode.value));
+	usernameNode.addEventListener('blur', () => usernameCheck(usernameNode.value));
 });

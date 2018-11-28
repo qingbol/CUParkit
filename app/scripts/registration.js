@@ -24,10 +24,13 @@ let register = ((apiEndPoint, formData) => {
         formData)
     .then(res => {
         //console.log(res);
-        document.getElementById("messageBox").innerHTML = res;
+        // document.getElementById("messageBox").innerHTML = JSON.stringify(res);
+        document.getElementById("messageBox").innerHTML = res.data.message;
+        document.getElementById("messageBox").innerHTML += "\n" + res.data.passwordMsg;
     }).catch(err => {
         // console.log(err.response);
-        document.getElementById("messageBox").innerHTML = err.response;
+        // document.getElementById("messageBox").innerHTML = JSON.stringify(err.response);
+        document.getElementById("messageBox").innerHTML = err.response.data.message;
     });
 });
 

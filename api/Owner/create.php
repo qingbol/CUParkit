@@ -35,8 +35,7 @@
         echo json_encode(array('message' => 'Owner Successfully Created'));
     } else {
         echo json_encode(array('message' => 'Owner Not Created',
-                                'PasswordMsg' => $owner->getMsg()
+                                'passwordMsg' => $owner->getMsg()
         ));
-        // echo json_encode($owner->getMsg());
     }
 

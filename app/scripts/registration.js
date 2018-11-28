@@ -35,7 +35,7 @@ let usernameCheck = (username) => {
     }).then(res => {
         // If the username does exist
         if (res.data) {
-            console.log("User exists -- Choose another username");
+            // console.log("User exists -- Choose another username");
             document.getElementById("oidStatus").innerHTML = "error";
         } else { // If the username does not exist
             document.getElementById('oidStatus').innerHTML = "done";
@@ -64,7 +64,7 @@ let register = (apiEndPoint, formData) => {
     }
 
     // Post data to API with Axios
-    console.log("register..");
+    // console.log("register..");
     axios.post(apiDir+apiEndPoint, formData)
     .then(res => {
         //console.log(res);
@@ -77,7 +77,7 @@ let register = (apiEndPoint, formData) => {
 
 let registerOwner = (registerFunc) => {
     // Get data from HTML Form
-    console.log("registerowner");
+    // console.log("registerowner");
     let formData = formDataToJSON(document.getElementById("newOwnerForm"));
     // console.log(formData);
     // POST the data to the server to register a new user in the database

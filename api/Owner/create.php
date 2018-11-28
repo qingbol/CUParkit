@@ -44,5 +44,3 @@
         echo json_encode( array("message" => $e->getMessage(),
                                 "code" => (int)$e->getCode()) );
     }
-    
-

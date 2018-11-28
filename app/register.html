@@ -73,7 +73,7 @@
 <!-- ==============Navigation bar end here.================================================ -->
 
       <div class="container">
-        <div class="row mt-3">
+        <div class="row">
             <div class="col-1"></div>
             <div class="col-3 border">
                 <form id="newOwnerForm">
@@ -135,9 +135,9 @@
                         <!-- Use Sessions for logging in. Don't store passwords as plain text. Salt and hash them. -->
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input class="form-control" type="password" id="adminassword" name="pass" placeholder="Password" required>
+                            <input class="form-control" type="password" id="adminPassword" name="password" placeholder="Password" required>
                         </div>
-                        <div class="form-group">
+                        <div>
                             <label for="checkPass">Confirm Password</label>
                             <input class="form-control" type="password" id="adminPasswordConfirm" name="checkPass" placeholder="Confirm Password" required>
                         </div>
@@ -152,11 +152,12 @@
                 <label for="messageBox">Info:</label>
                 <div id="messageBox"></div>
             </div>
+        </div>
       </div>
 
 <!-- ===========Footer part start from here===================================== -->
 <div class="container">
-        <div class="footer text-center">
+        <div class="footer text-right">
             <p>&copy <a href="#" target="_blank">CUParkit.com</a> | <a href="#" target="_blank">Imprint</a></p>
           </div>
         </div>

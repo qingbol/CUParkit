@@ -1,10 +1,6 @@
 <?php
     class Database {
-<<<<<<< HEAD
         // Production Database Parameters
-=======
-        // Database Parameters
->>>>>>> 0e10c0aa7ca0cc10bde17a95ce959f524fa43dbb
         // private $host = "mysql1.cs.clemson.edu";
         // private $db_name = "CPSC_4620_c0ei";
         // private $charset = "utf8";
@@ -22,7 +18,6 @@
 
         // Jack localhost DB Params
         // private $host = "192.168.122.173";
-<<<<<<< HEAD
         // private $host = "localhost";
         // private $db_name = "CUParkit";
         // private $charset = "utf8";
@@ -55,15 +50,14 @@
         // private $charset = "utf8";
         // private $username = "root";
         // private $password = "0000";
+        
         // private $conn; // Connection to the database
-=======
-        private $host = "localhost";
-        private $db_name = "CUParkit";
-        private $charset = "utf8";
-        private $username = "parkingMgr";
-        private $password = "abc123";
-        private $conn;
->>>>>>> 0e10c0aa7ca0cc10bde17a95ce959f524fa43dbb
+        // private $host = "localhost";
+        // private $db_name = "CUParkit";
+        // private $charset = "utf8";
+        // private $username = "parkingMgr";
+        // private $password = "abc123";
+        // private $conn;
         
         // Connect to Database
         public function connect() {

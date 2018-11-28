@@ -23,7 +23,7 @@
 
     // Get OID from front-end
     $manager->setAttr("mid", 
-        isset($_GET["mid"]) ? $_GET["mid"] : die()
+        isset($_GET["id"]) ? $_GET["id"] : die()
     );
 
     // Get the single entry from the database, using the OID as a key

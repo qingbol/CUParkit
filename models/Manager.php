@@ -44,16 +44,23 @@
             $stmt = $this->conn->prepare($query);
 
             // Clean the data (reduce malicious SQL injection, etc.)
+            $orig_pass = $this->attr['password'];
             foreach ($this->attr as $key => $value) {
                 $this->attr[$key] = htmlspecialchars(strip_tags($value));
             }
             
             // Password Handling
             /////////////////////////////////////////////////////////////////////
+                // Check if password was modified by stripping HTML Special chars
+                if ($orig_pass !== $this->attr['password']) {
+                    $this->msg = "ERROR: Password cannot contain certain special characters.";
+                    return false;
+                }
+
                 // Ensure that the password has at least one capital letter
                 // Get a version of the password with all lowercase letters
-                $lower_pass = strtolower($this->attr['pass']);
-                if ($lower_pass === $this->attr['pass']) {
+                $lower_pass = strtolower($this->attr['password']);
+                if ($lower_pass === $this->attr['password']) {
                     // If the lowercase password is the same as the original password,
                     //      then the original password did not have any uppercase letters.
                     $this->msg = "Password must contain at least one capital letter.";

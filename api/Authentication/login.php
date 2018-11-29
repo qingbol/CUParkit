@@ -49,12 +49,14 @@
     // If one of the info pieces has a correct username, then we need to handle it properly
     if ($owner_info) { // If it's an owner who's logging in
         $pass_from_db = $owner_info['Password'];
+        // echo json_encode(array("OwnerPass" => $owner_info['Password']));
         $id = $owner->getAttr('oid');
         $type = $owner_info['Type'];
     }
 
     if ($manager_info) { // If it's a manager who's logging in
         $pass_from_db = $manager_info['Password'];
+        // echo json_encode(array("ManagerPass" => $manager_info['Password']));
         $id = $manager->getAttr('mid');
         $type = "manager";
     }
@@ -73,8 +75,8 @@
         // Store type of user from database into the session
         $_SESSION['type'] = $type;
         
-        echo json_encode(array("message" => "Password is valid"));
+        echo json_encode(array("message" => "Password is valid."));
     } else {
         session_destroy();
-        echo json_encode(array("message" => "Invalid Password"));
+        echo json_encode(array("message" => ("Invalid Password. This Pass: " . $data->pass . "DB Pass: " . $pass_from_db)));
     }

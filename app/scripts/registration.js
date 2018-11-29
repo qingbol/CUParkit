@@ -71,6 +71,8 @@ let register = (apiEndPoint, formData, pass_node_name, pass_confirm_node_name) =
         return;
     }
 
+    console.log("Registration form data: " + JSON.stringify(formData, null, 2));
+
     // Post data to API with Axios
     // console.log("register..");
     axios.post(apiDir+apiEndPoint, formData)

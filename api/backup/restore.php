@@ -17,12 +17,14 @@ $user = $db->getUser();
 $pass = $db->getPass();
 $host = $db-getHost();
 
-$date_string = date("Ymd");
-$dir = dirname(__FILE__) . '/' . $database . '_' . $date_string . '.sql';
+// $date_string = date("Ymd");
+// $dir = dirname(__FILE__) . '/' . $database . '_' . $date_string . '.sql';
 $restore_file  = "./dump.sql";
 
 $cmd = "/usr/bin/mysql -h {$host} -u {$user} -p{$pass} {$database} < $restore_file";
 exec($cmd);
+
+echo json_encode( array("message" => "Recovered database from " + $backup_name) );
 
 // var_dump(get_current_user());
 // $stmt = 'php -v';

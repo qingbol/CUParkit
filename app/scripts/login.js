@@ -26,6 +26,7 @@ let login = () => {
     // Get data from HTML Form
     console.log("login...");
     let formData = formDataToJSON(document.getElementById("loginForm"));
+    console.log(formData);
     let apiEndPoint = "/Authentication/login.php";
 
     // Post data to API with Axios

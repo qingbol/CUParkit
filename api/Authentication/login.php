@@ -27,7 +27,7 @@
 
     // Set OID to the one specified from the front-end
     $owner->setAttr("oid", $data->oid);
-
+    echo "good";
     // Get the single entry from the database, using the OID as a key
     $owner_info = $owner->read_single();
 

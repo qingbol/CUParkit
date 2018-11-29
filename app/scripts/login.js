@@ -32,9 +32,9 @@ let login = () => {
     axios.post(apiDir+apiEndPoint, 
         formData)
     .then(res => {
-        document.getElementById("messageBox").innerHTML = res.data.message;
+        document.getElementById("messageBox").innerHTML = res.data.message + "<br>";
     }).catch(err => {
-        document.getElementById("messageBox").innerHTML = err.response.data.message;
+        document.getElementById("messageBox").innerHTML = err.response.data.message + "<br>";
     });
 };
 
@@ -43,11 +43,4 @@ window.addEventListener("load",function(){
     // Set what happens when user clicks the login button
     document.getElementById("loginButton").onclick = login;
 });
-
-
-
-// TODO:
-// Make the API and this file work together. Possibly, have one api file in Authentication
-//          Make it look in the database Manger table and the Owner table to see if the username exists
-//              If it does exist in that table, then we know it is that type and can carry on from there.
 

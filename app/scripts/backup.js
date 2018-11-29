@@ -36,6 +36,7 @@ let restoreSql = (backupFunc) => {
 
 // When the script is done being loaded onto the client's machine
 window.addEventListener("load",function(){
+    this.console.log("Got here");
     // Set what happens when user clicks the register button
     // document.getElementById("backupSql").onclick = () => {console.log("click owner"); backupSql(register);}
     document.getElementById("backupButton").onclick = () => backupSql(brFunc);

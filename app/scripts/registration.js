@@ -27,7 +27,7 @@ let handleError = (err) => {
 
 /* Check if username already exists in database */
 let usernameCheck = (username, userType) => {
-    console.log("Checking: " + username);
+    // console.log("Checking: " + username);
     let id;
     if (userType === "Owner") {
         id = "oid";

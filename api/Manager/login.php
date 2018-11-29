@@ -9,14 +9,14 @@
     include_once '../../config/Database.php';
 
     // Include the data model that communicates to the database
-    include_once '../../models/Owner.php';
+    include_once '../../models/Manager.php';
 
     // Instantiate DB & connect to it
     $database = new Database();
     $db = $database->connect();
 
-    // Instantiate an Owner object
-    $owner = new Owner($db);
+    // Instantiate a Manager object
+    $manager = new Manager($db);
 
     // Get raw posted data from HTML form
     // json_decode returns an object if 'true' is not specified
@@ -24,17 +24,17 @@
     $data = json_decode(file_get_contents("php://input"));
 
     // Set OID to the one specified from the front-end
-    $owner->setAttr("oid", $data->id);
+    $manager->setAttr("mid", $data->id);
 
     // Get the single entry from the database, using the OID as a key
-    $owner_info = $owner->read_single();
+    $manager_info = $manager->read_single();
 
     // If there wasn't any result from the database
     // Meaning the user needs to register or probably didn't spell his username correctly
     // echo json_encode( array("message" => "Printing result:") );
     // print_r(json_encode($res));
-    if (!$owner_info) {
-        die(json_encode(array("message" => "ERROR: Owner Not Found") ));
+    if (!$manager_info) {
+        die(json_encode(array("message" => "ERROR: Manager Not Found") ));
     }
 
     // If the database found the user:
@@ -44,12 +44,12 @@
     // Verify / Authenticate the user using PHP's built-in hash checker
     //  and the password supplied by the user and the password hash from the database
     // password_verify("password1234", hashedPasswordFromDB);
-    if (password_verify($data->pass, $owner_info['Password'])) {
+    if (password_verify($data->pass, $manager_info['Password'])) {
         // This is a verfied user. Store the relevant info into the session 
         // that now exists between him and the server
-        $_SESSION['id'] = $owner->getAttr('oid');
-        // Store type of user from database into the session
-        $_SESSION['type'] = $owner_info['Type'];
+        $_SESSION['id'] = $manager->getAttr('mid');
+        // Store type of user from into the session. We know it's a manager because it's in this file
+        $_SESSION['type'] = "manager";
         
         echo json_encode(array("message" => "Password is valid"));
     } else {

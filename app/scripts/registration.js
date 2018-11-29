@@ -71,8 +71,6 @@ let register = (apiEndPoint, formData, pass_node_name, pass_confirm_node_name) =
         return;
     }
 
-    console.log("Registration form data: " + JSON.stringify(formData, null, 2));
-
     // Post data to API with Axios
     // console.log("register..");
     axios.post(apiDir+apiEndPoint, formData)
@@ -88,7 +86,6 @@ let registerOwner = (registerFunc) => {
     // Get data from HTML Form
     // console.log("registerowner");
     let formData = formDataToJSON(document.getElementById("newOwnerForm"));
-    // console.log(formData);
     // POST the data to the server to register a new user in the database
     registerFunc("/Owner/create.php", formData, "ownerPassword", "ownerPasswordConfirm");
 };

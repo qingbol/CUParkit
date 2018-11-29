@@ -4,24 +4,27 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-//Qingbo remote database
-$database = 'parkit';
-$user = 'qbl';
-$pass = 'lqb987741';
-$host = 'mysql1.cs.clemson.edu';
+// Include the database
+include_once '../../config/Database.php';
 
-//Qingbo local database
-// $database = 'cpsc6620';
-// $user = 'root';
-// $pass = '0000';
-// $host = 'localhost';
+// Instantiate DB & connect to it
+$dbInst = new Database();
+$db = $dbInst->connect();
 
-$date_string = date("Ymd");
-$dir = dirname(__FILE__) . '/' . $database . '_' . $date_string . '.sql';
-$restore_file  = "./parkit_20181127.sql";
+// Get configuration details from Database
+$database = $db->getDB();
+$user = $db->getUser();
+$pass = $db->getPass();
+$host = $db-getHost();
+
+// $date_string = date("Ymd");
+// $dir = dirname(__FILE__) . '/' . $database . '_' . $date_string . '.sql';
+$restore_file  = "./dump.sql";
 
 $cmd = "/usr/bin/mysql -h {$host} -u {$user} -p{$pass} {$database} < $restore_file";
 exec($cmd);
+
+echo json_encode( array("message" => "Recovered database from " + $backup_name) );
 
 // var_dump(get_current_user());
 // $stmt = 'php -v';

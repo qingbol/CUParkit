@@ -33,9 +33,13 @@ let login = () => {
     axios.post(apiDir+apiEndPoint, 
         formData)
     .then(res => {
-        document.getElementById("messageBox").innerHTML = res.data.message;
+        document.getElementById("messageBox").innerHTML = res.data.message + "<br>";
+        // If the user successfully logged in, then redirect them to the home page
+        if (res.data.message === "Password is valid") {
+            window.location.replace("home_page.html");
+        }
     }).catch(err => {
-        document.getElementById("messageBox").innerHTML = err.response.data.message;
+        document.getElementById("messageBox").innerHTML = err.response.data.message + "<br>";
     });
 };
 
@@ -44,3 +48,4 @@ window.addEventListener("load",function(){
     // Set what happens when user clicks the login button
     document.getElementById("loginButton").onclick = login;
 });
+

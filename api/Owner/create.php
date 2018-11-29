@@ -96,7 +96,7 @@
 
                 // Create Owner entry in the database using the data model's function
                 if($owner->create()) {
-                    echo json_encode(array('message' => 'Owner Successfully Created'));
+                    echo json_encode(array('message' => 'Success'));
                 } else {
                     echo json_encode(array('message' => 'Owner Not Created',
                                             'passwordMsg' => $owner->getMsg()

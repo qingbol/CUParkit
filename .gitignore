@@ -1,2 +1,5 @@
 # sql files
 .sql
+
+# Apple-specific folder description
+.DS_Store

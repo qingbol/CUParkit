@@ -20,16 +20,14 @@ let formDataToJSON = (formElement) => {
 let handleError = (err) => {
     // console.log(err.response);
     // document.getElementById("messageBox").innerHTML = JSON.stringify(err.response);
-    console.log("Got here");
-    document.getElementById("messageBox").innerHTML = "GOT HERE";
-    document.getElementById("messageBox").innerHTML = err.response.data.message;
+    document.getElementById("messageBox").innerHTML = err.response.data.message + "<br>";
     if (res.data.code)
-        document.getElementById("messageBox").innerHTML = err.response.data.code;
+        document.getElementById("messageBox").innerHTML = err.response.data.code + "<br>";
 };
 
 /* Check if username already exists in database */
 let usernameCheck = (username, userType) => {
-    console.log("Checking: " + username);
+    // console.log("Checking: " + username);
     let id;
     if (userType === "Owner") {
         id = "oid";
@@ -62,11 +60,14 @@ let confirmPassword = (pass, pass_confirm) => {
 };
 
 let register = (apiEndPoint, formData, pass_node_name, pass_confirm_node_name) => {
+    // Reset any previous messages each time the register button is clicked
+    document.getElementById("messageBox").innerHTML = "";
+
     pass_node = document.getElementById(pass_node_name);
     pass_confirm_node = document.getElementById(pass_confirm_node_name);
     // If the passwords don't match
     if ( confirmPassword(pass_node, pass_confirm_node) === false || pass_node.value === "") {
-        document.getElementById("messageBox").innerHTML = "Registration failed: Your passwords don't match!";
+        document.getElementById("messageBox").innerHTML = "Registration failed: Your passwords don't match! <br>";
         return;
     }
 
@@ -74,11 +75,15 @@ let register = (apiEndPoint, formData, pass_node_name, pass_confirm_node_name) =
     // console.log("register..");
     axios.post(apiDir+apiEndPoint, formData)
     .then(res => {
-        //console.log(res);
         // document.getElementById("messageBox").innerHTML = JSON.stringify(res);
-        document.getElementById("messageBox").innerHTML = res.data.message;
-        if (res.data.passwordMsg)
-            document.getElementById("messageBox").innerHTML += "<br>" + res.data.passwordMsg;
+        document.getElementById("messageBox").innerHTML += res.data.message + "<br>";
+        if (res.data.passwordMsg) {
+            document.getElementById("messageBox").innerHTML += res.data.passwordMsg + "<br>";
+        }
+        // Redirect user to login page after successful registration
+        if (res.data.message === "Success") {
+            window.location.replace("login.html");
+        }
     }).catch((err) => handleError);
 };
 
@@ -86,7 +91,6 @@ let registerOwner = (registerFunc) => {
     // Get data from HTML Form
     // console.log("registerowner");
     let formData = formDataToJSON(document.getElementById("newOwnerForm"));
-    // console.log(formData);
     // POST the data to the server to register a new user in the database
     registerFunc("/Owner/create.php", formData, "ownerPassword", "ownerPasswordConfirm");
 };

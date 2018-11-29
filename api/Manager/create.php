@@ -33,7 +33,7 @@
         
         // Create Owner entry in the database using the data model's function
         if($manager->create()) {
-            echo json_encode(array('message' => 'Manager Successfully Created'));
+            echo json_encode(array('message' => "Success"));
         } else {
             echo json_encode(array('message' => 'Manager Not Created',
                                     'passwordMsg' => $manager->getMsg()

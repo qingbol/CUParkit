@@ -12,10 +12,10 @@ $dbInst = new Database();
 $db = $dbInst->connect();
 
 // Get configuration details from Database
-$database = $db->getDB();
-$user = $db->getUser();
-$pass = $db->getPass();
-$host = $db-getHost();
+$database = $dbInst->getDB();
+$user = $dbInst->getUser();
+$pass = $dbInst->getPass();
+$host = $dbInst->getHost();
 
 // $date_string = date("Ymd");
 // $dir = dirname(__FILE__) . '/' . $database . '_' . $date_string . '.sql';

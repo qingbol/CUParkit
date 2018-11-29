@@ -12,10 +12,16 @@ $dbInst = new Database();
 $db = $dbInst->connect();
 
 // Get configuration details from Database
-$database = $db->getDB();
-$user = $db->getUser();
-$pass = $db->getPass();
-$host = $db-getHost();
+$database = $dbInst->getDB();
+$user = $dbInst->getUser();
+$pass = $dbInst->getPass();
+$host = $dbInst->getHost();
+
+echo "backup.php";
+var_dump($database);
+var_dump($user);
+var_dump($pass);
+var_dump($host);
 
 // $date_string = date("Ymd");
 $backup_name = "dump";

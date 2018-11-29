@@ -4,32 +4,26 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-//Qingbo remote database
-$database = 'parkit';
-$user = 'qbl';
-$pass = 'lqb987741';
-$host = 'mysql1.cs.clemson.edu';
+// Include the database
+include_once '../../config/Database.php';
 
-//Qingbo local database
-// $database = 'cpsc6620';
-// $user = 'root';
-// $pass = '0000';
-// $host = 'localhost';
+// Instantiate DB & connect to it
+$dbInst = new Database();
+$db = $dbInst->connect();
 
-$date_string = date("Ymd");
-$dir = dirname(__FILE__) . '/' . $database . '_' . $date_string . '.sql';
+// Get configuration details from Database
+$database = $db->getDB();
+$user = $db->getUser();
+$pass = $db->getPass();
+$host = $db-getHost();
 
-echo "<h3>Backing up database to `<code>{$dir}</code>`</h3>";
+// $date_string = date("Ymd");
+$backup_name = "dump";
+$dir = dirname(__FILE__) . '/' . $backup_name . '.sql';
+
+// echo "<h3>Backing up database to `<code>{$dir}</code>`</h3>";
+echo json_encode( array("message" => "Backing up database to " + $dir) );
 
 exec("/usr/bin/mysqldump --user={$user} --password={$pass} --host={$host} {$database} --result-file={$dir} 2>&1", $output);
 
 var_dump($output);
-
-// var_dump(get_current_user());
-// $stmt = 'php -v';
-// exec($stmt, $arr);
-// echo '<pre>';
-// var_dump($arr);
-// echo "I am ~~~ \n";
-// echo shell_exec('ls') ;
-// echo shell_exec('whoami');

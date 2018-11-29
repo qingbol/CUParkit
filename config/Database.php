@@ -46,4 +46,18 @@
             }
             return $this->conn;
         }
+
+        /* Get the name of the table in the database that this class is modeling */
+        public function getHost() {
+            return $this->host;
+        }
+        public function getDB() {
+            return $this->db_name;
+        }
+        public function getUser() {
+            return $this->username;
+        }
+        public function getPass() {
+            return $this->password;
+        }
     }

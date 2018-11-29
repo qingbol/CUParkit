@@ -75,7 +75,7 @@
         // Store type of user from database into the session
         $_SESSION['type'] = $type;
         
-        echo json_encode(array("message" => "Success"));
+        echo json_encode(array("message" => "Password is valid"));
     } else {
         session_destroy();
         echo json_encode(array("message" => "Invalid Password"));

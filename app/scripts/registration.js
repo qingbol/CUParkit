@@ -77,8 +77,13 @@ let register = (apiEndPoint, formData, pass_node_name, pass_confirm_node_name) =
     .then(res => {
         // document.getElementById("messageBox").innerHTML = JSON.stringify(res);
         document.getElementById("messageBox").innerHTML += res.data.message + "<br>";
-        if (res.data.passwordMsg)
+        if (res.data.passwordMsg) {
             document.getElementById("messageBox").innerHTML += res.data.passwordMsg + "<br>";
+        }
+        // Redirect user to login page after successful registration
+        if (res.data.message === "Success") {
+            window.location.replace("login.html");
+        }
     }).catch((err) => handleError);
 };
 

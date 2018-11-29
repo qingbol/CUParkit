@@ -37,8 +37,6 @@
         /* Create an entry in the table for this Owner
             This function makes one tuple in the table */
         public function create() {
-            // print ("befor query");
-
             // Create query
             $query = "INSERT INTO " . $this->table . 
                 " SET OID = :oid, Name = :name, Tel = :tel, Type = :type, Password = :pass";
@@ -56,7 +54,7 @@
             /////////////////////////////////////////////////////////////////////
                 // Check if password was modified by stripping HTML Special chars
                 if ($orig_pass !== $this->attr['pass']) {
-                    $this->msg = "ERROR: Password cannot contain certain special characters.";
+                    $this->msg = "ERROR: Password cannot contain: (&, \", ', >, <)";
                     return false;
                 }
 

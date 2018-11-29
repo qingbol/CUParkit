@@ -53,7 +53,7 @@
             /////////////////////////////////////////////////////////////////////
                 // Check if password was modified by stripping HTML Special chars
                 if ($orig_pass !== $this->attr['password']) {
-                    $this->msg = "ERROR: Password cannot contain certain special characters.";
+                    $this->msg = "ERROR: Password cannot contain: (&, \", ', >, <)";
                     return false;
                 }
 

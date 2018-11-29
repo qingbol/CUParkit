@@ -50,6 +50,16 @@
             
             // Password Handling
             /////////////////////////////////////////////////////////////////////
+                // Ensure that the password has at least one capital letter
+                // Get a version of the password with all lowercase letters
+                $lower_pass = strtolower($this->attr['pass']);
+                if ($lower_pass === $this->attr['pass']) {
+                    // If the lowercase password is the same as the original password,
+                    //      then the original password did not have any uppercase letters.
+                    $this->msg = "Password must contain at least one capital letter.";
+                    return false;
+                }
+                
                 // Check strength of password
                 $zxcvbn = new Zxcvbn();
                 $strength = $zxcvbn->passwordStrength($this->attr['password']);

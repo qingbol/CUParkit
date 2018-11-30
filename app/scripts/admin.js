@@ -7,7 +7,7 @@ $(function(){
     console.log("detecting listAllUserButton click event");
     $.ajax({
       type: 'GET',
-      url: '/cuparkit/api/Owner/read.php',
+      url: window.location.pathname + '../../../api/Owner/read.php',
       success: function(usrResult){
       console.log("success...");
       console.log(usrResult);

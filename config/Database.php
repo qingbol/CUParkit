@@ -1,12 +1,12 @@
 <?php
     class Database {
         // Jack Production Database Parameters
-        // private $host = "mysql1.cs.clemson.edu";
-        // private $db_name = "CPSC_4620_c0ei";
-        // private $charset = "utf8";
-        // private $username = "CPSC_4620_a31t";
-        // private $password = "SoQoolLearning1";
-        // private $conn;
+        private $host = "mysql1.cs.clemson.edu";
+        private $db_name = "CPSC_4620_c0ei";
+        private $charset = "utf8";
+        private $username = "CPSC_4620_a31t";
+        private $password = "SoQoolLearning1";
+        private $conn;
        
         // Jack localhost DB Params
         // private $host = "localhost";
@@ -47,7 +47,6 @@
             return $this->conn;
         }
 
-        /* Get the name of the table in the database that this class is modeling */
         public function getHost() {
             return $this->host;
         }

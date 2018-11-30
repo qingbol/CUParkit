@@ -7,9 +7,8 @@ error_reporting(E_ALL);
 // Include the database
 include_once '../../config/Database.php';
 
-// Instantiate DB & connect to it
+// Instantiate DB
 $dbInst = new Database();
-$db = $dbInst->connect();
 
 // Get configuration details from Database
 $database = $dbInst->getDB();

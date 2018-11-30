@@ -9,20 +9,20 @@
         // private $conn;
        
         // Jack localhost DB Params
-        private $host = "localhost";
-        private $db_name = "CUParkit";
-        private $charset = "utf8";
-        private $username = "parkingMgr";
-        private $password = "abc123";
-        private $conn;
+        // private $host = "localhost";
+        // private $db_name = "CUParkit";
+        // private $charset = "utf8";
+        // private $username = "parkingMgr";
+        // private $password = "abc123";
+        // private $conn;
 
         // Qingbo remote Database Parameters
-        // private $host = "mysql1.cs.clemson.edu";
-        // private $db_name = "parkit";
-        // private $charset = "utf8";
-        // private $username = "qbl";
-        // private $password = "lqb987741";
-        // private $conn;
+        private $host = "mysql1.cs.clemson.edu";
+        private $db_name = "parkit";
+        private $charset = "utf8";
+        private $username = "qbl";
+        private $password = "lqb987741";
+        private $conn;
 
         // Qingbo localhost Database Parameters
         // private $host = "localhost";

@@ -18,6 +18,9 @@ $(function(){
         let colNum = Object.keys(usrResult[0]).length;
         console.log("rowNum = ", rowNum);
         console.log("colNum = ", colNum);
+
+        //output info
+        document.getElementById("messageBox").innerHTML = "Query return " + rowNum +" users." + "<br>";
         
         //create table element
         let tableInDiv = document.getElementById("listUserInDiv"); 

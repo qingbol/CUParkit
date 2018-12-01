@@ -211,7 +211,6 @@
             return $this->runPrepStmtChkErr($stmt);
         }
 
-
          public function listAll() {
             $pageSequenceNum = $this->pageInfo["pageSeq"];
             if ( NULL == $pageSequenceNum){

@@ -30,24 +30,23 @@
         // echo json_encode($ownerPageInfo);
 
         // Authorization
-        // Create a session or resume current session based on session ID passed via POST
-        session_start();
+            // Create a session or resume current session based on session ID
+            session_start();
 
-        // If the session variables aren't set, that means the user isn't logged in
-        if (!isset($_SESSION['id']) || !isset($_SESSION['type'])) {
-            session_destroy();
-            echo json_encode(array('message' => 'User not logged in: You don\'t have permission to do that'));
-            die();
-        }
+            // If the session variables aren't set, that means the user isn't logged in
+            if (!isset($_SESSION['id']) || !isset($_SESSION['type'])) {
+                session_destroy();
+                echo json_encode(array('message' => 'User not logged in: You don\'t have permission to do that'));
+                die();
+            }
 
-        // Make it so that an owner can only delete his own entry.
-        //   and a manager can delete any entry.
-        if ( !($_SESSION['type'] === "manager") ) {
-            session_destroy();
-            echo json_encode(array('message' => 'Incorrect authority: You don\'t have permission to do that'));
-            die();
-        }
-        // If  we've made it here, the user is a logged-in Manager, who has the right to do the following
+            // Only an admin can list all users of the database
+            if ( !($_SESSION['type'] === "manager") ) {
+                session_destroy();
+                echo json_encode(array('message' => 'Incorrect authority: You don\'t have permission to do that'));
+                die();
+            }
+            // If  we've made it here, the user is a logged-in Manager, who has the right to do the following
 
         // Get all rows from Owner table
         // It's an integer-indexed array of associative arrays

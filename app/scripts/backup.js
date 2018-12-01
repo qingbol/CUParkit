@@ -9,7 +9,7 @@ let brFunc = ((apiEndPoint) => {
     console.log("backup or restore...");
     axios.get(apiDir+apiEndPoint)
     .then(res => {
-        //console.log(res);
+        // console.log(res);
         document.getElementById("messageBox").innerHTML = res.data.message + "<br>";
     }).catch(err => {
         // console.log(err.response);

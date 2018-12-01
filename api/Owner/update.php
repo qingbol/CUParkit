@@ -6,6 +6,7 @@
     // HTTP Headers
     header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json');
+    // header('Access-Control-Allow-Methods: POST');
     header('Access-Control-Allow-Methods: PUT');
     header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
@@ -26,12 +27,13 @@
     // json_decode returns an object if 'true' is not specified
     // json_decode returns an associative array if 'true' is specified
     $data = json_decode(file_get_contents("php://input"), true);
-
+    // print_r(json_encode($data));
+    // print_r(json_encode(array('item' => 'egg')));
     // Fill in the Owner's data that was supplied from the front-end
     $owner->fillAttributes($data);
     // $tel = $owner->getAttr("tel");
     
-    // Create Owner entry in the database using the data model's function
+    // //Create Owner entry in the database using the data model's function
     if($owner->update()) {
         // echo json_encode(array('message' => 'Owner Successfully Updated',
         //                         'tel' => $tel

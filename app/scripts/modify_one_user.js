@@ -13,26 +13,46 @@ $(function(){
     console.log("detecting listOneUserButton click event");
     //empty the div first
     $("#paginationData").empty(); 
-
     createForm(userId);
-    // modifyOneUser(userId);
   }); //#listAllUserButton" click event.
+
+  // //===start of listening submit button====
+  $(document).on('click', '#ownerBtn', function(){
+    console.log("detecting submit button click event");
+    // //Get data from HTML Form
+    // let formValues = formDataToJson($("#oneUserForm")); //can't use this method
+    let formvalue = document.getElementById("oneUserForm");
+    // console.log(formvalue);
+    let formValues = formDataToJson(formvalue);
+    // let formValues = $("#oneUserForm").serialize(); //jquery method
+    console.log(formValues);
+    //submit the modification
+    modifyOneUser(formValues);
+  }); //===end of listening submit button====
+
   console.log("leave modify_one_user.js");
 });
 
 //update user info
-let modifyOneUser = (usrId) =>{
+let modifyOneUser = (formData) =>{
     // console.log(usrId);
     $.ajax({
-      method: "GET",
-      data: {usrid: usrId},
-      url: window.location.pathname + '../../../api/Owner/list_one.php',
+      method: "PUT",
+      data: formData,
+      url: window.location.pathname + '../../../api/Owner/update.php',
+      // headers: {
+      //   "X-HTTP-Method-Override": "PUT",
+      //   "Content-Type": "application/json"
+      // },
       dataType: 'json',
+      beforeSend: function(){
+        console.log("sending data....");
+      },
       success: function(dataFromServer){
-        console.log("success");
+        console.log(".ajax success");
         console.log(dataFromServer);
         // displayResult(dataFromServer);
-        $("#paginationData").html(dataFromServer);
+        // $("#paginationData").html(dataFromServer);
       }, //.ajax success module
       error: function(XMLHttpRequest, textStatus, errorThrown) { 
         alert("Status: " + textStatus); alert("Error: " + errorThrown); 
@@ -40,6 +60,16 @@ let modifyOneUser = (usrId) =>{
     }); //.ajax module
 } //loadData function end
 
+// //===== start of Get Data function=========
+let formDataToJson = (formElement) =>{
+   let formData = new FormData(formElement);
+   let convertedJson = {};
+   formData.forEach((value, key) => {
+     convertedJson[key] = value;
+   });
+   return convertedJson;
+};
+// //===== end of Get Data function=========
 
 //create Form for input
 let createForm = (usrId) => {
@@ -83,9 +113,11 @@ let createForm = (usrId) => {
   //create ID input in t1r1c2 
   let t1r1c2Input = document.createElement("input");
   t1r1c2Input.setAttribute("class", "form-control");
-  t1r1c2Input.setAttribute("type", "email");
+  t1r1c2Input.setAttribute("type", "text");
+  t1r1c2Input.setAttribute("name", "oid");
   t1r1c2Input.setAttribute("id", "ownerId");
-  t1r1c2Input.setAttribute("disabled", "disabled");
+  // t1r1c2Input.setAttribute("disabled", "disabled");
+  t1r1c2Input.setAttribute("readonly", "true");
   // t1r1c2Input.setAttribute("size", "90");
   // t1r1c2Input.setAttribute("placeholder", "C9000001");
   // document.getElementById("ownerId").value =usrId;
@@ -111,6 +143,7 @@ let createForm = (usrId) => {
   let t1r2c2Input = document.createElement("input");
   t1r2c2Input.setAttribute("class", "form-control");
   t1r2c2Input.setAttribute("type", "text");
+  t1r2c2Input.setAttribute("name", "name");
   t1r2c2Input.setAttribute("id", "ownerName");
   // t1r1c2Input.setAttribute("size", "90");
   t1r2c2Input.setAttribute("placeholder", "John");
@@ -134,6 +167,7 @@ let createForm = (usrId) => {
   let t1r3c2Input = document.createElement("input");
   t1r3c2Input.setAttribute("class", "form-control");
   t1r3c2Input.setAttribute("type", "text");
+  t1r3c2Input.setAttribute("name", "tel");
   t1r3c2Input.setAttribute("id", "ownerTel");
   // t1r1c2Input.setAttribute("size", "90");
   t1r3c2Input.setAttribute("placeholder", "864-321-4562");
@@ -169,7 +203,7 @@ let createForm = (usrId) => {
   f1r1c2ck1Radio.setAttribute("type", "radio");
   f1r1c2ck1Radio.setAttribute("id", "ownerType1");
   f1r1c2ck1Radio.setAttribute("value", "Employee");
-  f1r1c2ck1Radio.setAttribute("name", "gridRadios");
+  f1r1c2ck1Radio.setAttribute("name", "type");
   f1r1c2ck1.appendChild(f1r1c2ck1Radio)
   //f1r1c2ck1Lable for label in check1
   let f1r1c2ck1Label = document.createElement("label");
@@ -187,7 +221,7 @@ let createForm = (usrId) => {
   f1r1c2ck2Radio.setAttribute("class", "form-check-input");
   f1r1c2ck2Radio.setAttribute("type", "radio");
   f1r1c2ck2Radio.setAttribute("id", "ownerType2");
-  f1r1c2ck2Radio.setAttribute("name", "gridRadios");
+  f1r1c2ck2Radio.setAttribute("name", "type");
   f1r1c2ck2Radio.setAttribute("value", "Student");
   f1r1c2ck2.appendChild(f1r1c2ck2Radio)
   //f1r1c2ck1Lable for label in check1
@@ -206,7 +240,7 @@ let createForm = (usrId) => {
   f1r1c2ck3Radio.setAttribute("class", "form-check-input");
   f1r1c2ck3Radio.setAttribute("type", "radio");
   f1r1c2ck3Radio.setAttribute("id", "ownerType3");
-  f1r1c2ck3Radio.setAttribute("name", "gridRadios");
+  f1r1c2ck3Radio.setAttribute("name", "type");
   f1r1c2ck3Radio.setAttribute("value", "Vistor");
   f1r1c2ck3.appendChild(f1r1c2ck3Radio)
   //f1r1c2ck1Lable for label in check1
@@ -234,6 +268,7 @@ let createForm = (usrId) => {
   let t1r4c2Input = document.createElement("input");
   t1r4c2Input.setAttribute("class", "form-control");
   t1r4c2Input.setAttribute("type", "password");
+  t1r4c2Input.setAttribute("name", "pass");
   t1r4c2Input.setAttribute("id", "ownerPass1");
   t1r4c2Input.setAttribute("placeholder", "PxRk#3r87");
   t1r4c2.appendChild(t1r4c2Input);
@@ -256,6 +291,7 @@ let createForm = (usrId) => {
   let t1r5c2Input = document.createElement("input");
   t1r5c2Input.setAttribute("class", "form-control");
   t1r5c2Input.setAttribute("type", "password");
+  t1r5c2Input.setAttribute("name", "checkPass");
   t1r5c2Input.setAttribute("id", "ownerPass2");
   t1r5c2Input.setAttribute("placeholder", "PxRk#3r87");
   t1r5c2.appendChild(t1r5c2Input);

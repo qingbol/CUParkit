@@ -188,6 +188,7 @@
             return $this->runPrepStmtChkErr($stmt);
         }
 
+
         /* Delete this owner from the database 
             Expecting 'oid' to be set before running this function 
             Note & TODO: This will cause issues with other relations */
@@ -288,7 +289,6 @@
                     // <div class="col-1 col-sm-1 col-md-1 col-lg-1 border text-center bg-info">Modify</div>
             // //=============end create result table header============== 
 
-
             // //=============start create result table body==============
             $i = 0;
             $j = 0;
@@ -323,6 +323,7 @@
             return $output;
          }
         
+         // // used for query one user
          public function listOne() {
             $output = "";
 

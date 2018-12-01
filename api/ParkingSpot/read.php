@@ -30,8 +30,3 @@
     } else { // If there are not any entries in the Owner table
         echo json_encode( array("message" => "No ParkingSpot Found") );
     }
-    
-
-
-
-

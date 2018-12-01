@@ -29,9 +29,12 @@ $(function(){
     console.log(formValues);
     console.log(formVal);
     //submit the modification
+<<<<<<< HEAD
     modifyOneUser(formVal);
+=======
     // modifyOneUser(formValues);
     modifyOneUser_axios(formValues);
+>>>>>>> 98e551346fad0c4a0199a41a89ce5ffb0acb927a
   }); //===end of listening submit button====
 
   console.log("leave modify_one_user.js");
@@ -41,7 +44,12 @@ $(function(){
 let modifyOneUser = (formData) =>{
     // console.log(usrId);
     $.ajax({
+<<<<<<< HEAD
         method: "PUT",
+=======
+      // method: "PUT",
+      method: "POST",
+>>>>>>> 98e551346fad0c4a0199a41a89ce5ffb0acb927a
       data: formData,
       url: window.location.pathname + '../../../api/Owner/update.php',
       // headers: {
@@ -51,6 +59,7 @@ let modifyOneUser = (formData) =>{
       dataType: 'json',
       beforeSend: function(){
         console.log("sending data....");
+        console.log(window.location.pathname + '../../../api/Owner/update.php');
       },
       success: function(dataFromServer){
         console.log(".ajax success");

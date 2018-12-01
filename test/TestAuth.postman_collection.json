@@ -38,6 +38,35 @@
 					"response": []
 				},
 				{
+					"name": "listAllOwner",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/Owner/list_all.php?pageNumber=3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Owner",
+								"list_all.php"
+							],
+							"query": [
+								{
+									"key": "pageNumber",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "RegisterNewOwner",
 					"request": {
 						"method": "POST",
@@ -104,7 +133,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"oid\": \"JT36\", \"pass\": \"TestPass_42*\"}"
+							"raw": "{\"oid\": \"qingbo\", \"pass\": \"Lqb&0000\"}"
 						},
 						"url": {
 							"raw": "{{url}}/api/Authentication/login.php",
@@ -1191,29 +1220,6 @@
 			"name": "ManageRecord",
 			"item": [
 				{
-					"name": "ReadManageRecord",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/ManageRecord/read.php",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"ManageRecord",
-								"read.php"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "ReadSingleManageRecord",
 					"request": {
 						"method": "GET",
@@ -1309,6 +1315,34 @@
 							]
 						},
 						"description": "The Owner has to be logged in from a previous API call to login.php so that he has a session (shows as cookie in browser tools). Then, he can use different parts of the API, including delete his entry (but not others' entries)."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "backup",
+			"item": [
+				{
+					"name": "backup",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/backup/backup.php",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"backup",
+								"backup.php"
+							]
+						}
 					},
 					"response": []
 				}

@@ -5,6 +5,9 @@ console.log("entering admin.js");
 $(function(){
   $("#listAllUserButton").click(function(){
     console.log("detecting listAllUserButton click event");
+    //empty the div first
+    // $("#paginationData").html(""); 
+    // $("#paginationData").empty(); 
     loadData();
 
     //listening pagination button
@@ -19,6 +22,9 @@ $(function(){
 //split in server-side
 let loadData = (pageNum) =>{
     console.log(pageNum);
+    //empty the div first
+    // $("#paginationData").html(""); 
+    $("#paginationData").empty(); 
     $.ajax({
       method: "GET",
       data: {pageNum:pageNum},

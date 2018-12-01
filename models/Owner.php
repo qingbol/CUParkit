@@ -188,6 +188,7 @@
             return $this->runPrepStmtChkErr($stmt);
         }
 
+
         /* Delete this owner from the database 
             Expecting 'oid' to be set before running this function 
             Note & TODO: This will cause issues with other relations */
@@ -230,11 +231,10 @@
             if ($this->runPrepStmtChkErr($totalRecordsStmt) === false) {
                 return false;
             }
-            $totalRecordsResult = $totalRecordsStmt->fetchAll(PDO::FETCH_ASSOC);
+            // $totalRecordsResult = $totalRecordsStmt->fetchAll(PDO::FETCH_ASSOC);
+            $totalRecordsResult = $totalRecordsStmt->fetch(PDO::FETCH_ASSOC);
             $keys = array_keys($totalRecordsResult);
-            $totalRecordsArr = $totalRecordsResult[$keys[0]];
-            $keyArr = array_keys($totalRecordsArr);
-            $totalRecords = $totalRecordsArr[$keyArr[0]];
+            $totalRecords = $totalRecordsResult[$keys[0]];
             $totalPages = ceil($totalRecords / $recordPerPage);
 
             // //create pagination_link
@@ -256,6 +256,94 @@
             "; 
             // //=============end create pagination========================
 
+
+            // //=============start query necessary result==================
+            // //Create query
+            $query = "SELECT * FROM " . $this->table . " ORDER BY OID ASC LIMIT $startFrom,$recordPerPage";
+            ////Prepare the statement
+            $stmt = $this->conn->prepare($query);
+            ////Execute the prepared statement and check for errors in running it
+            if ($this->runPrepStmtChkErr($stmt) === false) {
+                return false;
+            }
+            // //Return all rows of the table
+            // //Note: 'PDO::FETC_ASSOC' means only the associative, 
+                // // and not positional (numerically indexed) array will be returned
+            // $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            // //=============end query necessary result==================
+
+            // //=============start create result table header==============
+            $output .= '
+                <div class="row justify-content-center">
+            ';
+            foreach($result as $key=>$value){
+                $output .= '
+                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">' . $key . '</div>
+                ';
+            }
+            $output .= '
+                </div>
+            ';
+                    // <div class="col-1 col-sm-1 col-md-1 col-lg-1 border text-center bg-info">Modify</div>
+            // //=============end create result table header============== 
+
+            // //=============start create result table body==============
+            $i = 0;
+            $j = 0;
+            do{
+              $i++;
+              $output .= '
+                <div class="row justify-content-center">
+              ';
+              foreach($result as $key=>$value){
+                $j++;
+                if("Password" == $key){
+                  $value = "****";
+                }
+                $output .= '
+                  <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-light" id="col_' . $i . '_' . $j . '">
+                  ' . $value .'
+                  </div>
+                ';
+              } 
+            //   $output .= '
+            //     <div class="col-1 col-sm-1 col-md-1 col-lg-1 border text-center bg-light" id="colBtn_' . $i . '">
+            //       <button class="btn btn-outline-danger btn-sm">Modify</button>
+            //     </div>
+            //   ';
+              $output .= '
+                </div>
+              ';
+            } while($result = $stmt->fetch(PDO::FETCH_ASSOC));
+
+            // //=============end create result table body==============
+
+            return $output;
+         }
+        
+         // // used for query one user
+         public function listOne() {
+            $output = "";
+
+            // //=============start of the query ==========================
+            // Create query
+            $query = "SELECT * FROM " . $this->table . 
+                " WHERE OID = :oid";
+            // Prepare the statement
+            $stmt = $this->conn->prepare($query);
+            // Clean the query
+            $this->attr["oid"] = htmlspecialchars(strip_tags($this->attr["oid"]));
+            // Bind the data
+            $stmt->bindValue(":oid", $this->attr["oid"]);
+            // Execute the prepared statement and check for errors in running it
+            if ($this->runPrepStmtChkErr($stmt) === false) {
+                return false;
+            }
+            // Get the result of reading one of the rows of the relation
+            $result = $stmt->fetch(PDO::FETCH_ASSOC); 
+            // //=============end of the query ==========================
+
             // //=============start create result table header==============
             $output .= '
                 <div class="row justify-content-center">
@@ -270,22 +358,9 @@
             // //=============end create result table header============== 
 
             // //=============start create result table body==============
-            // //Create query
-            $query = "SELECT * FROM " . $this->table . " ORDER BY OID ASC LIMIT $startFrom,$recordPerPage";
-            ////Prepare the statement
-            $stmt = $this->conn->prepare($query);
-            ////Execute the prepared statement and check for errors in running it
-            if ($this->runPrepStmtChkErr($stmt) === false) {
-                return false;
-            }
-            // //Return all rows of the table
-            // //Note: 'PDO::FETC_ASSOC' means only the associative, 
-                // // and not positional (numerically indexed) array will be returned
-            // $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            // $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $i = 0;
             $j = 0;
-            while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
+            do {
               $i++;
               $output .= '
                 <div class="row justify-content-center">
@@ -309,12 +384,12 @@
               $output .= '
                 </div>
               ';
-            }
+            } while($result = $stmt->fetch(PDO::FETCH_ASSOC));
             // //=============end create result table body==============
 
             return $output;
          }
-        
+
 
 
         /* Assign values to Owner properties from the supplied array of data */

@@ -5,9 +5,6 @@ console.log("entering admin.js");
 $(function(){
   $("#listAllUserButton").click(function(){
     console.log("detecting listAllUserButton click event");
-    //empty the div first
-    // $("#paginationData").html(""); 
-    // $("#paginationData").empty(); 
     loadData();
 
     //listening pagination button

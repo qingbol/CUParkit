@@ -25,9 +25,11 @@ $(function(){
     // console.log(formvalue);
     let formValues = formDataToJson(formvalue);
     // let formValues = $("#oneUserForm").serialize(); //jquery method
+    let formVal = JSON.stringify(formValues);
     console.log(formValues);
+    console.log(formVal);
     //submit the modification
-    modifyOneUser(formValues);
+    modifyOneUser(formVal);
   }); //===end of listening submit button====
 
   console.log("leave modify_one_user.js");
@@ -37,7 +39,7 @@ $(function(){
 let modifyOneUser = (formData) =>{
     // console.log(usrId);
     $.ajax({
-      method: "PUT",
+        method: "PUT",
       data: formData,
       url: window.location.pathname + '../../../api/Owner/update.php',
       // headers: {
@@ -47,6 +49,7 @@ let modifyOneUser = (formData) =>{
       dataType: 'json',
       beforeSend: function(){
         console.log("sending data....");
+        console.log(window.location.pathname + '../../../api/Owner/update.php');
       },
       success: function(dataFromServer){
         console.log(".ajax success");

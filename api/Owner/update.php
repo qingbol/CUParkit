@@ -27,17 +27,15 @@
     // json_decode returns an object if 'true' is not specified
     // json_decode returns an associative array if 'true' is specified
     $data = json_decode(file_get_contents("php://input"), true);
+    // print_r($_POST);
     // print_r(json_encode($data));
-    // print_r(json_encode(array('item' => 'egg')));
+
     // Fill in the Owner's data that was supplied from the front-end
     $owner->fillAttributes($data);
     // $tel = $owner->getAttr("tel");
     
     // //Create Owner entry in the database using the data model's function
     if($owner->update()) {
-        // echo json_encode(array('message' => 'Owner Successfully Updated',
-        //                         'tel' => $tel
-        // ));
         echo json_encode(array('message' => 'Owner Successfully Updated'));
     } else {
         echo json_encode(array('message' => 'Owner Not Updated'));

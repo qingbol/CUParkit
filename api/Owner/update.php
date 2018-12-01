@@ -38,6 +38,7 @@
         // echo json_encode(array('message' => 'Owner Successfully Updated',
         //                         'tel' => $tel
         // ));
+        // echo json_encode(array('message' => ('Owner Successfully Updated: '."; oid: ".$data['oid']."; name: ".$data['name'])));
         echo json_encode(array('message' => 'Owner Successfully Updated'));
     } else {
         echo json_encode(array('message' => 'Owner Not Updated'));

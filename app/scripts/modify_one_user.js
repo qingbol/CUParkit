@@ -27,7 +27,8 @@ $(function(){
     // let formValues = $("#oneUserForm").serialize(); //jquery method
     console.log(formValues);
     //submit the modification
-    modifyOneUser(formValues);
+    // modifyOneUser(formValues);
+    modifyOneUser_axios(formValues);
   }); //===end of listening submit button====
 
   console.log("leave modify_one_user.js");
@@ -37,7 +38,8 @@ $(function(){
 let modifyOneUser = (formData) =>{
     // console.log(usrId);
     $.ajax({
-      method: "PUT",
+      // method: "PUT",
+      method: "POST",
       data: formData,
       url: window.location.pathname + '../../../api/Owner/update.php',
       // headers: {
@@ -59,6 +61,26 @@ let modifyOneUser = (formData) =>{
       }       
     }); //.ajax module
 } //loadData function end
+
+let modifyOneUser_axios = (formData) => {
+  let handleError = (err) => {
+    // console.log(err.response);
+    // document.getElementById("messageBox").innerHTML = JSON.stringify(err.response);
+    document.getElementById("messageBox").innerHTML = err.response.data.message + "<br>";
+    if (res.data.code)
+        document.getElementById("messageBox").innerHTML = err.response.data.code + "<br>";
+  };
+
+  // Post data to API with Axios
+  axios.post(window.location.pathname + '../../../api/Owner/update.php',
+   formData)
+  .then(res => {
+      document.getElementById("messageBox").innerHTML += res.data.message + "<br>";
+      if (res.data.passwordMsg) {
+          document.getElementById("messageBox").innerHTML += res.data.passwordMsg + "<br>";
+      }
+  }).catch((err) => handleError);
+};
 
 // //===== start of Get Data function=========
 let formDataToJson = (formElement) =>{

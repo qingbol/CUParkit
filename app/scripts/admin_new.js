@@ -25,8 +25,12 @@ let loadData = (pageNum) =>{
       url: window.location.pathname + '../../../api/Owner/list_all.php',
       dataType: 'json',
       success: function(dataFromServer){
-        console.log("success");
+        // console.log("success");
         // displayResult(dataFromServer);
+        // If the server returned a message instead of resulting data
+        if (dataFromServer.message) {
+          document.getElementById("messageBox").innerHTML = dataFromServer.message + "<br>";
+        }
         $("#paginationData").html(dataFromServer);
       }, //.ajax success module
       error: function(XMLHttpRequest, textStatus, errorThrown) { 

@@ -9,12 +9,12 @@
         // private $conn;
        
         // Jack localhost DB Params
-        // private $host = "localhost";
-        // private $db_name = "CUParkit";
-        // private $charset = "utf8";
-        // private $username = "parkingMgr";
-        // private $password = "abc123";
-        // private $conn;
+        private $host = "localhost";
+        private $db_name = "CUParkit";
+        private $charset = "utf8";
+        private $username = "parkingMgr";
+        private $password = "abc123";
+        private $conn;
 
         // Qingbo remote Database Parameters
         // private $host = "mysql1.cs.clemson.edu";
@@ -25,12 +25,12 @@
         // private $conn;
 
         // Qingbo localhost Database Parameters
-        private $host = "localhost";
-        private $db_name = "cpsc6620";
-        private $charset = "utf8";
-        private $username = "root";
-        private $password = "0000";
-        private $conn; // Connection to the database
+        // private $host = "localhost";
+        // private $db_name = "cpsc6620";
+        // private $charset = "utf8";
+        // private $username = "root";
+        // private $password = "0000";
+        // private $conn; // Connection to the database
         
         // Connect to Database
         public function connect() {

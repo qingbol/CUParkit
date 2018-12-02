@@ -195,23 +195,21 @@
             // TODO: Probably need to delete stuff from other tables too.
             // How does deleting an owner from the table effect the log? Etc.
         public function delete() {
+            // print_r($this->attr["oid"]);
             // Create query
             $query = "DELETE FROM " . $this->table .
                 " WHERE OID = :oid";
-                
             // Prepare the statement
             $stmt = $this->conn->prepare($query);
-
             // Clean the query
             $this->attr["oid"] = htmlspecialchars(strip_tags($this->attr["oid"]));
-
             // Bind the data
             $stmt->bindValue(":oid", $this->attr["oid"]);
-            
             // Execute the prepared statement and check for errors in running it
             return $this->runPrepStmtChkErr($stmt);
         }
-
+        
+         //list all the owner
          public function listAll() {
             $pageSequenceNum = $this->pageInfo["pageSeq"];
             if ( NULL == $pageSequenceNum){
@@ -418,6 +416,7 @@
         private function runPrepStmtChkErr(&$stmt) {
             // Execute the query
             if($stmt->execute()) {
+                // echo json_encode(array("msg"=>"stmt->executed"));
                 return true;
             }
 

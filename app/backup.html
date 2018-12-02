@@ -71,25 +71,26 @@
 <!-- ==============Navigation bar end here.================================================ -->
     <div class="container">
         <div class="row">
-          <div class="col-12 col-sm-12 col-md-6">
+          <div class="col-12 col-sm-12 col-md-8">
             <form class="text-center"id="adminForm">
               <fieldset class="border p-2">
                 <legend class="w-auto">Admin</legend>
                   <div class="row">
-                    <div class="col-12 col-sm-6 col-md-6 mt-4">
-                      <button class="bg-warning" type="button" id="listAllUserButton">List all user</button>
+                    <div class="col-12 col-sm-8 col-md-5 mt-4">
+                      <button class="bg-warning" type="button" id="listAllUserButton">List All User</button>
                     </div>
-                    <div class="col-12 col-sm-6 col-md-6 pb-3">
-                      <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12">
-                          <label for="oneUserId">Pls input a user ID</label>
-                          <input class="form-control" type="text" id="oneUserId" placeholder="C10000001" required>
+                    <div class="col-12 col-sm-8 col-md-7 pb-4">
+                      <div class="row text-center justify-content-center">
+                        <div class="col-12 col-sm-12 col-md-12 pl-0">
+                          <label class="mr-4 pl-0 pr-5"  for="oneUserId">Pls input a user ID</label>
+                          <input class="form-control pl-5 ml-5" style="width:250px" type="text" id="oneUserId" placeholder="C10000001" required>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-12 col-sm-12 col-md-12">
-                          <span><button class="bg-success" type="button" id="listOneUserButton">List One</button></span>
-                          <span class="ml-4"><button class="bg-success" type="button" id="modifyOneUserButton">Modify</button></span>
+                          <span><button class="bg-success" type="button" id="listOneUserButton">View</button></span>
+                          <span class="ml-4"><button class="bg-success" type="button" id="modifyOneUserButton">Update</button></span>
+                          <span class="ml-4"><button class="bg-success" type="button" id="deleteOneUserButton">Delete</button></span>
                         </div>
                       </div>
                     </div>
@@ -97,7 +98,7 @@
               </fieldset>
             </form>
           </div>
-          <div class="col-12 col-sm-12 col-md-3">
+          <div class="col-12 col-sm-12 col-md-2">
             <form class="text-center"id="backupForm">
               <fieldset class="border p-2">
                 <legend class="w-auto">Backup</legend>
@@ -105,7 +106,7 @@
               </fieldset>
             </form>
           </div>
-          <div class="col-12 col-sm-12 col-md-3">
+          <div class="col-12 col-sm-12 col-md-2">
             <form class="text-center" id="restoreForm">
               <fieldset class="border p-2">
                 <legend class="w-auto">Recover</legend>

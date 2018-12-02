@@ -3,6 +3,7 @@
 */
 console.log("entering modify_one_user.js");
 $(function(){
+  // //===start of listening update button====
   $("#modifyOneUserButton").click(function(){
     let userId = $("#oneUserId").val();
     console.log(userId);
@@ -15,6 +16,7 @@ $(function(){
     $("#paginationData").empty(); 
     createForm(userId);
   }); //#listAllUserButton" click event.
+  // //===end of listening update button====
 
   // //===start of listening submit button====
   $(document).on('click', '#ownerBtn', function(){
@@ -26,44 +28,74 @@ $(function(){
     let formValues = formDataToJson(formvalue);
     // let formValues = $("#oneUserForm").serialize(); //jquery method
     let formVal = JSON.stringify(formValues);
-    console.log(formValues);
-    console.log(formVal);
     //submit the modification
     modifyOneUser(formVal);
-    // modifyOneUser(formValues);
-    modifyOneUser_axios(formValues);
+    // modifyOneUser_axios(formValues); //use axios 
   }); //===end of listening submit button====
+
+  // //===start of listening delete button====
+  $(document).on('click', '#deleteOneUserButton', function(){
+    //Get data
+    let ownerId = document.getElementById("oneUserId").value;
+    let ownerIdJson = JSON.stringify({oid: ownerId});
+    deleteOneUser(ownerIdJson);
+  });
+  // //===end   of listening delete button====
 
   console.log("leave modify_one_user.js");
 });
 
+
+let deleteOneUser = (usrId) => {
+  // console.log(usrId); 
+  $.ajax({
+    method: "POST",
+    url: window.location.pathname + '../../../api/Owner/delete.php', 
+    data: usrId,
+    dataType: 'json',
+    beforeSend: function(){
+      console.log("start sending delete request");
+      console.log(usrId);
+    },
+    success: function(dataFromServer){
+      console.log("delete success");
+      console.log(dataFromServer);
+    },
+    error: function(XMLHttpRequest, textStatus, errorThrown) { 
+      alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+    }       
+  });
+}
+
+
 //update user info
 let modifyOneUser = (formData) =>{
-    // console.log(usrId);
-    $.ajax({
-        method: "PUT",
-      data: formData,
-      url: window.location.pathname + '../../../api/Owner/update.php',
-      // headers: {
-      //   "X-HTTP-Method-Override": "PUT",
-      //   "Content-Type": "application/json"
-      // },
-      dataType: 'json',
-      beforeSend: function(){
-        console.log("sending data....");
-      },
-      success: function(dataFromServer){
-        console.log(".ajax success");
-        console.log(dataFromServer);
-        // displayResult(dataFromServer);
-        // $("#paginationData").html(dataFromServer);
-      }, //.ajax success module
-      error: function(XMLHttpRequest, textStatus, errorThrown) { 
-        alert("Status: " + textStatus); alert("Error: " + errorThrown); 
-      }       
-    }); //.ajax module
+  // console.log(usrId);
+  $.ajax({
+    method: "PUT",
+    data: formData,
+    url: window.location.pathname + '../../../api/Owner/update.php',
+    // headers: {
+    //   "X-HTTP-Method-Override": "PUT",
+    //   "Content-Type": "application/json"
+    // },
+    dataType: 'json',
+    beforeSend: function(){
+      console.log("sending data....");
+    },
+    success: function(dataFromServer){
+      console.log(".ajax success");
+      console.log(dataFromServer);
+      // displayResult(dataFromServer);
+      // $("#paginationData").html(dataFromServer);
+    }, //.ajax success module
+    error: function(XMLHttpRequest, textStatus, errorThrown) { 
+      alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+    }       
+  }); //.ajax module
 } //loadData function end
 
+//axios method
 let modifyOneUser_axios = (formData) => {
   let handleError = (err) => {
     // console.log(err.response);

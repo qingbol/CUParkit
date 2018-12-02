@@ -18,13 +18,13 @@
 
     <title>CUParkit</title>
   </head>
-  <body>
+  <body class="container d-flex flex-column grow">
       <!-- <div class="container">
         <div class="h4 pb-2 mt-4 mb-1 border-bottom">
             CU Parking Manage System
         </div>
       </div> -->
-      <div class="container">
+      <!-- <div class="container"> -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -69,16 +69,16 @@
             </form>
           </div>
         </nav>
-      </div>
+      <!-- </div> -->
 <!-- ==============Navigation bar end here.================================================ -->
-    <div class="container">
+    <!-- <div class="container"> -->
       <div class="jumbotron" style="margin-bottom: 0;padding: 25px">
       </div>
-    </div>
+    <!-- </div> -->
 
-    <div class="container">
-        <div class="row">
-            <div class="col-1 ml-3 bg-info"></div>
+    <!-- <div class="container"> -->
+        <div class="row bg-danger mx-0 px-0">
+            <div class="col-1 mx-0 bg-info"></div>
             <div class="col-3 bg-info">
                 <form id="newOwnerForm">
                     <fieldset>
@@ -118,8 +118,8 @@
                     </fieldset>
                 </form>
             </div>
-            <div class="col-2 bg-info mr-0"></div>
-            <div class="col-3 bg-success mr-0 ">
+            <div class="col-2 bg-info mx-0"></div>
+            <div class="col-3 bg-success mx-0">
                 <form id="newManagerForm">
                     <fieldset>
                         <legend>Register New Administrator</legend>
@@ -127,7 +127,7 @@
                                 <label for="mid">ID</label>
                                 <input class="form-control" type="text" id="managerID" name="mid" placeholder="Bob123" required>
                                 <i id="midStatus" class="material-icons">done</i>
-                            </div>
+                        </div>
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input class="form-control" type="text" id="adminName" name="name" placeholder="Robert" required>
@@ -149,26 +149,26 @@
                     </fieldset>
                 </form>
             </div>
-            <div class="col-2 border bg-success ml-0 "></div>
+            <div class="col-3 bg-success mx-0 px-0"></div>
             <!-- <div class="col-1 border bg-success ml-0 mr-0 ">999</div> -->
         </div>
-        <div class="row  mx-0 mb-4">
+        <div class="row  mx-0 px-0 mb-0">
             <div class="bg-warning col-1"></div>
             <div class="col-8 bg-warning ">
                 <label for="messageBox">Info:</label>
                 <div id="messageBox"></div>
             </div>
-            <div class="bg-warning col-2"></div>
+            <div class="bg-warning col-3"></div>
         </div>
-    </div>
+    <!-- </div> -->
 
 <!-- ===========Footer part start from here===================================== -->
-<div class="container">
-        <div class="footer text-right">
+<!-- <div class="container"> -->
+        <div class="footer mt-4 text-right">
             <p>&copy <a href="#" target="_blank">CUParkit.com</a> | <a href="#" target="_blank">Imprint</a></p>
-          </div>
         </div>
-      </div>  
+    <!-- </div> -->
+<!-- </div>   -->
   
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -179,4 +179,4 @@
       <script type="text/javascript" src="scripts/registration.js"></script>
       <script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
     </body>
-  </html>
+</html>

@@ -236,15 +236,15 @@
             $totalPages = ceil($totalRecords / $recordPerPage);
 
             // //create pagination_link
+                    // <div class="col-1"></div>
             $output .= '
-                <div class="row bg-secondary mx-0 p-0 my-0">
-                    <div class="col-1"></div>
-                    <div class="col-10 pb-0 mb-0 text-left">
-                        <nav aria-label="Page navigation example" class="mb-0 pb-0">
+                <div class="row bg-secondary mx-0 p-0 my-0" style="height:45px">
+                    <div class="col pb-0 mb-0 text-left">
+                        <nav aria-label="Page navigation example" class="mt-2 mb-0 p-0">
                             <ul class="pagination justify-content-left">
             '; 
             for($i = 1; $i <= $totalPages; $i++){
-                $output .= '<li class="page-item" id="' . $i .'">' . '<a class="page-link" href="#">' . $i . '</a></li> '; 
+                $output .= '<li class="page-item" id="' . $i .'">' . '<a class="page-link border" href="#">' . $i . '</a></li> '; 
             }
             $output .= "
                             </ul>
@@ -273,7 +273,7 @@
 
             // //=============start create result table header==============
             $output .= '
-                <div class="row mx-0 mt-0 bg-secondary justify-content-center">
+                <div class="row mx-0 mt-0 pt-0 bg-secondary justify-content-center">
             ';
             foreach($result as $key=>$value){
                 $output .= '

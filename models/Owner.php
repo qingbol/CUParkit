@@ -277,7 +277,7 @@
             ';
             foreach($result as $key=>$value){
                 $output .= '
-                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">' . $key . '</div>
+                    <div class="col col-sm col-md col-lg border text-center bg-info">' . $key . '</div>
                 ';
             }
             $output .= '
@@ -300,7 +300,7 @@
                   $value = "****";
                 }
                 $output .= '
-                  <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-light" id="col_' . $i . '_' . $j . '">
+                  <div class="col col-sm col-md col-lg border text-center bg-light" id="col_' . $i . '_' . $j . '">
                   ' . $value .'
                   </div>
                 ';
@@ -345,12 +345,14 @@
 
             // //=============start create result table header==============
             $output .= '
-                <div class="row mx-0 bg-secondary justify-content-center">
-                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">OID</div>
-                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">Name</div>
-                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">Tel</div>
-                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">Type</div>
-                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">Password</div>
+                <div class="row mx-0 mt-0 pb-1 bg-secondary justify-content-center">
+            ';
+            foreach($result as $key=>$value){
+                $output .= '
+                    <div class="col col-sm col-md col-lg border text-center bg-info">' . $key . '</div>
+                ';
+            }
+            $output .= '
                 </div>
             ';
                     // <div class="col-1 col-sm-1 col-md-1 col-lg-1 border text-center bg-info">Modify</div>
@@ -370,7 +372,7 @@
                   $value = "****";
                 }
                 $output .= '
-                  <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-light" id="col_' . $i . '_' . $j . '">
+                  <div class="col col-sm col-md col-lg border text-center bg-light" id="col_' . $i . '_' . $j . '">
                   ' . $value .'
                   </div>
                 ';

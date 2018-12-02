@@ -23,6 +23,11 @@
             "leave_date_time"   => "",
             "fee"  => "",
         );
+        
+        //used for pagination data
+        private $pageInfo = array(
+            "pageSeq" => "1",
+        );
 
         // Construct Owner with a connection to a database
         public function __construct($db_conn) {
@@ -172,13 +177,13 @@
         }
 
 
-         //list all the owner
+         //list all the records
          public function listAll() {
             $pageSequenceNum = $this->pageInfo["pageSeq"];
             if ( NULL == $pageSequenceNum){
                 $pageSequenceNum = 1;
             }
-            $recordPerPage = 5;
+            $recordPerPage = 10;
             $page = "";
             $output = "";
             $startFrom = ($pageSequenceNum - 1) * $recordPerPage;
@@ -220,7 +225,7 @@
 
             // //=============start query necessary result==================
             // //Create query
-            $query = "SELECT * FROM " . $this->table . " ORDER BY OID ASC LIMIT $startFrom,$recordPerPage";
+            $query = "SELECT * FROM " . $this->table . " ORDER BY Rcd_index ASC LIMIT $startFrom,$recordPerPage";
             ////Prepare the statement
             $stmt = $this->conn->prepare($query);
             ////Execute the prepared statement and check for errors in running it
@@ -236,12 +241,22 @@
 
             // //=============start create result table header==============
             $output .= '
-                <div class="row justify-content-center">
+                <div class="row mx-0 justify-content-center">
             ';
             foreach($result as $key=>$value){
-                $output .= '
-                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">' . $key . '</div>
-                ';
+                if( "Fee" == $key){
+                    $output .= '
+                        <div class="col-1 col-sm-1 col-md-1 col-lg-1 border text-left bg-info">' . $key . '</div>
+                    ';
+                }elseif("Rcd_index"==$key || "Plate"==$key){
+                    $output .= '
+                        <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">' . $key . '</div>
+                    ';
+                }else{
+                    $output .= '
+                        <div class="col col-sm col-md col-lg border text-center bg-info">' . $key . '</div>
+                    ';
+                }
             }
             $output .= '
                 </div>
@@ -249,24 +264,35 @@
                     // <div class="col-1 col-sm-1 col-md-1 col-lg-1 border text-center bg-info">Modify</div>
             // //=============end create result table header============== 
 
-            // //=============start create result table body==============
+            // // //=============start create result table body==============
             $i = 0;
             $j = 0;
             do{
               $i++;
               $output .= '
-                <div class="row justify-content-center">
+                <div class="row mx-0 pb-1 justify-content-center">
               ';
               foreach($result as $key=>$value){
                 $j++;
-                if("Password" == $key){
-                  $value = "****";
+                if("Fee" == $key){
+                    $output .= '
+                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 border text-center bg-light" id="col_' . $i . '_' . $j . '">
+                    ' . $value .'
+                    </div>
+                    ';
+                }elseif("Rcd_index"==$key || "Plate"==$key){
+                    $output .= '
+                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-light" id="col_' . $i . '_' . $j . '">
+                    ' . $value .'
+                    </div>
+                    ';
+                }else{
+                    $output .= '
+                    <div class="col col-sm col-md col-lg border text-center bg-light" id="col_' . $i . '_' . $j . '">
+                    ' . $value .'
+                    </div>
+                    ';
                 }
-                $output .= '
-                  <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-light" id="col_' . $i . '_' . $j . '">
-                  ' . $value .'
-                  </div>
-                ';
               } 
             //   $output .= '
             //     <div class="col-1 col-sm-1 col-md-1 col-lg-1 border text-center bg-light" id="colBtn_' . $i . '">
@@ -278,7 +304,7 @@
               ';
             } while($result = $stmt->fetch(PDO::FETCH_ASSOC));
 
-            // //=============end create result table body==============
+            // // //=============end create result table body==============
 
             return $output;
          }
@@ -370,6 +396,14 @@
         /* Set attribute */
         public function setAttr($name, $val) {
             $this->attr[$name] = $val;
+        }
+        /* Set pageInfo */
+        public function setPageInfo($name, $val) {
+            $this->pageInfo[$name] = $val;
+        }
+        /* Get pageInfo */
+        public function getPageInfo($name) {
+            return $this->pageInfo[$name];
         }
     }
 

@@ -32,9 +32,12 @@ let loadData = (pageNum) =>{
         // displayResult(dataFromServer);
         // If the server returned a message instead of resulting data
         if (dataFromServer.message) {
-          document.getElementById("messageBox").innerHTML = dataFromServer.message + "<br>";
+          // document.getElementById("messageBox").innerHTML = dataFromServer.message + "<br>";
+          $("#messageBox").html(dataFromServer.message + "<br>");
         }
-        $("#paginationData").html(dataFromServer);
+        if (dataFromServer){
+          $("#paginationData").html(dataFromServer);
+        }
       }, //.ajax success module
       error: function(XMLHttpRequest, textStatus, errorThrown) { 
         alert("Status: " + textStatus); alert("Error: " + errorThrown); 

@@ -20,6 +20,11 @@
     // Instantiate an Owner objectt any entries in the Owner table
     $parkingRecord = new ParkingRecord($db);
 
+    // Get OID from front-end
+    $parkingRecord->setPageInfo("pageSeq", 
+        isset($_GET["pageNum"]) ? $_GET["pageNum"] : 1 
+    );
+
     // Get all rows from Owner table
     // It's an integer-indexed array of associative arrays
     // $result = $parkingRecord->read();

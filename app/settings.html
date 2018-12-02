@@ -75,10 +75,19 @@
     <!-- </div> -->
 
     <!-- <div class="container"> -->
-        <div class="row">
-          <div class="col-12 col-sm-12 col-md-8">
+        <div class="row mx-0">
+            <div class="col-12 col-sm-12 col-md-2 bg-info">
+                <form class="text-center"id="backupForm">
+                  <fieldset class="border pb-4 p-2">
+                    <legend class="w-auto">Backup</legend>
+                    <span><button class="bg-warning" type="button" id="backupButton">Backup</button></span>
+                  </fieldset>
+                </form>
+              </div>
+
+          <div class="col-12 col-sm-12 col-md-8 bg-secondary">
             <form class="text-center"id="adminForm">
-              <fieldset class="border bg-light p-2">
+              <fieldset class="border p-2">
                 <legend class="w-auto">Admin</legend>
                   <div class="row">
                     <div class="col-12 col-sm-8 col-md-5 mt-4">
@@ -104,17 +113,17 @@
               </fieldset>
             </form>
           </div>
-          <div class="col-12 col-sm-12 col-md-2">
+          <!-- <div class="col-12 col-sm-12 col-md-2 bg-info">
             <form class="text-center"id="backupForm">
-              <fieldset class="border bg-light pb-4 p-2">
+              <fieldset class="border pb-4 p-2">
                 <legend class="w-auto">Backup</legend>
                 <span><button class="bg-warning" type="button" id="backupButton">Backup</button></span>
               </fieldset>
             </form>
-          </div>
-          <div class="col-12 col-sm-12 col-md-2">
+          </div> -->
+          <div class="col-12 col-sm-12 col-md-2 bg-info">
             <form class="text-center" id="restoreForm">
-              <fieldset class="border bg-light pb-4 p-2">
+              <fieldset class="border pb-4 p-2">
                 <legend class="w-auto">Recover</legend>
                 <span><button class="bg-warning" type="button" id="restoreButton">Restore</button></span>
               </fieldset>
@@ -132,10 +141,10 @@
         </div>
     <!-- </div>         -->
 
-    <div class="mt-4" id="paginationData">
+    <div class="mt-0 pb-2" id="paginationData">
     </div>
 
-    <div class="mt-4" id="listUserInDiv">
+    <div class="mt-0" id="listUserInDiv">
     </div>
 
     <div class="mx-0">

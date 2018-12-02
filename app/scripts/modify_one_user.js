@@ -135,16 +135,16 @@ let createForm = (usrId) => {
   // tableInDiv.setAttribute("class", "pt-2");
   //create a row1 in Div
   let tableHeaderRowInDiv = document.createElement("div");
-  tableHeaderRowInDiv.setAttribute("class", "row justify-content-left");
+  tableHeaderRowInDiv.setAttribute("class", "row mx-0 bg-secondary justify-content-left");
   tableInDiv.appendChild(tableHeaderRowInDiv); 
   //create col 1 in row 1
   let tableHeaderColInDiv1 = document.createElement("div");
-  tableHeaderColInDiv1.setAttribute("class", "col-1 col-sm-1 col-md-1 col-lg-1 text-center "); 
+  tableHeaderColInDiv1.setAttribute("class", "col-1 col-sm-2 col-md-2 col-lg-2 text-center "); 
   // tableHeaderColInDiv.innerText = Object.keys(usrResult[0])[i];
   tableHeaderRowInDiv.appendChild(tableHeaderColInDiv1);
   //create col 2 in row 1
   let tableHeaderColInDiv2 = document.createElement("div");
-  tableHeaderColInDiv2.setAttribute("class", "col-5 col-sm-5 col-md-5 col-lg-5 border text-center bg-info"); 
+  tableHeaderColInDiv2.setAttribute("class", "col-5 col-sm-8 col-md-8 col-lg-8 border text-center bg-info"); 
   // tableHeaderColInDiv.innerText = Object.keys(usrResult[0])[i];
   tableHeaderRowInDiv.appendChild(tableHeaderColInDiv2); 
   //create Form 

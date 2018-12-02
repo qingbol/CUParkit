@@ -237,10 +237,10 @@
 
             // //create pagination_link
             $output .= '
-                <div class="row mb-1">
+                <div class="row bg-secondary mx-0 p-0 my-0">
                     <div class="col-1"></div>
-                    <div class="col-10 text-left">
-                        <nav aria-label="Page navigation example">
+                    <div class="col-10 pb-0 mb-0 text-left">
+                        <nav aria-label="Page navigation example" class="mb-0 pb-0">
                             <ul class="pagination justify-content-left">
             '; 
             for($i = 1; $i <= $totalPages; $i++){
@@ -273,7 +273,7 @@
 
             // //=============start create result table header==============
             $output .= '
-                <div class="row justify-content-center">
+                <div class="row mx-0 mt-0 bg-secondary justify-content-center">
             ';
             foreach($result as $key=>$value){
                 $output .= '
@@ -292,7 +292,7 @@
             do{
               $i++;
               $output .= '
-                <div class="row justify-content-center">
+                <div class="row mx-0 bg-secondary pb-1 justify-content-center">
               ';
               foreach($result as $key=>$value){
                 $j++;
@@ -345,7 +345,7 @@
 
             // //=============start create result table header==============
             $output .= '
-                <div class="row justify-content-center">
+                <div class="row mx-0 bg-secondary justify-content-center">
                     <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">OID</div>
                     <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">Name</div>
                     <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">Tel</div>
@@ -362,7 +362,7 @@
             do {
               $i++;
               $output .= '
-                <div class="row justify-content-center">
+                <div class="row mx-0 pb-1 bg-secondary justify-content-center">
               ';
               foreach($result as $key=>$value){
                 $j++;

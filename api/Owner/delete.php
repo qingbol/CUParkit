@@ -31,7 +31,8 @@
     // print_r(json_encode($data));
     // print_r(json_encode($data->oid));
     // Set OID to the one specified from the front-end
-    $owner->setAttr("oid", json_encode($data->oid));
+    // $owner->setAttr("oid", json_encode($data->oid));
+    $owner->setAttr("oid",$data->oid);
     // $usrid = $owner->getAttr("oid");
     // print_r($usrid);
 

@@ -38,29 +38,29 @@
           <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav ml-3 ml-auto mt-0 mt-lg-0">
               <li class="nav-item active">
-                <h4><a class="nav-link" href="index.html#">Home <span class="sr-only">(current)</span></a></h4>
+                <h4><a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a></h4>
               </li>
               <li class="nav-item">
-                <a class="nav-link h4" href="lot_view.html#">LotView</a>
+                <a class="nav-link h4" href="lot_view.html">LotView</a>
               </li>
               <li class="nav-item">
-                    <a class="nav-link h4" href="register.html#">Register</a>
-                  </li>
+                  <a class="nav-link h4" href="register.html">Register</a>
+                </li>
               <li class="nav-item">
-                <a class="nav-link h4" href="login.html#">Login</a>
+                <a class="nav-link h4" href="login.html">Login</a>
               </li>
               <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle h4" href="#" id="navbarDropdown" data-toggle="dropdown">
+                  <a class="nav-link dropdown-toggle h4" href="query.html" id="navbarDropdown" data-toggle="dropdown">
                       Query </a>
                   <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">Query 1</a>
-                      <a class="dropdown-item" href="#">Query 2</a>
+                      <a class="dropdown-item" href="query.html" id="query1">Parking Report</a>
+                      <a class="dropdown-item" href="query.html" id="query2">OccupiedSpots</a>
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Another Query</a>
+                      <a class="dropdown-item" href="query.html" id="query3">Another Query</a>
                   </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link h4" href="settings.html#">Settings</a>
+                <a class="nav-link h4" href="settings.html">Settings</a>
               </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -71,11 +71,15 @@
         </nav>
       </div>
 <!-- ==============Navigation bar end here.================================================ -->
+    <div class="container">
+      <div class="jumbotron" style="margin-bottom: 0;padding: 25px">
+      </div>
+    </div>
 
-      <div class="container">
+    <div class="container">
         <div class="row">
-            <div class="col-1"></div>
-            <div class="col-3 border bg-info">
+            <div class="col-1 ml-3 bg-info"></div>
+            <div class="col-3 bg-info">
                 <form id="newOwnerForm">
                     <fieldset>
                         <legend>Register New User</legend>
@@ -114,8 +118,8 @@
                     </fieldset>
                 </form>
             </div>
-            <div class="col-2"></div>
-            <div class="col-3 bg-success border">
+            <div class="col-2 bg-info mr-0"></div>
+            <div class="col-3 bg-success mr-0 ">
                 <form id="newManagerForm">
                     <fieldset>
                         <legend>Register New Administrator</legend>
@@ -145,15 +149,18 @@
                     </fieldset>
                 </form>
             </div>
+            <div class="col-2 border bg-success ml-0 "></div>
+            <!-- <div class="col-1 border bg-success ml-0 mr-0 ">999</div> -->
         </div>
-        <div class="row mt-3 mb-4">
-            <div class="col-1"></div>
-            <div class="col-8 bg-warning border">
+        <div class="row  mx-0 mb-4">
+            <div class="bg-warning col-1"></div>
+            <div class="col-8 bg-warning ">
                 <label for="messageBox">Info:</label>
                 <div id="messageBox"></div>
             </div>
+            <div class="bg-warning col-2"></div>
         </div>
-      </div>
+    </div>
 
 <!-- ===========Footer part start from here===================================== -->
 <div class="container">

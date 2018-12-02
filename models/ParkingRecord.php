@@ -171,6 +171,119 @@
             return $this->runPrepStmtChkErr($stmt);
         }
 
+
+         //list all the owner
+         public function listAll() {
+            $pageSequenceNum = $this->pageInfo["pageSeq"];
+            if ( NULL == $pageSequenceNum){
+                $pageSequenceNum = 1;
+            }
+            $recordPerPage = 5;
+            $page = "";
+            $output = "";
+            $startFrom = ($pageSequenceNum - 1) * $recordPerPage;
+            $totalRecords = "";
+            $totalPages = "";
+
+            // // =============start create pagination========================
+            // //Create query for totalRecords
+            $totalRecordsQuery = "SELECT COUNT(*) FROM " . $this->table; 
+            $totalRecordsStmt = $this->conn->prepare($totalRecordsQuery);
+            if ($this->runPrepStmtChkErr($totalRecordsStmt) === false) {
+                return false;
+            }
+            // $totalRecordsResult = $totalRecordsStmt->fetchAll(PDO::FETCH_ASSOC);
+            $totalRecordsResult = $totalRecordsStmt->fetch(PDO::FETCH_ASSOC);
+            $keys = array_keys($totalRecordsResult);
+            $totalRecords = $totalRecordsResult[$keys[0]];
+            $totalPages = ceil($totalRecords / $recordPerPage);
+
+            // //create pagination_link
+            $output .= '
+                <div class="row mb-1">
+                    <div class="col-1"></div>
+                    <div class="col-10 text-left">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-left">
+            '; 
+            for($i = 1; $i <= $totalPages; $i++){
+                $output .= '<li class="page-item" id="' . $i .'">' . '<a class="page-link" href="#">' . $i . '</a></li> '; 
+            }
+            $output .= "
+                            </ul>
+                        </nav>
+                  </div>
+                </div>
+            "; 
+            // //=============end create pagination========================
+
+
+            // //=============start query necessary result==================
+            // //Create query
+            $query = "SELECT * FROM " . $this->table . " ORDER BY OID ASC LIMIT $startFrom,$recordPerPage";
+            ////Prepare the statement
+            $stmt = $this->conn->prepare($query);
+            ////Execute the prepared statement and check for errors in running it
+            if ($this->runPrepStmtChkErr($stmt) === false) {
+                return false;
+            }
+            // //Return all rows of the table
+            // //Note: 'PDO::FETC_ASSOC' means only the associative, 
+                // // and not positional (numerically indexed) array will be returned
+            // $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            // //=============end query necessary result==================
+
+            // //=============start create result table header==============
+            $output .= '
+                <div class="row justify-content-center">
+            ';
+            foreach($result as $key=>$value){
+                $output .= '
+                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">' . $key . '</div>
+                ';
+            }
+            $output .= '
+                </div>
+            ';
+                    // <div class="col-1 col-sm-1 col-md-1 col-lg-1 border text-center bg-info">Modify</div>
+            // //=============end create result table header============== 
+
+            // //=============start create result table body==============
+            $i = 0;
+            $j = 0;
+            do{
+              $i++;
+              $output .= '
+                <div class="row justify-content-center">
+              ';
+              foreach($result as $key=>$value){
+                $j++;
+                if("Password" == $key){
+                  $value = "****";
+                }
+                $output .= '
+                  <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-light" id="col_' . $i . '_' . $j . '">
+                  ' . $value .'
+                  </div>
+                ';
+              } 
+            //   $output .= '
+            //     <div class="col-1 col-sm-1 col-md-1 col-lg-1 border text-center bg-light" id="colBtn_' . $i . '">
+            //       <button class="btn btn-outline-danger btn-sm">Modify</button>
+            //     </div>
+            //   ';
+              $output .= '
+                </div>
+              ';
+            } while($result = $stmt->fetch(PDO::FETCH_ASSOC));
+
+            // //=============end create result table body==============
+
+            return $output;
+         }
+
+
         /* Assign values to Owner properties from the supplied array of data */
         /* Assumes the array of attributes passed in is appropriate for this class,
             meaning position 0 correlates with the first attribute in this class's 
@@ -214,6 +327,21 @@
                 /* $i++; */
             /* } */
         }
+
+        /* Assign values to Owner properties from the supplied array of data */
+        /* Assumes the array of attributes passed in is appropriate for this class,
+            meaning position 0 correlates with the first attribute in this class's 
+            array of properties */
+            public function fillCsv($attr_arr) {
+                // If $attr_arr is an associative array, convert it to numerically indexed
+                // If it's a numerically indexed array, treat it the same
+                $index_keys = array_keys($attr_arr);
+                $i = 0;
+                foreach ($this->attr as $key => $value) {
+                    $this->attr[$key] = $attr_arr[$index_keys[$i]];
+                    $i++;
+                }
+            }
 
         /* Execute the prepared statement and return any errors 
         Note that 'stmt' is passed by reference */

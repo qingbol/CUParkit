@@ -30,6 +30,8 @@
         /* Create an entry in the table for this Owner
             This function makes one tuple in the table */
         public function create() {
+            print_r("creating ");
+            var_dump($this->attr);
             // Create query
             $query = "INSERT INTO " . $this->table . 
                 " SET Spot = :spot, Lot = :lot, Status = :status, Rate = :rate ";
@@ -171,18 +173,55 @@
             // If $attr_arr is an associative array, convert it to numerically indexed
             // If it's a numerically indexed array, treat it the same
             $index_keys = array_keys($attr_arr);
+            // print_r("index_keys");
+            // print_r($index_keys);
+            // print_r("<br>");
+            // print_r("this-attr");
+            // print_r($this->attr);
+            // print_r("<br>");
+            
             foreach ($index_keys as $num => $val) {
               $attr_to_add = $attr_arr[$val];
+            //   print_r($attr_to_add);
+            //   print_r("<br>");
+            //   print_r($this->attr);
+            //   print_r("<br>");
               /* echo "index_keys is $val \n"; */
               foreach ($this->attr as $key => $value) {
                 /* echo "this->key is $key and index_keys is $val \n"; */
                 if ($attr_to_add and $key === $val) {
-                    $this->attr[$key] = $attr_to_add;
-                    break 1;
+                    if ($key == 'fee') {
+		              print_r ($attr_arr[$index_keys[$i]]);
+                      $this->attr[$key] = (float)$attr_to_add;
+                      print_r($this->attr[$key]);
+                    } else {
+                        $this->attr[$key] = $attr_to_add;
+                        break 1;
+                    }
                 }
+              print_r($this->attr);
+              print_r("<br>");
+
               }    
             }
         }
+
+
+        /* Assign values to Owner properties from the supplied array of data */
+        /* Assumes the array of attributes passed in is appropriate for this class,
+            meaning position 0 correlates with the first attribute in this class's 
+            array of properties */
+            public function fillCsv($attr_arr) {
+                // If $attr_arr is an associative array, convert it to numerically indexed
+                // If it's a numerically indexed array, treat it the same
+                $index_keys = array_keys($attr_arr);
+                $i = 0;
+                foreach ($this->attr as $key => $value) {
+                    $this->attr[$key] = $attr_arr[$index_keys[$i]];
+                    $i++;
+                }
+            }
+
 
         /* Execute the prepared statement and return any errors 
         Note that 'stmt' is passed by reference */

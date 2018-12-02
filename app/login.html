@@ -36,29 +36,29 @@
           <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav ml-3 ml-auto mt-0 mt-lg-0">
               <li class="nav-item active">
-                <h4><a class="nav-link" href="index.html#">Home <span class="sr-only">(current)</span></a></h4>
+                <h4><a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a></h4>
               </li>
               <li class="nav-item">
-                <a class="nav-link h4" href="lot_view.html#">LotView</a>
+                <a class="nav-link h4" href="lot_view.html">LotView</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link h4" href="register.html#">Register</a>
-              </li>
+                  <a class="nav-link h4" href="register.html">Register</a>
+                </li>
               <li class="nav-item">
-                    <a class="nav-link h4" href="login.html#">Login</a>
-                  </li>
+                <a class="nav-link h4" href="login.html">Login</a>
+              </li>
               <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle h4" href="#" id="navbarDropdown" data-toggle="dropdown">
+                  <a class="nav-link dropdown-toggle h4" href="query.html" id="navbarDropdown" data-toggle="dropdown">
                       Query </a>
                   <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">Query 1</a>
-                      <a class="dropdown-item" href="#">Query 2</a>
+                      <a class="dropdown-item" href="query.html" id="query1">Parking Report</a>
+                      <a class="dropdown-item" href="query.html" id="query2">OccupiedSpots</a>
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Another Query</a>
+                      <a class="dropdown-item" href="query.html" id="query3">Another Query</a>
                   </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link h4" href="settings.html#">Settings</a>
+                <a class="nav-link h4" href="settings.html">Settings</a>
               </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -69,14 +69,18 @@
         </nav>
       </div>
 <!-- ==============Navigation bar end here.================================================ -->
+    <div class="container">
+      <div class="jumbotron" style="margin-bottom: 0;padding: 25px">
+      </div>
+    </div>
 
         <!-- The login should be the same for all users. -->
         <!-- The back-end code should be able to detect what kind of user it is and handle the login accordingly -->
         <!-- In SQL, there are only 2 types of users: Owner and Manager -->
     <div class="container">
-        <div class="row">
-            <div class="col-4"></div>
-            <div class="col-3 bg-secondary border">
+        <div class="row bg-secondary px-0 mx-1">
+            <div class="col-4 "></div>
+            <div class="col-3 bg-secondary">
                 <form class="text-left" id="loginForm">
                     <fieldset>
                         <legend>Login</legend>
@@ -89,7 +93,7 @@
                             <label for="pass">Password</label>
                             <input class="form-control" type="password" id="password" name="pass">
                         </div>
-                        <span><button class="btn btn-warning" type="button" id="loginButton">Login</button></span>
+                        <span><button class="btn btn-danger" type="button" id="loginButton">Login</button></span>
                     </fieldset>
                 </form>
             </div>
@@ -97,9 +101,9 @@
     </div>
     
      <div class="container">
-        <div class="row">
+        <div class="row mx-1 bg-warning">
             <div class="col-4"></div>
-            <div class="col-3 bg-warning border">
+            <div class="col-3 bg-warning ">
                 <label for="messageBox">Info:</label>
                 <div id="messageBox"></div>
             </div>

@@ -320,6 +320,7 @@
             return $output;
          }
         
+
          // // used for query one user
          public function listOne() {
             $output = "";
@@ -350,9 +351,9 @@
                     <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">Tel</div>
                     <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">Type</div>
                     <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">Password</div>
-                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 border text-center bg-info">Modify</div>
                 </div>
             ';
+                    // <div class="col-1 col-sm-1 col-md-1 col-lg-1 border text-center bg-info">Modify</div>
             // //=============end create result table header============== 
 
             // //=============start create result table body==============
@@ -374,11 +375,11 @@
                   </div>
                 ';
               }
-              $output .= '
-                <div class="col-1 col-sm-1 col-md-1 col-lg-1 border text-center bg-light" id="colBtn_' . $i . '">
-                  <button class="btn btn-outline-danger btn-sm">Modify</button>
-                </div>
-              ';
+            //   $output .= '
+            //     <div class="col-1 col-sm-1 col-md-1 col-lg-1 border text-center bg-light" id="colBtn_' . $i . '">
+            //       <button class="btn btn-outline-danger btn-sm">Modify</button>
+            //     </div>
+            //   ';
               $output .= '
                 </div>
               ';

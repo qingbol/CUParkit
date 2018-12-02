@@ -36,7 +36,7 @@
           <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav ml-3 ml-auto mt-0 mt-lg-0">
               <li class="nav-item active">
-                <h4><a class="nav-link" href="home_page.html#">Home <span class="sr-only">(current)</span></a></h4>
+                <h4><a class="nav-link" href="index.html#">Home <span class="sr-only">(current)</span></a></h4>
               </li>
               <li class="nav-item">
                 <a class="nav-link h4" href="lot_view.html#">LotView</a>
@@ -58,12 +58,12 @@
                   </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link h4" href="backup.html#">Backup</a>
+                <a class="nav-link h4" href="settings.html#">Settings</a>
               </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              <input class="form-control mr-sm-0" type="search" style="width:100px" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success ml-0 my-2 my-sm-0" type="submit">Search</button>
             </form>
           </div>
         </nav>
@@ -80,14 +80,15 @@
                       <button class="bg-warning" type="button" id="listAllUserButton">List All User</button>
                     </div>
                     <div class="col-12 col-sm-8 col-md-7 pb-4">
-                      <div class="row text-center justify-content-center">
-                        <div class="col-12 col-sm-12 col-md-12 pl-0">
+                      <div class="row text-center justify-content-left">
+                        <div class="col-12 col-sm-12 col-md-12 ml-0 pl-0">
                           <label class="mr-4 pl-0 pr-5"  for="oneUserId">Pls input a user ID</label>
-                          <input class="form-control pl-5 ml-5" style="width:250px" type="text" id="oneUserId" placeholder="C10000001" required>
+                          <input class="form-control ml-auto pl-auto" type="text" id="oneUserId" placeholder="C10000001" required>
+                          <!-- <input class="form-control pl-5 ml-5" style="width:250px" type="text" id="oneUserId" placeholder="C10000001" required> -->
                         </div>
                       </div>
-                      <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12">
+                      <div class="row text-center justify-content-left">
+                        <div class="col-12 col-sm-12 col-md-12 pl-0">
                           <span><button class="bg-success" type="button" id="listOneUserButton">View</button></span>
                           <span class="ml-4"><button class="bg-success" type="button" id="modifyOneUserButton">Update</button></span>
                           <span class="ml-4"><button class="bg-success" type="button" id="deleteOneUserButton">Delete</button></span>

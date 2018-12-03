@@ -183,6 +183,21 @@
             }
         }
 
+         /* Assign values to Owner properties from the supplied array of data */
+        /* Assumes the array of attributes passed in is appropriate for this class,
+            meaning position 0 correlates with the first attribute in this class's 
+            array of properties */
+            public function fillCsv($attr_arr) {
+                // If $attr_arr is an associative array, convert it to numerically indexed
+                // If it's a numerically indexed array, treat it the same
+                $index_keys = array_keys($attr_arr);
+                $i = 0;
+                foreach ($this->attr as $key => $value) {
+                    $this->attr[$key] = $attr_arr[$index_keys[$i]];
+                    $i++;
+                }
+            }       
+
         /* Execute the prepared statement and return any errors 
         Note that 'stmt' is passed by reference */
         private function runPrepStmtChkErr(&$stmt) {

@@ -43,13 +43,20 @@
         // Add the data to the table one line at a time
         $num_rows = count($data_arr);
 		// var_dump ($num_row);
-	    // print_r($num_rows);
-	    // print ("<br>");
+		// print_r ($num_rows);
+	    print_r($num_rows);
+	    print ("<br>");
         for ($i=0; $i<$num_rows; $i++) {
             // Supply the data from the file to the model object 
-		    var_dump ($data_arr[$i]);
-            $obj->fillAttributes($data_arr[$i]);
+            // print_r($i);
+            // print_r("<br>");
+		    // print_r ($data_arr[$i]);
+            // print_r("<br>");
+            // $obj->fillAttributes($data_arr[$i]);
+            $obj->fillCsv($data_arr[$i]);
 
+            // print_r("fill$Attr completed ");
+            // print_r("<br>");
             // Each model has a 'create' function defined.
             // Use it to insert the data from the model object's properties
             //   into the mySQL table's attributes one line at a time.
@@ -235,7 +242,7 @@
     $parkingspot = new ParkingSpot($conn);
 
     // Fill in the Owner table with the data from our csv file.
-     // fill_table($conn, "data/parking_spot_data2.csv", $parkingspot);
+    //  fill_table($conn, "data/parking_spot_data2.csv", $parkingspot);
 
     // Emtpy all entries from the Owner table
     // empty_table($conn, $parkingspot);
@@ -397,7 +404,7 @@
     $parkingrecord = new ParkingRecord($conn);
 
     // Fill in the Owner table with the data from our csv file.
-     // fill_table($conn, "data/parking_record_data2.csv", $parkingrecord);
+     fill_table($conn, "data/parking_record_data2.csv", $parkingrecord);
 
     // Emtpy all entries from the Owner table
     // empty_table($conn, $parkingrecord);

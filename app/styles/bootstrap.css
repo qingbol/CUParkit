@@ -9746,3 +9746,19 @@
 {
   opacity: 0.2;
 }
+
+/*
+=======================================================================
+	Bread Crumb
+=======================================================================
+*/
+*/
+.crumb {
+	width:958px;
+	height:80px;
+	padding:8px 10px 0px 10px;
+	background-image:url(../images/crumb.gif);
+	background-repeat:repeat-x;
+	margin-left:10px;
+	border:#e3e3e3 solid 1px;
+}

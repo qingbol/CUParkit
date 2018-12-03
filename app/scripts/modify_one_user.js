@@ -3,6 +3,7 @@
 */
 console.log("entering modify_one_user.js");
 $(function(){
+  // //===start of listening update button====
   $("#modifyOneUserButton").click(function(){
     let userId = $("#oneUserId").val();
     console.log(userId);
@@ -15,6 +16,7 @@ $(function(){
     $("#paginationData").empty(); 
     createForm(userId);
   }); //#listAllUserButton" click event.
+  // //===end of listening update button====
 
   // //===start of listening submit button====
   $(document).on('click', '#ownerBtn', function(){
@@ -25,43 +27,75 @@ $(function(){
     // console.log(formvalue);
     let formValues = formDataToJson(formvalue);
     // let formValues = $("#oneUserForm").serialize(); //jquery method
-    console.log(formValues);
+    let formVal = JSON.stringify(formValues);
     //submit the modification
-    // modifyOneUser(formValues);
-    modifyOneUser_axios(formValues);
+    modifyOneUser(formVal);
+    // modifyOneUser_axios(formValues); //use axios 
   }); //===end of listening submit button====
+
+  // //===start of listening delete button====
+  $(document).on('click', '#deleteOneUserButton', function(){
+    //Get data
+    let ownerId = document.getElementById("oneUserId").value;
+    let ownerIdJson = JSON.stringify({oid: ownerId});
+    deleteOneUser(ownerIdJson);
+  });
+  // //===end   of listening delete button====
 
   console.log("leave modify_one_user.js");
 });
 
+
+let deleteOneUser = (usrId) => {
+  // console.log(usrId); 
+  $.ajax({
+    method: "POST",
+    url: window.location.pathname + '../../../api/Owner/delete.php', 
+    data: usrId,
+    dataType: 'json',
+    beforeSend: function(){
+      console.log("start sending delete request");
+      console.log(usrId);
+    },
+    success: function(dataFromServer){
+      console.log("delete success");
+      console.log(dataFromServer);
+    },
+    error: function(XMLHttpRequest, textStatus, errorThrown) { 
+      alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+    }       
+  });
+}
+
+
 //update user info
 let modifyOneUser = (formData) =>{
-    // console.log(usrId);
-    $.ajax({
-      // method: "PUT",
-      method: "POST",
-      data: formData,
-      url: window.location.pathname + '../../../api/Owner/update.php',
-      // headers: {
-      //   "X-HTTP-Method-Override": "PUT",
-      //   "Content-Type": "application/json"
-      // },
-      dataType: 'json',
-      beforeSend: function(){
-        console.log("sending data....");
-      },
-      success: function(dataFromServer){
-        console.log(".ajax success");
-        console.log(dataFromServer);
-        // displayResult(dataFromServer);
-        // $("#paginationData").html(dataFromServer);
-      }, //.ajax success module
-      error: function(XMLHttpRequest, textStatus, errorThrown) { 
-        alert("Status: " + textStatus); alert("Error: " + errorThrown); 
-      }       
-    }); //.ajax module
+  // console.log(usrId);
+  $.ajax({
+    method: "PUT",
+    data: formData,
+    url: window.location.pathname + '../../../api/Owner/update.php',
+    // headers: {
+    //   "X-HTTP-Method-Override": "PUT",
+    //   "Content-Type": "application/json"
+    // },
+    dataType: 'json',
+    beforeSend: function(){
+      console.log("sending data....");
+    },
+    success: function(dataFromServer){
+      console.log(".ajax success");
+      console.log(dataFromServer);
+      // displayResult(dataFromServer);
+      // $("#paginationData").html(dataFromServer);
+    }, //.ajax success module
+    error: function(XMLHttpRequest, textStatus, errorThrown) { 
+      alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+    }       
+  }); //.ajax module
 } //loadData function end
 
+//axios method
 let modifyOneUser_axios = (formData) => {
   let handleError = (err) => {
     // console.log(err.response);
@@ -101,16 +135,16 @@ let createForm = (usrId) => {
   // tableInDiv.setAttribute("class", "pt-2");
   //create a row1 in Div
   let tableHeaderRowInDiv = document.createElement("div");
-  tableHeaderRowInDiv.setAttribute("class", "row justify-content-left");
+  tableHeaderRowInDiv.setAttribute("class", "row mx-0 bg-secondary justify-content-left");
   tableInDiv.appendChild(tableHeaderRowInDiv); 
   //create col 1 in row 1
   let tableHeaderColInDiv1 = document.createElement("div");
-  tableHeaderColInDiv1.setAttribute("class", "col-1 col-sm-1 col-md-1 col-lg-1 text-center "); 
+  tableHeaderColInDiv1.setAttribute("class", "col-1 col-sm-2 col-md-2 col-lg-2 text-center "); 
   // tableHeaderColInDiv.innerText = Object.keys(usrResult[0])[i];
   tableHeaderRowInDiv.appendChild(tableHeaderColInDiv1);
   //create col 2 in row 1
   let tableHeaderColInDiv2 = document.createElement("div");
-  tableHeaderColInDiv2.setAttribute("class", "col-5 col-sm-5 col-md-5 col-lg-5 border text-center bg-info"); 
+  tableHeaderColInDiv2.setAttribute("class", "col-5 col-sm-8 col-md-8 col-lg-8 border text-center bg-info"); 
   // tableHeaderColInDiv.innerText = Object.keys(usrResult[0])[i];
   tableHeaderRowInDiv.appendChild(tableHeaderColInDiv2); 
   //create Form 

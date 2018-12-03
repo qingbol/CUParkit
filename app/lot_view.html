@@ -17,13 +17,13 @@
 
     <title>CUParkit</title>
   </head>
-  <body>
+  <body class="container d-flex flex-column grow">
       <!-- <div class="container">
         <div class="h4 pb-2 mt-4 mb-1 border-bottom">
             CU Parking Manage System
         </div>
       </div> -->
-      <div class="container border">
+      <!-- <div class="container border"> -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -37,46 +37,53 @@
           <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav ml-3 ml-auto mt-0 mt-lg-0">
               <li class="nav-item active">
-                <h4><a class="nav-link" href="home_page.html#">Home <span class="sr-only">(current)</span></a></h4>
+                <h4><a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a></h4>
               </li>
               <li class="nav-item">
-                <a class="nav-link h4" href="lot_view.html#">LotView</a>
+                <a class="nav-link h4" href="lot_view.html">LotView</a>
               </li>
               <li class="nav-item">
-                    <a class="nav-link h4" href="register.html#">Register</a>
-                  </li>
+                  <a class="nav-link h4" href="register.html">Register</a>
+                </li>
               <li class="nav-item">
-                <a class="nav-link h4" href="login.html#">Login</a>
+                <a class="nav-link h4" href="login.html">Login</a>
               </li>
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle h4" href="#" id="navbarDropdown" data-toggle="dropdown">
+              <li class="nav-item">
+                <a class="nav-link h4" href="query.html">Query</a>
+              </li>
+              <!-- <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle h4" href="query.html" id="navbarDropdown" data-toggle="dropdown">
                       Query </a>
                   <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">Query 1</a>
-                      <a class="dropdown-item" href="#">Query 2</a>
+                      <a class="dropdown-item" href="query.html" id="query1">Parking Report</a>
+                      <a class="dropdown-item" href="query.html" id="query2">OccupiedSpots</a>
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Another Query</a>
+                      <a class="dropdown-item" href="query.html" id="query3">Another Query</a>
                   </div>
-              </li>
+              </li> -->
               <li class="nav-item">
-                <a class="nav-link h4" href="backup.html#">Backup</a>
+                <a class="nav-link h4" href="settings.html">Settings</a>
               </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            <!-- <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-0" type="search" style="width:100px" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success ml-0 my-2 my-sm-0" type="submit">Search</button>
+            </form> -->
           </div>
         </nav>
-      </div>
+      <!-- </div> -->
 <!-- ==============Navigation bar end here.================================================ -->
-        
+        <!-- <div class="container"> -->
+            <div class="jumbotron" style="margin-bottom: 0;padding: 25px">
+            </div>
+        <!-- </div> -->
+
         <!-- Note: I will use javascript to make these elements and conditionally style them. For now, they are hardcoded. -->
-        <div class="container">
-                <div class="row justify-content-center border bg-info">
+        <!-- <div class="container"> -->
+                <div class="row mx-0 justify-content-center border bg-info">
                     <div class="col-122 text-center"><h3>Lot 1</h3></div> 
                 </div>
-                <div class="row mb-1">
+                <div class="row mx-0 mb-1">
                     <!-- <span>Lot 1</span> -->
                     <div class="col-6 col-sm-4 col-md-3 col-lg-2" id="s001">
                         <div class="row justify-content-center border bg-warning">
@@ -294,15 +301,15 @@
                             </div>
                         </div>
                     </div>
-            </div>
-        </div>
+                </div>
+        <!-- </div> -->
 
         <!-- Note: I will use javascript to make these elements and conditionally style them. For now, they are hardcoded. -->
-        <div class="container">
-                <div class="row justify-content-center border bg-info">
+        <!-- <div class="container"> -->
+                <div class="row mx-0 justify-content-center border bg-info">
                     <div class="col-6 text-center"><h3>Lot 2</h3></div> 
                 </div>
-                <div class="row">
+                <div class="row mx-0">
                     <!-- <span>Lot 1</span> -->
                     <div class="col-6 col-sm-4 col-md-3 col-lg-2" id="s001">
                         <div class="row justify-content-center border bg-warning">
@@ -520,16 +527,15 @@
                             </div>
                         </div>
                     </div>
-            </div>
-        </div>
+                </div>
+        <!-- </div> -->
 
 <!-- ===========Footer part start from here===================================== -->
-      <div class="container">
-        <div class="footer text-right">
+      <!-- <div class="container mt-4"> -->
+        <div class="footer mt-4 text-right">
             <p>&copy <a href="#" targe="_blank">CUParkit.com</a> | <a href="#" target="_blank">Imprint</a></p>
-          </div>
         </div>
-      </div>  
+      <!-- </div>   -->
   
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->

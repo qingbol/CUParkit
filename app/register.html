@@ -18,13 +18,13 @@
 
     <title>CUParkit</title>
   </head>
-  <body>
+  <body class="container d-flex flex-column grow">
       <!-- <div class="container">
         <div class="h4 pb-2 mt-4 mb-1 border-bottom">
             CU Parking Manage System
         </div>
       </div> -->
-      <div class="container">
+      <!-- <div class="container"> -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -38,44 +38,51 @@
           <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav ml-3 ml-auto mt-0 mt-lg-0">
               <li class="nav-item active">
-                <h4><a class="nav-link" href="home_page.html#">Home <span class="sr-only">(current)</span></a></h4>
+                <h4><a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a></h4>
               </li>
               <li class="nav-item">
-                <a class="nav-link h4" href="lot_view.html#">LotView</a>
+                <a class="nav-link h4" href="lot_view.html">LotView</a>
               </li>
               <li class="nav-item">
-                    <a class="nav-link h4" href="register.html#">Register</a>
-                  </li>
+                  <a class="nav-link h4" href="register.html">Register</a>
+                </li>
               <li class="nav-item">
-                <a class="nav-link h4" href="login.html#">Login</a>
+                <a class="nav-link h4" href="login.html">Login</a>
               </li>
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle h4" href="#" id="navbarDropdown" data-toggle="dropdown">
+              <li class="nav-item">
+                <a class="nav-link h4" href="query.html">Query</a>
+              </li>
+              <!-- <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle h4" href="query.html" id="navbarDropdown" data-toggle="dropdown">
                       Query </a>
                   <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">Query 1</a>
-                      <a class="dropdown-item" href="#">Query 2</a>
+                      <a class="dropdown-item" href="query.html" id="query1">Parking Report</a>
+                      <a class="dropdown-item" href="query.html" id="query2">OccupiedSpots</a>
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Another Query</a>
+                      <a class="dropdown-item" href="query.html" id="query3">Another Query</a>
                   </div>
-              </li>
+              </li> -->
               <li class="nav-item">
-                <a class="nav-link h4" href="backup.html#">Backup</a>
+                <a class="nav-link h4" href="settings.html">Settings</a>
               </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            <!-- <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-0" type="search" style="width:100px" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success ml-0 my-2 my-sm-0" type="submit">Search</button>
+            </form> -->
           </div>
         </nav>
-      </div>
+      <!-- </div> -->
 <!-- ==============Navigation bar end here.================================================ -->
+    <!-- <div class="container"> -->
+      <div class="jumbotron" style="margin-bottom: 0;padding: 25px">
+      </div>
+    <!-- </div> -->
 
-      <div class="container">
-        <div class="row">
-            <div class="col-1"></div>
-            <div class="col-3 border">
+    <!-- <div class="container"> -->
+        <div class="row bg-danger mx-0 px-0">
+            <div class="col-1 mx-0 bg-secondary"></div>
+            <div class="col bg-info">
                 <form id="newOwnerForm">
                     <fieldset>
                         <legend>Register New User</legend>
@@ -114,8 +121,8 @@
                     </fieldset>
                 </form>
             </div>
-            <div class="col-2"></div>
-            <div class="col-3 border">
+            <div class="col-1 bg-secondary mx-0"></div>
+            <div class="col bg-success mx-0">
                 <form id="newManagerForm">
                     <fieldset>
                         <legend>Register New Administrator</legend>
@@ -123,7 +130,7 @@
                                 <label for="mid">ID</label>
                                 <input class="form-control" type="text" id="managerID" name="mid" placeholder="Bob123" required>
                                 <i id="midStatus" class="material-icons">done</i>
-                            </div>
+                        </div>
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input class="form-control" type="text" id="adminName" name="name" placeholder="Robert" required>
@@ -145,23 +152,56 @@
                     </fieldset>
                 </form>
             </div>
+            <div class="col-1 bg-secondary mx-0"></div>
+            <div class="col bg-info mx-0">
+                <form id="newVehicleForm">
+                    <fieldset>
+                        <legend>Register New vehicle</legend>
+                        <div class="form-group">
+                                <label for="mid">OID</label>
+                                <input class="form-control" type="text" id="ownID" name="mid" placeholder="Bob123" required>
+                                <i id="midStatus" class="material-icons">done</i>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Plate</label>
+                            <input class="form-control" type="text" id="ownPlate" name="name" placeholder="PXH-428" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tel">Make</label>
+                            <input class="form-control" type="text" id="ownMake" name="tel" placeholder="Ford" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tel">Model</label>
+                            <input class="form-control" type="text" id="ownMake" name="tel" placeholder="Focus" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tel">Color</label>
+                            <input class="form-control" type="text" id="ownMake" name="tel" placeholder="Red" required>
+                        </div>
+                        <span><button class="btn btn-primary" type="button" id="registerAdminButton">Register</button></span>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="col-1 bg-secondary mx-0 px-0"></div>
+            <!-- <div class="col-1 border bg-success ml-0 mr-0 ">999</div> -->
         </div>
-        <div class="row mt-3 mb-4">
-            <div class="col-1"></div>
-            <div class="col-8 border">
+        <div class="row  mx-0 px-0 mb-0">
+            <div class="bg-warning col-1"></div>
+            <div class="col-8 bg-warning ">
                 <label for="messageBox">Info:</label>
                 <div id="messageBox"></div>
             </div>
+            <div class="bg-warning col-3"></div>
         </div>
-      </div>
+    <!-- </div> -->
 
 <!-- ===========Footer part start from here===================================== -->
-<div class="container">
-        <div class="footer text-right">
+<!-- <div class="container"> -->
+        <div class="footer mt-4 text-right">
             <p>&copy <a href="#" target="_blank">CUParkit.com</a> | <a href="#" target="_blank">Imprint</a></p>
-          </div>
         </div>
-      </div>  
+    <!-- </div> -->
+<!-- </div>   -->
   
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -172,4 +212,4 @@
       <script type="text/javascript" src="scripts/registration.js"></script>
       <script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
     </body>
-  </html>
+</html>

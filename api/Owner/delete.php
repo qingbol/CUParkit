@@ -28,9 +28,13 @@
     // json_decode returns an object if 'true' is not specified
     // json_decode returns an associative array if 'true' is specified
     $data = json_decode(file_get_contents("php://input"));
-
+    // print_r(json_encode($data));
+    // print_r(json_encode($data->oid));
     // Set OID to the one specified from the front-end
-    $owner->setAttr("oid", $data->oid);
+    // $owner->setAttr("oid", json_encode($data->oid));
+    $owner->setAttr("oid",$data->oid);
+    // $usrid = $owner->getAttr("oid");
+    // print_r($usrid);
 
     // Create a session or resume current session based on session ID passed via POST
     session_start();
@@ -51,9 +55,10 @@
         die();
     }
 
-    // If we've made it this far, the user is authorized to use the delete function
-    // Delete this owner using the data model's function
+    // // If we've made it this far, the user is authorized to use the delete function
+    // //Delete this owner using the data model's function
     if($owner->delete()) {
+        // echo json_encode(array('message' => 'Owner Successfully Deleted'));
         echo json_encode(array('message' => 'Owner Successfully Deleted',
                                 'id: ' => $_SESSION['id']));
         // TODO: If the delete request came from a normal user, log the normal user out

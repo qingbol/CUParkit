@@ -36,10 +36,13 @@
     
     // //Create Owner entry in the database using the data model's function
     if($owner->update()) {
+<<<<<<< HEAD
+=======
         // echo json_encode(array('message' => 'Owner Successfully Updated',
         //                         'tel' => $tel
         // ));
         // echo json_encode(array('message' => ('Owner Successfully Updated: '."; oid: ".$data['oid']."; name: ".$data['name'])));
+>>>>>>> 98e551346fad0c4a0199a41a89ce5ffb0acb927a
         echo json_encode(array('message' => 'Owner Successfully Updated'));
     } else {
         echo json_encode(array('message' => 'Owner Not Updated'));

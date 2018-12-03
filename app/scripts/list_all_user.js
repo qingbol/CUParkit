@@ -7,12 +7,14 @@ $(function(){
     console.log("detecting listAllUserButton click event");
     loadData();
 
-    //listening pagination button
-    $(document).on('click', '.page-item', function(){  
-        let pageNumb = $(this).attr("id");  
-        loadData(pageNumb);  
-   });  
   }); //#listAllUserButton" click event.
+
+  //listening pagination button
+  $(document).on('click', '.page-item', function(){  
+    let pageNumb = $(this).attr("id");  
+    loadData(pageNumb);  
+  });  
+
   console.log("leave admin.js");
 });
 

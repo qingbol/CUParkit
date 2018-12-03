@@ -81,8 +81,8 @@
 
     <!-- <div class="container"> -->
         <div class="row bg-danger mx-0 px-0">
-            <div class="col-1 mx-0 bg-info"></div>
-            <div class="col-3 bg-info">
+            <div class="col-1 mx-0 bg-secondary"></div>
+            <div class="col bg-info">
                 <form id="newOwnerForm">
                     <fieldset>
                         <legend>Register New User</legend>
@@ -121,8 +121,8 @@
                     </fieldset>
                 </form>
             </div>
-            <div class="col-2 bg-info mx-0"></div>
-            <div class="col-3 bg-success mx-0">
+            <div class="col-1 bg-secondary mx-0"></div>
+            <div class="col bg-success mx-0">
                 <form id="newManagerForm">
                     <fieldset>
                         <legend>Register New Administrator</legend>
@@ -152,7 +152,38 @@
                     </fieldset>
                 </form>
             </div>
-            <div class="col-3 bg-success mx-0 px-0"></div>
+            <div class="col-1 bg-secondary mx-0"></div>
+            <div class="col bg-light mx-0">
+                <form id="newVehicleForm">
+                    <fieldset>
+                        <legend>Register New Administrator</legend>
+                        <div class="form-group">
+                                <label for="mid">ID</label>
+                                <input class="form-control" type="text" id="managerID" name="mid" placeholder="Bob123" required>
+                                <i id="midStatus" class="material-icons">done</i>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input class="form-control" type="text" id="adminName" name="name" placeholder="Robert" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tel">Telephone Number</label>
+                            <input class="form-control" type="text" id="adminTel" name="tel" placeholder="123-123-1234" required>
+                        </div>
+                        <!-- Use Sessions for logging in. Don't store passwords as plain text. Salt and hash them. -->
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input class="form-control" type="password" id="adminPassword" name="password" placeholder="Password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkPass">Confirm Password</label>
+                            <input class="form-control" type="password" id="adminPasswordConfirm" name="checkPass" placeholder="Confirm Password" required>
+                        </div>
+                        <span><button class="btn btn-primary" type="button" id="registerAdminButton">Register</button></span>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="col-1 bg-secondary mx-0 px-0"></div>
             <!-- <div class="col-1 border bg-success ml-0 mr-0 ">999</div> -->
         </div>
         <div class="row  mx-0 px-0 mb-0">

@@ -5,4 +5,4 @@
     // shared token between the client and the server
     session_destroy(); 
     // The client-side javascript should redirect the user to the homepage after running this script
-    
+    echo json_encode( array("message" => "You have logout...") ); 

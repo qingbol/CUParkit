@@ -29,6 +29,27 @@
         // $ownerPageInfo = $owner->getPageInfo("pageSeq");
         // echo json_encode($ownerPageInfo);
 
+        // Authorization
+            // Create a session or resume current session based on session ID passed via POST
+            session_start();
+
+            // If the session variables aren't set, that means the user isn't logged in
+            if (!isset($_SESSION['id']) || !isset($_SESSION['type'])) {
+                session_destroy();
+                echo json_encode(array('message' => 'User not logged in: You don\'t have permission to do that'));
+                die();
+            }
+
+            // Make it so that an owner can only list his own entry.
+            //   and a manager can list any entry.
+            if ( !(($_SESSION['id'] === $owner->getAttr("oid")) ||
+                    ($_SESSION['type'] === "manager")) ) {
+                session_destroy();
+                echo json_encode(array('message' => 'Incorrect authority: You don\'t have permission to do that'));
+                die();
+            }
+            // If we've made it this far, the user is authorized to use this function
+
         // Get all rows from Owner table
         // It's an integer-indexed array of associative arrays
         $result = $owner->listOne();

@@ -13,6 +13,27 @@
 
     // Include the data model that communicates to the database
     include_once '../../models/ParkingRecord.php';
+
+// Authorization
+// Only a manager (admin) should be able to view the parking record
+    // Create a session or resume current session based on session ID
+    session_start();
+
+    // If the session variables aren't set, that means the user isn't logged in
+    if (!isset($_SESSION['id']) || !isset($_SESSION['type'])) {
+        session_destroy();
+        echo json_encode(array('message' => 'User not logged in: You don\'t have permission to do that'));
+        die();
+    }
+
+    // Only an admin can list all users of the database
+    if ( !($_SESSION['type'] === "manager") ) {
+        session_destroy();
+        echo json_encode(array('message' => 'Incorrect authority: You don\'t have permission to do that'));
+        die();
+    }
+    // If  we've made it here, the user is a logged-in Manager, who has the right to do the following
+
     // Instantiate DB & connect to it
     $database = new Database();
     $db = $database->connect();

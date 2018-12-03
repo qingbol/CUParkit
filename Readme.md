@@ -60,3 +60,8 @@ There is one PHP Class in a script that, when instantiated, can use PHP Data Obj
   - It was used to fill in the tables and test the data models.
   - Its functionality will eventually be placed in the API and available to administrative users via the web portal.
 ..* The Readme file is also outside of any folder.
+
+## Example Run of Code
+The following is an example to help show the logic flow of the project structure.
+If a user wanted to register himself, he would fill in his details and press a submit button on the web portal. The webapp would then send a HTTP POST request to be handled by the API at webapp.cs.clemson/~jbtabb/api/owner/create.php. So, the POST request containing JSON data would be sent from the webapp to the web server’s create.php file. The create.php file would instantiate an owner from the models/owner.php file. Then, the create.php file would take the JSON data and use it to fill in the corresponding PHP variables in the owner object from the owner.php file. Then, the create.php file would call the owner object’s create() function. The owner.php file would instantiate a connection to the MySQL database and use PDO to check/clean and submit a query with the relevant data and parameters to the database server. Next, the web server would receive a response from the database server and communicate that response back to the webapp via JSON. Finally, the webapp would display a success message or an error message.
+

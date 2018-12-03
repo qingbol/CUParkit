@@ -45,8 +45,8 @@
             die();
         }
 
-        // Make it so that an owner can only delete his own entry.
-        //   and a manager can delete any entry.
+        // Make it so that an owner can only update his own entry.
+        //   and a manager can update any entry.
         if ( !(($_SESSION['id'] === $owner->getAttr("oid")) ||
                 ($_SESSION['type'] === "manager")) ) {
             session_destroy();

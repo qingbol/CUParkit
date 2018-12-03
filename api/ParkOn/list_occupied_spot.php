@@ -13,6 +13,26 @@
 
     // Include the data model that communicates to the database
     include_once '../../models/ParkOn.php';
+
+    // Authorization
+        // Create a session or resume current session based on session ID passed via POST
+        session_start();
+
+        // If the session variables aren't set, that means the user isn't logged in
+        if (!isset($_SESSION['id']) || !isset($_SESSION['type'])) {
+            session_destroy();
+            echo json_encode(array('message' => 'User not logged in: You don\'t have permission to do that'));
+            die();
+        }
+        // If we've made it this far, then the user is logged in, so he is authorized to use this function
+
+
+
+
+
+
+
+
     // Instantiate DB & connect to it
     $database = new Database();
     $db = $database->connect();

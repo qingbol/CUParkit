@@ -44,8 +44,8 @@
         $num_rows = count($data_arr);
 		// var_dump ($num_row);
 		// print_r ($num_rows);
-	    print_r($num_rows);
-	    print ("<br>");
+	    // print_r($num_rows);
+	    // print ("<br>");
         for ($i=0; $i<$num_rows; $i++) {
             // Supply the data from the file to the model object 
             // print_r($i);
@@ -248,11 +248,11 @@
     // empty_table($conn, $parkingspot);
 
     // Read all entries from the Owner table
-    $res = $parkingspot->read();
-    print("Result of reading ParkingSpot: \n");
-    print_r($res);
-    print("\n");
-    print("<br><br>");
+    // $res = $parkingspot->read();
+    // print("Result of reading ParkingSpot: \n");
+    // print_r($res);
+    // print("\n");
+    // print("<br><br>");
     
     // Read one entry from the ParkingSpot table
     // $spot = "E01_001";
@@ -330,11 +330,11 @@
     // empty_table($conn, $manager);
 
     // Read all entries from the Owner table
-    $res = $manager->read();
-    print("Result of reading Manager: \n");
-    print_r($res);
-    print("\n");
-    print("<br><br>");
+    // $res = $manager->read();
+    // print("Result of reading Manager: \n");
+    // print_r($res);
+    // print("\n");
+    // print("<br><br>");
     
     // Read one entry from the manager table
     // $mid = "M001";
@@ -368,11 +368,11 @@
     // empty_table($conn, $manageparking);
 
     // Read all entries from the Owner table
-    $res = $manageparking->read();
-    print("Result of reading ManageParking: \n");
-    print_r($res);
-    print("\n");
-    print("<br><br>");
+    // $res = $manageparking->read();
+    // print("Result of reading ManageParking: \n");
+    // print_r($res);
+    // print("\n");
+    // print("<br><br>");
     
     // Read one entry from the manager table
     // $mid = "M002";
@@ -404,17 +404,17 @@
     $parkingrecord = new ParkingRecord($conn);
 
     // Fill in the Owner table with the data from our csv file.
-     fill_table($conn, "data/parking_record_data2.csv", $parkingrecord);
+    //  fill_table($conn, "data/parking_record_data2.csv", $parkingrecord);
 
     // Emtpy all entries from the Owner table
     // empty_table($conn, $parkingrecord);
 
     // Read all entries from the Owner table
-    $res = $parkingrecord->read();
-    print("Result of reading ParkingRecord: \n");
-    print_r($res);
-    print("\n");
-    print("<br><br>");
+    // $res = $parkingrecord->read();
+    // print("Result of reading ParkingRecord: \n");
+    // print_r($res);
+    // print("\n");
+    // print("<br><br>");
     
     // Read one entry from the manager table
     // $rcd_index = "r000003";
@@ -448,11 +448,11 @@
     // empty_table($conn, $managerecord);
 
     // Read all entries from the Owner table
-    $res = $managerecord->read();
-    print("Result of reading ManageRecord: \n");
-    print_r($res);
-    print("\n");
-    print("<br><br>");
+    // $res = $managerecord->read();
+    // print("Result of reading ManageRecord: \n");
+    // print_r($res);
+    // print("\n");
+    // print("<br><br>");
     
     // Read one entry from the manager table
     // $rcd_index = "r000003";

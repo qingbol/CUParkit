@@ -66,10 +66,10 @@
                 <a class="nav-link h4" href="settings.html">Settings</a>
               </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
+            <!-- <form class="form-inline my-2 my-lg-0">
               <input class="form-control mr-sm-0" type="search" style="width:100px" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success ml-0 my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            </form> -->
           </div>
         </nav>
       <!-- </div> -->
@@ -153,31 +153,30 @@
                 </form>
             </div>
             <div class="col-1 bg-secondary mx-0"></div>
-            <div class="col bg-light mx-0">
+            <div class="col bg-info mx-0">
                 <form id="newVehicleForm">
                     <fieldset>
-                        <legend>Register New Administrator</legend>
+                        <legend>Register New vehicle</legend>
                         <div class="form-group">
-                                <label for="mid">ID</label>
-                                <input class="form-control" type="text" id="managerID" name="mid" placeholder="Bob123" required>
+                                <label for="mid">OID</label>
+                                <input class="form-control" type="text" id="ownID" name="mid" placeholder="Bob123" required>
                                 <i id="midStatus" class="material-icons">done</i>
                         </div>
                         <div class="form-group">
-                            <label for="name">Name</label>
-                            <input class="form-control" type="text" id="adminName" name="name" placeholder="Robert" required>
+                            <label for="name">Plate</label>
+                            <input class="form-control" type="text" id="ownPlate" name="name" placeholder="PXH-428" required>
                         </div>
                         <div class="form-group">
-                            <label for="tel">Telephone Number</label>
-                            <input class="form-control" type="text" id="adminTel" name="tel" placeholder="123-123-1234" required>
-                        </div>
-                        <!-- Use Sessions for logging in. Don't store passwords as plain text. Salt and hash them. -->
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input class="form-control" type="password" id="adminPassword" name="password" placeholder="Password" required>
+                            <label for="tel">Make</label>
+                            <input class="form-control" type="text" id="ownMake" name="tel" placeholder="Ford" required>
                         </div>
                         <div class="form-group">
-                            <label for="checkPass">Confirm Password</label>
-                            <input class="form-control" type="password" id="adminPasswordConfirm" name="checkPass" placeholder="Confirm Password" required>
+                            <label for="tel">Model</label>
+                            <input class="form-control" type="text" id="ownMake" name="tel" placeholder="Focus" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tel">Color</label>
+                            <input class="form-control" type="text" id="ownMake" name="tel" placeholder="Red" required>
                         </div>
                         <span><button class="btn btn-primary" type="button" id="registerAdminButton">Register</button></span>
                     </fieldset>

@@ -35,7 +35,7 @@ POST, GET, PUT, etc. with JSON.
 ## Testing
 Postman is helpful for testing the api. The 'test' folder contains the production environment variables and collection of tests.
 
-## Excerpt from our report
+## Excerpt from our report -- More Detailed Description of Project Structure
 The webapp’s HTML communicates to the webapp’s javascript with ajax. The webapp’s javascript then uses XHR to communicate with the RESTful API, which is written in PHP. XHR stands for XmlHttpRequest, which can handle sending and receiving JSON. The webapp and web server communicate to each other with JSON and XHR. The specific libraries we are using to do this in javascript are axios and jquery (and jquery ajax).
 
 Note that it is possible to send and receive HTTP packets without using the webapp / web portal. Postman was used extensively in the development and testing of this api, and can still be used to access it. Other webapps could also communicate with this api.

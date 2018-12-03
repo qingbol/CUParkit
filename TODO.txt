@@ -15,3 +15,13 @@ TODO:
 11. Add MySQL "batches" -- forgot the actual term
 12. Add MySQL Enum for "type" so the people are forced to choose one from Visitor, Student, Employee, etc.
 13. Write program to make simulation data for testing a large dataset.
+
+
+NEED To:
+1. Allow filtering of Parking Spot: Request for just lot 1, lot 2, or all lots, etc.
+2. Allow pagination of Parking Spot: Only return a part of the results with a custom SQL query. Set up a link to the next query, etc.
+
+
+1. Auth for Users and Admin
+2. Implement query for table info into html -- see car_parking_system/parking-report.php
+

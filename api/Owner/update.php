@@ -34,7 +34,28 @@
     $owner->fillAttributes($data);
     // $tel = $owner->getAttr("tel");
     
-    // //Create Owner entry in the database using the data model's function
+    // Authorization
+        // Create a session or resume current session based on session ID passed via POST
+        session_start();
+
+        // If the session variables aren't set, that means the user isn't logged in
+        if (!isset($_SESSION['id']) || !isset($_SESSION['type'])) {
+            session_destroy();
+            echo json_encode(array('message' => 'User not logged in: You don\'t have permission to do that'));
+            die();
+        }
+
+        // Make it so that an owner can only update his own entry.
+        //   and a manager can update any entry.
+        if ( !(($_SESSION['id'] === $owner->getAttr("oid")) ||
+                ($_SESSION['type'] === "manager")) ) {
+            session_destroy();
+            echo json_encode(array('message' => 'Incorrect authority: You don\'t have permission to do that'));
+            die();
+        }
+        // If we've made it this far, the user is authorized to use this function
+
+    // Change Owner entry in the database using the data model's function
     if($owner->update()) {
         // echo json_encode(array('message' => 'Owner Successfully Updated',
         //                         'tel' => $tel

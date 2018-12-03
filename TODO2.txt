@@ -1,3 +1,0 @@
-1. Auth for Users and Admin
-2. Implement query for table info into html -- see car_parking_system/parking-report.php
-

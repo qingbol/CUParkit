@@ -58,6 +58,10 @@ let deleteOneUser = (usrId) => {
       console.log(usrId);
     },
     success: function(dataFromServer){
+      if (dataFromServer.message) {
+        // document.getElementById("messageBox").innerHTML = dataFromServer.message + "<br>";
+        $("#messageBox").html(dataFromServer.message + "<br>");
+      }
       console.log("delete success");
       console.log(dataFromServer);
     },

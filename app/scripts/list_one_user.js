@@ -28,6 +28,10 @@ let listOneUser = (usrId) =>{
       url: window.location.pathname + '../../../api/Owner/list_one.php',
       dataType: 'json',
       success: function(dataFromServer){
+        if (dataFromServer.message) {
+          // document.getElementById("messageBox").innerHTML = dataFromServer.message + "<br>";
+          $("#messageBox").html(dataFromServer.message + "<br>");
+        }
         console.log("success");
         console.log(dataFromServer);
         // displayResult(dataFromServer);

@@ -168,9 +168,9 @@
                 // this model's attribute capitalization style (all lowercase)
                 // $local_key = strtolower($key);
                 // If user didn't specify property
-                if ($this->attr[$local_key] === "") {
+                if ($this->attr[$key] === "") {
                     // Then use the value that's already in the database
-                    $this->attr[$local_key] = $curr_vals[$key];
+                    $this->attr[$key] = $curr_vals[$key];
                 }
             }
 

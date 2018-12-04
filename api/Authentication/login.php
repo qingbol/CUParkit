@@ -48,10 +48,10 @@
     $type;
     // If one of the info pieces has a correct username, then we need to handle it properly
     if ($owner_info) { // If it's an owner who's logging in
-        $pass_from_db = $owner_info['Password'];
+        $pass_from_db = $owner_info['pass'];
         // echo json_encode(array("OwnerPass" => $owner_info['Password']));
         $id = $owner->getAttr('oid');
-        $type = $owner_info['Type'];
+        $type = $owner_info['type'];
     }
 
     if ($manager_info) { // If it's a manager who's logging in

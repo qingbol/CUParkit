@@ -141,7 +141,8 @@
 
             // Get the result of reading one of the rows of the relation
             $row_res = $stmt->fetch(PDO::FETCH_ASSOC);
-            return $attr = array(
+            // Import the data into values this class understands
+            return $db_data = array(
                 "oid"   => $row_res["OID"],
                 "name"  => $row_res["Name"],
                 "tel"   => $row_res["Tel"],
@@ -165,7 +166,7 @@
             foreach ($curr_vals as $key => $value) {
                 // Convert key from the Database's capitalization to
                 // this model's attribute capitalization style (all lowercase)
-                $local_key = strtolower($key);
+                // $local_key = strtolower($key);
                 // If user didn't specify property
                 if ($this->attr[$local_key] === "") {
                     // Then use the value that's already in the database

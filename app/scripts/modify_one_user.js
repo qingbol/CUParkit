@@ -76,7 +76,8 @@ let deleteOneUser = (usrId) => {
 let modifyOneUser = (formData) =>{
   // console.log(usrId);
   $.ajax({
-    method: "PUT",
+    //the web server can't use PUT
+    method: "POST",
     data: formData,
     url: window.location.pathname + '../../../api/Owner/update.php',
     // headers: {

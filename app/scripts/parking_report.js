@@ -44,7 +44,7 @@ $(function(){
   }); //#listAllUserButton" click event.
 
   $(document).on('click', '.filter-spot-pagination', function(){  
-    let spotStatus = $("#spotStatusFilterInput").val(0);
+    let spotStatus = $("#spotStatusFilterInput").val();
     // if(null == spotStatus || "" == spotStatus){
     //   alert("Pls input the spot status first");
     //   return;

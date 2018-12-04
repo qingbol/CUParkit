@@ -140,7 +140,14 @@
             }
 
             // Get the result of reading one of the rows of the relation
-            return $row_res = $stmt->fetch(PDO::FETCH_ASSOC);
+            $row_res = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $attr = array(
+                "oid"   => $row_res["OID"],
+                "name"  => $row_res["Name"],
+                "tel"   => $row_res["Tel"],
+                "type"  => $row_res["Type"],
+                "pass"  => $row_res["Password"],
+            );
         }
 
         /* Update this owner in the database

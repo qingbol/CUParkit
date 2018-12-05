@@ -128,7 +128,7 @@
     // fill_table($conn, "data/owner_data2.csv", $owner);
     //
     // Emtpy all entries from the Owner table
-    empty_table($conn, $owner);
+    // empty_table($conn, $owner);
     // 
     // Read all entries from the Owner table
     // $res = $owner->read();
@@ -492,6 +492,7 @@
         'prkSpot' => new ParkingSpot($conn),
         'parkOn' => new ParkOn($conn),
     );
+    // print_r($tables);
 
     // Delete all entries from all tables
     foreach ($tables as $table) {

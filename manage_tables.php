@@ -498,3 +498,8 @@
     foreach ($tables as $table) {
         empty_table($conn, $table);
     }
+
+    // Fill all entries into all tables
+    foreach ($tables as $tableName => $table) {
+        fill_table($conn, "data/" . $tableName . "csv", $table);
+    }

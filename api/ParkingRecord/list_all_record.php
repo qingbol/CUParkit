@@ -28,7 +28,6 @@
 
     // Only an admin can list all users of the database
     if ( !($_SESSION['type'] === "manager") ) {
-        session_destroy();
         echo json_encode(array('message' => 'Incorrect authority: You don\'t have permission to do that'));
         die();
     }

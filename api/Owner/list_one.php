@@ -44,7 +44,6 @@
             //   and a manager can list any entry.
             if ( !(($_SESSION['id'] === $owner->getAttr("oid")) ||
                     ($_SESSION['type'] === "manager")) ) {
-                session_destroy();
                 echo json_encode(array('message' => 'Incorrect authority: You don\'t have permission to do that'));
                 die();
             }

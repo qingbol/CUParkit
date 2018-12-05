@@ -41,7 +41,7 @@
 
     // If the session variables aren't set, that means the user isn't logged in
     if (!isset($_SESSION['id']) || !isset($_SESSION['type'])) {
-        session_destroy();
+        session_destroy(); // Delete the empty session we created
         echo json_encode(array('message' => 'User not logged in: You don\'t have permission to do that'));
         die();
     }
@@ -50,7 +50,6 @@
     //   and a manager can delete any entry.
     if ( !(($_SESSION['id'] === $owner->getAttr("oid")) ||
             ($_SESSION['type'] === "manager")) ) {
-        session_destroy();
         echo json_encode(array('message' => 'Incorrect authority: You don\'t have permission to do that'));
         die();
     }

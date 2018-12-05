@@ -21,7 +21,6 @@ include_once '../../config/Database.php';
     // Only an admin can backup or restore the database
     // TODO: It's probably best to make Admin seperate from Manager in the future
     if ( !($_SESSION['type'] === "manager") ) {
-        session_destroy();
         echo json_encode(array('message' => 'Incorrect authority: You don\'t have permission to do that'));
         die();
     }

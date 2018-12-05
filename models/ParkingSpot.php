@@ -192,10 +192,10 @@
             //Create query
             // print_r(json_encode($this->pageInfo["spotStatus"]));
             if("vacant" == $this->pageInfo["spotStatus"]){
-              $totalRecordsQuery = "SELECT COUNT(*) FROM " . $this->table . " WHERE Status= '" . $this->pageInfo["spotStatus"] . "' ORDER BY Spot ASC LIMIT $startFrom,$recordPerPage";
+              $totalRecordsQuery = "SELECT COUNT(*) FROM " . $this->table . " WHERE Status= '" . $this->pageInfo["spotStatus"] . "'";
             //   print_r(json_encode($query));
             }elseif("occupied" == $this->pageInfo["spotStatus"]){
-              $totalRecordsQuery = "SELECT COUNT(*) FROM " . $this->table . ",park_on,vehicle WHERE park_on.Spot=parking_spot.Spot AND park_on.Plate=vehicle.Plate AND Status='" . $this->pageInfo["spotStatus"] . "' ORDER BY park_on.Spot ASC LIMIT $startFrom,$recordPerPage";
+              $totalRecordsQuery = "SELECT COUNT(*) FROM " . $this->table . ",park_on,vehicle WHERE park_on.Spot=parking_spot.Spot AND park_on.Plate=vehicle.Plate AND Status='" . $this->pageInfo["spotStatus"] . "'";
             }
             ////Prepare the statement
             $totalRecordsStmt = $this->conn->prepare($totalRecordsQuery);
@@ -257,20 +257,29 @@
             $output .= '
                 <div class="row mx-0 justify-content-center">
             ';
-            foreach($result as $key=>$value){
-                if( "Fee" == $key){
-                    $output .= '
-                        <div class="col-1 col-sm-1 col-md-1 col-lg-1 border text-left bg-info">' . $key . '</div>
-                    ';
-                }elseif("Rcd_index"==$key || "late"==$key){
-                    $output .= '
-                        <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">' . $key . '</div>
-                    ';
-                }else{
-                    $output .= '
-                        <div class="col col-sm col-md col-lg border text-center bg-info">' . $key . '</div>
-                    ';
+            if ($result){
+                foreach($result as $key=>$value){
+                    if( "Fee" == $key){
+                        $output .= '
+                            <div class="col-1 col-sm-1 col-md-1 col-lg-1 border text-left bg-info">' . $key . '</div>
+                        ';
+                    }elseif("Rcd_index"==$key || "late"==$key){
+                        $output .= '
+                            <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">' . $key . '</div>
+                        ';
+                    }else{
+                        $output .= '
+                            <div class="col col-sm col-md col-lg border text-center bg-info">' . $key . '</div>
+                        ';
+                    }
                 }
+            }else{
+                $output .= '
+                <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">Spot</div>
+                <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">Lot</div>
+                <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">Status</div>
+                <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">Rate</div>
+                ';      
             }
             $output .= '
                 </div>

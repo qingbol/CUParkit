@@ -21,7 +21,7 @@
         // private $db_name = "parkit";
         // private $charset = "utf8";
         // private $username = "qbl";
-        // private $password = "lqb987741";
+        // private $password = "Dbms#6620";
         // private $conn;
 
         // Qingbo localhost Database Parameters

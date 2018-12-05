@@ -242,20 +242,31 @@
             $output .= '
                 <div class="row mx-0 justify-content-center">
             ';
-            foreach($result as $key=>$value){
-                if( "Fee" == $key){
-                    $output .= '
-                        <div class="col-1 col-sm-1 col-md-1 col-lg-1 border text-left bg-info">' . $key . '</div>
-                    ';
-                }elseif("Rcd_index"==$key || "Plate"==$key){
-                    $output .= '
-                        <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">' . $key . '</div>
-                    ';
-                }else{
-                    $output .= '
-                        <div class="col col-sm col-md col-lg border text-center bg-info">' . $key . '</div>
-                    ';
+            if ($result){
+                foreach($result as $key=>$value){
+                    if( "Fee" == $key){
+                        $output .= '
+                            <div class="col-1 col-sm-1 col-md-1 col-lg-1 border text-left bg-info">' . $key . '</div>
+                        ';
+                    }elseif("Rcd_index"==$key || "Plate"==$key){
+                        $output .= '
+                            <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">' . $key . '</div>
+                        ';
+                    }else{
+                        $output .= '
+                            <div class="col col-sm col-md col-lg border text-center bg-info">' . $key . '</div>
+                        ';
+                    }
                 }
+
+            }else{
+                $output .= '
+                <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">Rcd_index</div>
+                <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">Plate</div>
+                <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">Enter_date_time</div>
+                <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">Leave_date_time</div>
+                <div class="col-2 col-sm-2 col-md-2 col-lg-2 border text-center bg-info">Fee</div>
+                ';      
             }
             $output .= '
                 </div>

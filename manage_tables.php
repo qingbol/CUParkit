@@ -15,7 +15,7 @@
     include_once 'models/ManageParking.php';
     include_once 'models/Manager.php';
     include_once 'models/ManageRecord.php';
-    include_once 'models/model_interface.php';
+    // include_once 'models/model_interface.php';
     include_once 'models/Own.php';
     include_once 'models/ParkingRecord.php';
     include_once 'models/ParkingSpot.php';
@@ -122,7 +122,7 @@
     */
 
     // Instantiate the object whose table I'm working on
-    $owner = new Owner($conn);
+    // $owner = new Owner($conn);
     
     // Fill in the Owner table with the data from our csv file.
     // fill_table($conn, "data/owner_data2.csv", $owner);
@@ -131,11 +131,11 @@
     // empty_table($conn, $owner);
     // 
     // Read all entries from the Owner table
-    $res = $owner->read();
-    print("Result of reading Owner: \n");
-    print_r($res);
-    print("\n");
-    print("<br><br>");
+    // $res = $owner->read();
+    // print("Result of reading Owner: \n");
+    // print_r($res);
+    // print("\n");
+    // print("<br><br>");
     
     // Read one entry from the Owner table
     // $oid = "C10000000";
@@ -159,7 +159,7 @@
 
     //======================Vehicle.php================
     // Instantiate the object whose table I'm working on
-    $vehicle = new Vehicle($conn);
+    // $vehicle = new Vehicle($conn);
 
     // Fill in the Owner table with the data from our csv file.
      // fill_table($conn, "data/vehicle_data2.csv", $vehicle);
@@ -168,11 +168,11 @@
     // empty_table($conn, $owner);
 
     // Read all entries from the Owner table
-    $res = $vehicle->read();
-    print("Result of reading Vehicle: \n");
-    print_r($res);
-    print("\n");
-    print("<br><br>");
+    // $res = $vehicle->read();
+    // print("Result of reading Vehicle: \n");
+    // print_r($res);
+    // print("\n");
+    // print("<br><br>");
     
     // Read one entry from the Owner table
     // $plate = "1AWJ785";
@@ -197,7 +197,7 @@
 
     //======================own.php================
     // Instantiate the object whose table I'm working on
-    $own = new Own($conn);
+    // $own = new Own($conn);
 
     // Fill in the Owner table with the data from our csv file.
      // fill_table($conn, "data/own_data2.csv", $own);
@@ -206,11 +206,11 @@
     // empty_table($conn, $own);
 
     // Read all entries from the Owner table
-    $res = $own->read();
-    print("Result of reading Own: \n");
-    print_r($res);
-    print("\n");
-    print("<br><br>");
+    // $res = $own->read();
+    // print("Result of reading Own: \n");
+    // print_r($res);
+    // print("\n");
+    // print("<br><br>");
     
     // Read one entry from the Owner table
     // $plate = "1AWJ785";
@@ -239,7 +239,7 @@
 
     //======================ParkingSpot.php================
     // Instantiate the object whose table I'm working on
-    $parkingspot = new ParkingSpot($conn);
+    // $parkingspot = new ParkingSpot($conn);
 
     // Fill in the Owner table with the data from our csv file.
     //  fill_table($conn, "data/parking_spot_data2.csv", $parkingspot);
@@ -279,7 +279,7 @@
 
     //======================ParkOn.php================
     // Instantiate the object whose table I'm working on
-    $parkon = new ParkOn($conn);
+    // $parkon = new ParkOn($conn);
 
     // Fill in the Owner table with the data from our csv file.
      // fill_table($conn, "data/park_on_data2.csv", $parkon);
@@ -289,11 +289,11 @@
     // empty_table($conn, $parkon);
 
     // Read all entries from the Owner table
-    $res = $parkon->read();
-    print("Result of reading ParkOn: \n");
-    print_r($res);
-    print("\n");
-    print("<br><br>");
+    // $res = $parkon->read();
+    // print("Result of reading ParkOn: \n");
+    // print_r($res);
+    // print("\n");
+    // print("<br><br>");
     
     // Read one entry from the ParkingSpot table
     // $spot = "V01_110";
@@ -321,7 +321,7 @@
 
     //======================Manager.php================
     // Instantiate the object whose table I'm working on
-    $manager = new Manager($conn);
+    // $manager = new Manager($conn);
 
     // Fill in the Owner table with the data from our csv file.
      // fill_table($conn, "data/manager_data.csv", $manager);
@@ -359,7 +359,7 @@
 
     //======================ManageParking.php================
     // Instantiate the object whose table I'm working on
-    $manageparking = new ManageParking($conn);
+    // $manageparking = new ManageParking($conn);
 
     // Fill in the Owner table with the data from our csv file.
      // fill_table($conn, "data/manage_parking_data2.csv", $manageparking);
@@ -401,7 +401,7 @@
 
     //======================ParkingRecord.php================
     // Instantiate the object whose table I'm working on
-    $parkingrecord = new ParkingRecord($conn);
+    // $parkingrecord = new ParkingRecord($conn);
 
     // Fill in the Owner table with the data from our csv file.
     //  fill_table($conn, "data/parking_record_data2.csv", $parkingrecord);
@@ -439,7 +439,7 @@
 
     //======================ManageRecord.php================
     // Instantiate the object whose table I'm working on
-    $managerecord = new ManageRecord($conn);
+    // $managerecord = new ManageRecord($conn);
 
     // Fill in the Owner table with the data from our csv file.
      // fill_table($conn, "data/manage_record_data2.csv", $managerecord);
@@ -479,3 +479,21 @@
     // $managerecord->setAttr("rcd_index", $rcd_index);
     // $managerecord->delete();
 
+
+    // ====================== All Tables ================
+    $tables = array(
+        'owner' => new Owner($conn),
+        'vehic' => new Vehicle($conn),
+        'mgPark' => new ManageParking($conn),
+        'manager' => new Manager($conn),
+        'mgrRec' => new ManageRecord($conn),
+        'own' => new Own($conn),
+        'prkRec' => new ParkingRecord($conn),
+        'prkSpot' => new ParkingSpot($conn),
+        'parkOn' => new ParkOn($conn),
+    );
+
+    // Delete all entries from all tables
+    foreach ($tables as $table) {
+        empty_table($conn, $table);
+    }

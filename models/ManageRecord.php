@@ -1,4 +1,4 @@
-Own<?php
+<?php
     // Vehicle parks on ParkingSpot
     // Vehicle should have ability to be registered
 

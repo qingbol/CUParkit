@@ -15,7 +15,7 @@
     include_once 'models/ManageParking.php';
     include_once 'models/Manager.php';
     include_once 'models/ManageRecord.php';
-    // include_once 'models/model_interface.php';
+    include_once 'models/model_interface.php';
     include_once 'models/Own.php';
     include_once 'models/ParkingRecord.php';
     include_once 'models/ParkingSpot.php';
@@ -483,14 +483,14 @@
     // ====================== All Tables ================
     $tables = array(
         'owner' => new Owner($conn),
-        'vehic' => new Vehicle($conn),
-        'mgPark' => new ManageParking($conn),
-        'manager' => new Manager($conn),
-        'mgrRec' => new ManageRecord($conn),
-        'own' => new Own($conn),
-        'prkRec' => new ParkingRecord($conn),
-        'prkSpot' => new ParkingSpot($conn),
-        'parkOn' => new ParkOn($conn),
+        // 'vehic' => new Vehicle($conn),
+        // 'mgPark' => new ManageParking($conn),
+        // 'manager' => new Manager($conn),
+        // 'mgRec' => new ManageRecord($conn),
+        // 'own' => new Own($conn),
+        // 'prkRec' => new ParkingRecord($conn),
+        // 'prkSpot' => new ParkingSpot($conn),
+        // 'parkOn' => new ParkOn($conn),
     );
 
     // Delete all entries from all tables
@@ -500,5 +500,5 @@
 
     // Fill all entries into all tables
     foreach ($tables as $tableName => $table) {
-        fill_table($conn, "data/" . $tableName . "csv", $table);
+        fill_table($conn, "data/" . $tableName . ".csv", $table);
     }

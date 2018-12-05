@@ -1,12 +1,12 @@
 <?php
     class Database {
         // Jack Production Database Parameters
-        private $host = "mysql1.cs.clemson.edu";
-        private $db_name = "CPSC_4620_c0ei";
-        private $charset = "utf8";
-        private $username = "CPSC_4620_a31t";
-        private $password = "SoQoolLearning1";
-        private $conn;
+        // private $host = "mysql1.cs.clemson.edu";
+        // private $db_name = "CPSC_4620_c0ei";
+        // private $charset = "utf8";
+        // private $username = "CPSC_4620_a31t";
+        // private $password = "SoQoolLearning1";
+        // private $conn;
        
         // Jack localhost DB Params
         // private $host = "localhost";
@@ -25,12 +25,12 @@
         // private $conn;
 
         // Qingbo localhost Database Parameters
-        // private $host = "localhost";
-        // private $db_name = "cpsc6620";
-        // private $charset = "utf8";
-        // private $username = "root";
-        // private $password = "0000";
-        // private $conn; // Connection to the database
+        private $host = "localhost";
+        private $db_name = "cpsc6620";
+        private $charset = "utf8";
+        private $username = "root";
+        private $password = "0000";
+        private $conn; // Connection to the database
         
         // Connect to Database
         public function connect() {

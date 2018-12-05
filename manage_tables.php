@@ -492,6 +492,7 @@
         // 'prkSpot' => new ParkingSpot($conn),
         // 'parkOn' => new ParkOn($conn),
     );
+    // print_r($tables);
 
     // Delete all entries from all tables
     foreach ($tables as $table) {

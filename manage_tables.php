@@ -128,7 +128,7 @@
     // fill_table($conn, "data/owner_data2.csv", $owner);
     //
     // Emtpy all entries from the Owner table
-    // empty_table($conn, $owner);
+    empty_table($conn, $owner);
     // 
     // Read all entries from the Owner table
     $res = $owner->read();

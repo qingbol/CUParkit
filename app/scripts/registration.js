@@ -39,11 +39,10 @@ let usernameCheck = (username, userType) => {
         }
     }).then(res => {
         // If the username does exist
-        // if (res.data) {
-        // I changed read_single, so now it will always return an associative array with keys. The question now is if the keys have values or not.
-        if (res.data[id] !== "" || res.data[id] !== null) {
+        if (res.data[id]) {
             document.getElementById(id+"Status").innerHTML = "error";
         } else { // If the username does not exist
+            console.log("Not null");
             document.getElementById(id+'Status').innerHTML = "done";
         }
     }).catch((err) => handleError);

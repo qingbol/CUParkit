@@ -484,19 +484,11 @@
 
     // ====================== All Tables ================
     $tables = array(
-<<<<<<< HEAD
-        'owner' => new Owner($conn),
-        // 'vehic' => new Vehicle($conn),
-        // 'mgPark' => new ManageParking($conn),
-        // 'manager' => new Manager($conn),
-        // 'mgRec' => new ManageRecord($conn),
-=======
         // 'owner' => new Owner($conn),
         // 'vehic' => new Vehicle($conn),
         'mgrPark' => new ManageParking($conn),
         // 'manager' => new Manager($conn),
         // 'mgrRec' => new ManageRecord($conn),
->>>>>>> bf9272145b44a841da2107484d9a0c758bbb0112
         // 'own' => new Own($conn),
         // 'prkRec' => new ParkingRecord($conn),
         // 'prkSpot' => new ParkingSpot($conn),

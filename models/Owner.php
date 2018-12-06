@@ -223,7 +223,7 @@
             if ( NULL == $pageSequenceNum){
                 $pageSequenceNum = 2;
             }
-            $recordPerPage = 5;
+            $recordPerPage = 50;
             $page = "";
             $output = "";
             $startFrom = ($pageSequenceNum - 1) * $recordPerPage;
@@ -430,6 +430,7 @@
                 // If $attr_arr is an associative array, convert it to numerically indexed
                 // If it's a numerically indexed array, treat it the same
                 $index_keys = array_keys($attr_arr);
+                // print_r($index_keys);
                 $i = 0;
                 foreach ($this->attr as $key => $value) {
                     $this->attr[$key] = $attr_arr[$index_keys[$i]];

@@ -42,6 +42,7 @@
 		// print ("<br>");
         // Add the data to the table one line at a time
         $num_rows = count($data_arr);
+        print($num_rows);
 		// var_dump ($num_row);
 		// print_r ($num_rows);
 	    // print_r($num_rows);
@@ -124,12 +125,13 @@
     // Instantiate the object whose table I'm working on
     // $owner = new Owner($conn);
     
-    // Fill in the Owner table with the data from our csv file.
-    // fill_table($conn, "data/owner_data2.csv", $owner);
-    //
     // Emtpy all entries from the Owner table
     // empty_table($conn, $owner);
     // 
+    // Fill in the Owner table with the data from our csv file.
+    // fill_table($conn, "data/owner.csv", $owner);
+    // fill_table($conn, "data/owner_data.csv", $owner);
+    //
     // Read all entries from the Owner table
     // $res = $owner->read();
     // print("Result of reading Owner: \n");
@@ -482,11 +484,19 @@
 
     // ====================== All Tables ================
     $tables = array(
+<<<<<<< HEAD
         'owner' => new Owner($conn),
         // 'vehic' => new Vehicle($conn),
         // 'mgPark' => new ManageParking($conn),
         // 'manager' => new Manager($conn),
         // 'mgRec' => new ManageRecord($conn),
+=======
+        // 'owner' => new Owner($conn),
+        // 'vehic' => new Vehicle($conn),
+        'mgrPark' => new ManageParking($conn),
+        // 'manager' => new Manager($conn),
+        // 'mgrRec' => new ManageRecord($conn),
+>>>>>>> bf9272145b44a841da2107484d9a0c758bbb0112
         // 'own' => new Own($conn),
         // 'prkRec' => new ParkingRecord($conn),
         // 'prkSpot' => new ParkingSpot($conn),
@@ -494,12 +504,12 @@
     );
     // print_r($tables);
 
-    // Delete all entries from all tables
+    // //Delete all entries from all tables
     foreach ($tables as $table) {
         empty_table($conn, $table);
     }
 
-    // Fill all entries into all tables
+    // // //Fill all entries into all tables
     foreach ($tables as $tableName => $table) {
         fill_table($conn, "data/" . $tableName . ".csv", $table);
     }

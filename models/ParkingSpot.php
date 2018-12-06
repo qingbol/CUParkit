@@ -179,7 +179,7 @@
             if ( NULL == $pageSequenceNum){
                 $pageSequenceNum = 1;
             }
-            $recordPerPage = 10;
+            $recordPerPage = 50;
             $page = "";
             $output = "";
             $startFrom = ($pageSequenceNum - 1) * $recordPerPage;

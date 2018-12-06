@@ -39,10 +39,9 @@ let usernameCheck = (username, userType) => {
         }
     }).then(res => {
         // If the username does exist
-        if (res.data[id]) {
+        if (res.data[id] || res.data[id.toUpperCase()]) {
             document.getElementById(id+"Status").innerHTML = "error";
         } else { // If the username does not exist
-            console.log("Not null");
             document.getElementById(id+'Status').innerHTML = "done";
         }
     }).catch((err) => handleError);

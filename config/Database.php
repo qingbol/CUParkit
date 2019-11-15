@@ -29,7 +29,8 @@
         private $db_name = "cpsc6620";
         private $charset = "utf8";
         private $username = "root";
-        private $password = "0000";
+        // private $password = "0000"; //用于mac系统中单独安装的mysql
+        private $password = "root"; //用于mac系统中MAMP集成安装的mysql
         private $conn; // Connection to the database
         
         // Connect to Database

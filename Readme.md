@@ -5,6 +5,10 @@ Jack Tabb
 Qingbo Lai  
 CPSC 4620 / 6620 DBMS  
 
+## Database
+cpsc6620.sql is created by qingbo which have more test data.
+CPSC_4620_c0ei.sql is created by Jack which have less test dat.
+
 ## Note
 The 3 main folders that form the backend are config, models, and api.
 The dependency injection is set up so that the php script in the api is the starting point
